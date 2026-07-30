@@ -1,0 +1,13 @@
+Rahul Kumar
+New Delhi, India
+Email: rahulkumar828515@gmail.com
+
+Professional Summary:
+Full Stack Developer with 3+ years of experience in JavaScript, Node.js, Express, React, and Python. Passionate about automating repetitive tasks, building web scrapers, and integrating AI into software products.
+
+Skills:
+- Frontend: HTML5, CSS3, Tailwind CSS, JavaScript (ES6+), React.js
+- Backend: Node.js, Express.js, MongoDB, PostgreSQL, REST APIs
+- Scraping & Automation: Playwright, Puppeteer, Selenium
+- AI & LLMs: OpenAI API, Gemini API, DeepSeek
+- Tools: Git, GitHub, VS Code, Postman

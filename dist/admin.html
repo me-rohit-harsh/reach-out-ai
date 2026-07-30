@@ -1,0 +1,349 @@
+<!DOCTYPE html><html class="light" lang="en" data-astro-cid-2zp6q64z> <head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><title>ReachOut AI — Admin Portal</title><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"><script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#3525cd",
+            "primary-container": "#4f46e5",
+            "background": "#f8f9ff",
+            "on-background": "#0b1c30",
+            "on-surface": "#0b1c30",
+            "surface": "#f8f9ff",
+            "surface-bright": "#f8f9ff",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#eff4ff",
+            "surface-container": "#e5eeff",
+            "surface-container-high": "#dce9ff",
+            "surface-container-highest": "#d3e4fe",
+            "outline": "#777587",
+            "outline-variant": "#c7c4d8",
+            "on-surface-variant": "#464555",
+            "secondary": "#006591",
+            "secondary-container": "#39b8fd",
+            "inverse-surface": "#213145",
+            "inverse-on-surface": "#eaf1ff",
+            "success": "#22c55e",
+            "error": "#ba1a1a",
+            "warning": "#f59e0b"
+          },
+          fontFamily: {
+            "sans": ["Inter", "sans-serif"],
+            "display": ["Plus Jakarta Sans", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script><style>html{scroll-behavior:smooth}.material-symbols-outlined[data-astro-cid-2zp6q64z]{font-variation-settings:"FILL" 1,"wght" 400,"GRAD" 0,"opsz" 24}.glass-card[data-astro-cid-2zp6q64z]{background:#ffffffb3;backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.5);box-shadow:0 4px 6px -1px #0000000d,0 2px 4px -1px #00000008}
+</style></head> <body class="bg-background text-on-background font-sans antialiased overflow-x-hidden" data-astro-cid-2zp6q64z> <!-- TopNavBar --> <header class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md shadow-sm border-b border-outline-variant/30" data-astro-cid-2zp6q64z> <div class="flex justify-between items-center max-w-[1280px] mx-auto px-4 md:px-6 h-20" data-astro-cid-2zp6q64z> <a href="/admin" class="font-display font-extrabold text-[22px] text-primary flex items-center gap-2" data-astro-cid-2zp6q64z>
+🎯 ReachOutAI <span class="bg-red-100 text-red-700 text-[11px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider" data-astro-cid-2zp6q64z>Admin</span> </a> <div class="flex items-center gap-4" data-astro-cid-2zp6q64z> <a href="/app" class="font-button text-[14px] font-semibold bg-white border border-outline-variant/60 text-on-surface px-4 py-2 rounded-xl hover:bg-slate-50 transition-colors shadow-sm text-center flex items-center justify-center gap-1.5" data-astro-cid-2zp6q64z> <span class="material-symbols-outlined text-[18px]" data-astro-cid-2zp6q64z>dashboard</span> Candidate App
+</a> <button id="btn-logout" class="font-button text-[14px] font-semibold text-error hover:bg-red-50 px-4 py-2 rounded-xl transition-all" data-astro-cid-2zp6q64z>
+Logout
+</button> </div> </div> </header> <!-- Main Container --> <main class="max-w-[1280px] mx-auto px-4 md:px-6 pt-28 pb-16 space-y-6" data-astro-cid-2zp6q64z> <!-- Page Header Title and Refresh Button --> <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-outline-variant/20 pb-4" data-astro-cid-2zp6q64z> <div class="text-left" data-astro-cid-2zp6q64z> <h1 class="font-display font-extrabold text-[32px] text-on-background tracking-tight" data-astro-cid-2zp6q64z>Administrative Overview</h1> <p class="text-[14px] text-on-surface-variant" data-astro-cid-2zp6q64z>Update API credentials, manage SaaS users, and audit global outreach history.</p> </div> <button onclick="refreshData()" class="flex items-center justify-center gap-1.5 bg-primary text-on-primary px-5 py-2.5 rounded-xl hover:bg-primary-container transition-all text-sm font-semibold shadow-md hover:shadow-lg self-start sm:self-auto" data-astro-cid-2zp6q64z> <span class="material-symbols-outlined text-[18px]" data-astro-cid-2zp6q64z>sync</span> Refresh Data
+</button> </div> <!-- Administrative KPI Cards --> <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4" data-astro-cid-2zp6q64z> <!-- KPI 1 --> <div class="bg-white p-5 rounded-2xl border border-outline-variant/40 shadow-sm flex items-center gap-4 hover:shadow-md transition-shadow" data-astro-cid-2zp6q64z> <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary" data-astro-cid-2zp6q64z> <span class="material-symbols-outlined text-[28px]" data-astro-cid-2zp6q64z>group</span> </div> <div class="text-left" data-astro-cid-2zp6q64z> <div class="text-slate-400 font-medium text-[12px] uppercase tracking-wider" data-astro-cid-2zp6q64z>Registered Users</div> <div class="text-[28px] font-extrabold text-on-background leading-none mt-1" id="kpi-users" data-astro-cid-2zp6q64z>--</div> </div> </div> <!-- KPI 2 --> <div class="bg-white p-5 rounded-2xl border border-outline-variant/40 shadow-sm flex items-center gap-4 hover:shadow-md transition-shadow" data-astro-cid-2zp6q64z> <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center text-green-600" data-astro-cid-2zp6q64z> <span class="material-symbols-outlined text-[28px]" data-astro-cid-2zp6q64z>bolt</span> </div> <div class="text-left" data-astro-cid-2zp6q64z> <div class="text-slate-400 font-medium text-[12px] uppercase tracking-wider" data-astro-cid-2zp6q64z>Active Candidates</div> <div class="text-[28px] font-extrabold text-on-background leading-none mt-1" id="kpi-active" data-astro-cid-2zp6q64z>--</div> </div> </div> <!-- KPI 3 --> <div class="bg-white p-5 rounded-2xl border border-outline-variant/40 shadow-sm flex items-center gap-4 hover:shadow-md transition-shadow" data-astro-cid-2zp6q64z> <div class="w-12 h-12 rounded-xl bg-indigo-500/10 flex items-center justify-center text-indigo-600" data-astro-cid-2zp6q64z> <span class="material-symbols-outlined text-[28px]" data-astro-cid-2zp6q64z>mail</span> </div> <div class="text-left" data-astro-cid-2zp6q64z> <div class="text-slate-400 font-medium text-[12px] uppercase tracking-wider" data-astro-cid-2zp6q64z>Total Emails Sent</div> <div class="text-[28px] font-extrabold text-on-background leading-none mt-1" id="kpi-sent" data-astro-cid-2zp6q64z>--</div> </div> </div> <!-- KPI 4 --> <div class="bg-white p-5 rounded-2xl border border-outline-variant/40 shadow-sm flex items-center gap-4 hover:shadow-md transition-shadow" data-astro-cid-2zp6q64z> <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-600" data-astro-cid-2zp6q64z> <span class="material-symbols-outlined text-[28px]" data-astro-cid-2zp6q64z>today</span> </div> <div class="text-left" data-astro-cid-2zp6q64z> <div class="text-slate-400 font-medium text-[12px] uppercase tracking-wider" data-astro-cid-2zp6q64z>Sent Today</div> <div class="text-[28px] font-extrabold text-on-background leading-none mt-1" id="kpi-today" data-astro-cid-2zp6q64z>--</div> </div> </div> </div> <!-- Main Navigation Tab Panels --> <div class="bg-white border border-outline-variant/40 rounded-2xl shadow-sm overflow-hidden" data-astro-cid-2zp6q64z> <!-- Tabs header buttons --> <div class="flex border-b border-outline-variant/20 bg-slate-50/50 overflow-x-auto" data-astro-cid-2zp6q64z> <button onclick="selectTab('logs')" class="tab-btn px-6 py-4 font-display text-[15px] font-semibold text-on-surface-variant hover:text-primary transition-all border-b-2 border-transparent whitespace-nowrap" id="tab-btn-logs" data-astro-cid-2zp6q64z>
+📊 Activity Logs
+</button> <button onclick="selectTab('users')" class="tab-btn px-6 py-4 font-display text-[15px] font-semibold text-on-surface-variant hover:text-primary transition-all border-b-2 border-transparent whitespace-nowrap" id="tab-btn-users" data-astro-cid-2zp6q64z>
+👥 Candidate List
+</button> <button onclick="selectTab('upgrades')" class="tab-btn px-6 py-4 font-display text-[15px] font-semibold text-on-surface-variant hover:text-primary transition-all border-b-2 border-transparent relative whitespace-nowrap" id="tab-btn-upgrades" data-astro-cid-2zp6q64z>
+🚀 Upgrade Requests <span id="badge-upgrade-count" class="hidden ml-1.5 bg-primary text-on-primary text-[10px] font-bold px-1.5 py-0.5 rounded-full" data-astro-cid-2zp6q64z>0</span> </button> <button onclick="selectTab('config')" class="tab-btn px-6 py-4 font-display text-[15px] font-semibold text-on-surface-variant hover:text-primary transition-all border-b-2 border-transparent whitespace-nowrap" id="tab-btn-config" data-astro-cid-2zp6q64z>
+⚙️ API Configuration
+</button> </div> <!-- Tab Content Area --> <div class="p-6" data-astro-cid-2zp6q64z> <!-- 1. TAB: Activity Logs --> <div class="tab-panel space-y-4" id="panel-logs" data-astro-cid-2zp6q64z> <div class="text-left border-b border-outline-variant/25 pb-3" data-astro-cid-2zp6q64z> <h3 class="font-display text-[18px] font-bold text-on-background" data-astro-cid-2zp6q64z>Outreach Audit Trail</h3> <p class="text-[13px] text-on-surface-variant" data-astro-cid-2zp6q64z>Review all job applications scraped and generated across the platform.</p> </div> <div class="overflow-x-auto border border-outline-variant/20 rounded-xl bg-white" data-astro-cid-2zp6q64z> <table class="w-full text-left border-collapse text-[13px]" data-astro-cid-2zp6q64z> <thead data-astro-cid-2zp6q64z> <tr class="bg-slate-50 text-slate-500 font-bold border-b border-outline-variant/20" data-astro-cid-2zp6q64z> <th class="py-3 px-4" data-astro-cid-2zp6q64z>Candidate Email</th> <th class="py-3 px-4" data-astro-cid-2zp6q64z>Recruiter Name / Email</th> <th class="py-3 px-4" data-astro-cid-2zp6q64z>Email Subject</th> <th class="py-3 px-4" data-astro-cid-2zp6q64z>Sent Time</th> <th class="py-3 px-4 text-center" data-astro-cid-2zp6q64z>Mode</th> </tr> </thead> <tbody id="logs-tbody" class="divide-y divide-slate-100" data-astro-cid-2zp6q64z> <tr data-astro-cid-2zp6q64z> <td colspan="5" class="py-12 text-center text-slate-400 font-medium" data-astro-cid-2zp6q64z>Fetching global outreach logs...</td> </tr> </tbody> </table> </div> </div> <!-- 2. TAB: Candidate Management --> <div class="tab-panel hidden space-y-4" id="panel-users" data-astro-cid-2zp6q64z> <div class="text-left border-b border-outline-variant/25 pb-3" data-astro-cid-2zp6q64z> <h3 class="font-display text-[18px] font-bold text-on-background" data-astro-cid-2zp6q64z>Registered Candidates</h3> <p class="text-[13px] text-on-surface-variant" data-astro-cid-2zp6q64z>Configure subscription plans, set parameters, and audit outreach limits.</p> </div> <div class="overflow-x-auto border border-outline-variant/20 rounded-xl bg-white" data-astro-cid-2zp6q64z> <table class="w-full text-left border-collapse text-[13px]" data-astro-cid-2zp6q64z> <thead data-astro-cid-2zp6q64z> <tr class="bg-slate-50 text-slate-500 font-bold border-b border-outline-variant/20" data-astro-cid-2zp6q64z> <th class="py-3 px-4" data-astro-cid-2zp6q64z>Candidate Profile</th> <th class="py-3 px-4" data-astro-cid-2zp6q64z>Subscription Plan</th> <th class="py-3 px-4" data-astro-cid-2zp6q64z>Usage Today</th> <th class="py-3 px-4" data-astro-cid-2zp6q64z>Total Outreach</th> <th class="py-3 px-4 text-center" data-astro-cid-2zp6q64z>Actions</th> </tr> </thead> <tbody id="users-tbody" class="divide-y divide-slate-100" data-astro-cid-2zp6q64z> <tr data-astro-cid-2zp6q64z> <td colspan="5" class="py-12 text-center text-slate-400 font-medium" data-astro-cid-2zp6q64z>Fetching users list...</td> </tr> </tbody> </table> </div> </div> <!-- 3. TAB: Upgrade Requests --> <div class="tab-panel hidden space-y-4" id="panel-upgrades" data-astro-cid-2zp6q64z> <div class="text-left border-b border-outline-variant/25 pb-3" data-astro-cid-2zp6q64z> <h3 class="font-display text-[18px] font-bold text-on-background" data-astro-cid-2zp6q64z>Pending Upgrade Requests</h3> <p class="text-[13px] text-on-surface-variant" data-astro-cid-2zp6q64z>Review candidate motivations to increase their daily outreach cap.</p> </div> <div class="grid grid-cols-1 gap-4" id="upgrades-list" data-astro-cid-2zp6q64z> <div class="py-12 text-center text-slate-400 font-medium bg-slate-50/50 rounded-xl border border-outline-variant/20" data-astro-cid-2zp6q64z>
+No pending upgrade requests.
+</div> </div> </div> <!-- 4. TAB: Configuration --> <div class="tab-panel hidden space-y-4" id="panel-config" data-astro-cid-2zp6q64z> <div class="text-left border-b border-outline-variant/25 pb-3" data-astro-cid-2zp6q64z> <h3 class="font-display text-[18px] font-bold text-on-background" data-astro-cid-2zp6q64z>Global API Configuration</h3> <p class="text-[13px] text-on-surface-variant" data-astro-cid-2zp6q64z>Manage platform API credentials, SMTP details, and default search variables.</p> </div> <form id="config-form" class="space-y-6 max-w-4xl text-left" data-astro-cid-2zp6q64z> <!-- Section: LLM Keys --> <div class="bg-slate-50/60 p-5 rounded-xl border border-outline-variant/30 space-y-4" data-astro-cid-2zp6q64z> <h4 class="font-display text-[15px] font-bold text-on-background border-b pb-2 border-outline-variant/20 flex items-center gap-1.5" data-astro-cid-2zp6q64z> <span class="material-symbols-outlined text-[20px] text-indigo-600" data-astro-cid-2zp6q64z>key</span> LLM API Credentials
+</h4> <div class="space-y-1" data-astro-cid-2zp6q64z> <label class="text-[12px] font-bold uppercase tracking-wider text-slate-500" data-astro-cid-2zp6q64z>GROQ API Key</label> <input type="password" name="GROQ_API_KEY" placeholder="Paste Groq API Key" class="w-full px-4 py-2.5 border border-outline-variant/60 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary bg-white text-[14px]" data-astro-cid-2zp6q64z> </div> </div> <!-- Section: Crawler Parameters --> <div class="bg-slate-50/60 p-5 rounded-xl border border-outline-variant/30 space-y-4" data-astro-cid-2zp6q64z> <h4 class="font-display text-[15px] font-bold text-on-background border-b pb-2 border-outline-variant/20 flex items-center gap-1.5" data-astro-cid-2zp6q64z> <span class="material-symbols-outlined text-[20px] text-indigo-600" data-astro-cid-2zp6q64z>manage_search</span> Crawling & Default Settings
+</h4> <div class="grid grid-cols-1 sm:grid-cols-2 gap-4" data-astro-cid-2zp6q64z> <div class="space-y-1" data-astro-cid-2zp6q64z> <label class="text-[12px] font-bold uppercase tracking-wider text-slate-500" data-astro-cid-2zp6q64z>LinkedIn Account Email</label> <input type="email" name="LINKEDIN_EMAIL" placeholder="email@linkedin.com" class="w-full px-4 py-2.5 border border-outline-variant/60 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary bg-white text-[14px]" data-astro-cid-2zp6q64z> </div> <div class="space-y-1" data-astro-cid-2zp6q64z> <label class="text-[12px] font-bold uppercase tracking-wider text-slate-500" data-astro-cid-2zp6q64z>LinkedIn Account Password</label> <input type="password" name="LINKEDIN_PASSWORD" placeholder="Your LinkedIn password" class="w-full px-4 py-2.5 border border-outline-variant/60 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary bg-white text-[14px]" data-astro-cid-2zp6q64z> </div> </div> <div class="grid grid-cols-1 sm:grid-cols-3 gap-4" data-astro-cid-2zp6q64z> <div class="space-y-1" data-astro-cid-2zp6q64z> <label class="text-[12px] font-bold uppercase tracking-wider text-slate-500" data-astro-cid-2zp6q64z>Max Scraping Depth (Pages)</label> <input type="number" name="MAX_PAGES" placeholder="5" class="w-full px-4 py-2.5 border border-outline-variant/60 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary bg-white text-[14px]" data-astro-cid-2zp6q64z> </div> <div class="space-y-1" data-astro-cid-2zp6q64z> <label class="text-[12px] font-bold uppercase tracking-wider text-slate-500" data-astro-cid-2zp6q64z>Default CV File Path</label> <input type="text" name="CV_PATH" placeholder="./my_cv.pdf" class="w-full px-4 py-2.5 border border-outline-variant/60 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary bg-white text-[14px]" data-astro-cid-2zp6q64z> </div> <div class="space-y-1" data-astro-cid-2zp6q64z> <label class="text-[12px] font-bold uppercase tracking-wider text-slate-500" data-astro-cid-2zp6q64z>Outreach Deliverability Mode</label> <select name="TEST_MODE" class="w-full px-4 py-2.5 border border-outline-variant/60 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary bg-white text-[14px]" data-astro-cid-2zp6q64z> <option value="false" data-astro-cid-2zp6q64z>Live Mode (Send Outreach Mails)</option> <option value="true" data-astro-cid-2zp6q64z>Dry-Run Mode (Scrape Only)</option> </select> </div> </div> <div class="space-y-1" data-astro-cid-2zp6q64z> <label class="text-[12px] font-bold uppercase tracking-wider text-slate-500" data-astro-cid-2zp6q64z>Default Target Search URLs (One URL per line)</label> <textarea name="urls" rows="4" placeholder="https://www.linkedin.com/search/results/content/?keywords=%23hiring" class="w-full px-4 py-2.5 border border-outline-variant/60 rounded-xl focus:border-primary focus:ring-1 focus:ring-primary bg-white font-mono text-[12px] leading-relaxed" data-astro-cid-2zp6q64z></textarea> </div> </div> <!-- Submit action block --> <div class="flex items-center gap-4 pt-2" data-astro-cid-2zp6q64z> <button type="submit" class="bg-primary text-on-primary px-6 py-3 rounded-xl hover:bg-primary-container transition-all font-semibold shadow-md hover:shadow-lg" data-astro-cid-2zp6q64z>
+💾 Save Global Settings
+</button> <div id="config-status" class="text-[13px] font-semibold" data-astro-cid-2zp6q64z></div> </div> </form> </div> </div> </div> </main> <script>
+    // Tab Controller logic
+    window.selectTab = function(tabId) {
+      document.querySelectorAll('.tab-btn').forEach(btn => {
+        btn.classList.remove('border-primary', 'text-primary', 'bg-white');
+        btn.classList.add('border-transparent', 'text-on-surface-variant');
+      });
+      document.querySelectorAll('.tab-panel').forEach(panel => {
+        panel.classList.add('hidden');
+      });
+
+      const activeBtn = document.getElementById(`tab-btn-${tabId}`);
+      if (activeBtn) {
+        activeBtn.classList.add('border-primary', 'text-primary', 'bg-white');
+        activeBtn.classList.remove('border-transparent', 'text-on-surface-variant');
+      }
+      
+      const activePanel = document.getElementById(`panel-${tabId}`);
+      if (activePanel) {
+        activePanel.classList.remove('hidden');
+      }
+    };
+
+    // Refresh dashboard stats and sublists
+    window.refreshData = async function() {
+      try {
+        const statsRes = await fetch('/api/admin/stats');
+        if (!statsRes.ok) throw new Error('Failed to load dashboard statistics.');
+        const stats = await statsRes.json();
+
+        // Populate KPI Counters
+        document.getElementById('kpi-users').innerText = stats.totalUsers ?? 0;
+        document.getElementById('kpi-active').innerText = stats.activeUsersCount ?? 0;
+        document.getElementById('kpi-sent').innerText = (stats.totalEmailsSent ?? 0).toLocaleString();
+        document.getElementById('kpi-today').innerText = (stats.totalEmailsSentToday ?? 0).toLocaleString();
+
+        // Handle upgrade counts badge
+        const upgradeCount = stats.upgradeRequests ? stats.upgradeRequests.length : 0;
+        const upgradeBadge = document.getElementById('badge-upgrade-count');
+        if (upgradeCount > 0) {
+          upgradeBadge.innerText = upgradeCount;
+          upgradeBadge.classList.remove('hidden');
+        } else {
+          upgradeBadge.classList.add('hidden');
+        }
+
+        // Render outreach table and upgrade feeds
+        renderOutreachLogs(stats.recentOutreach || []);
+        renderUpgradesList(stats.upgradeRequests || []);
+
+        // Load SaaS candidates list
+        await fetchUsersList();
+        
+      } catch (err) {
+        alert(err.message);
+      }
+    };
+
+    // Get all users
+    async function fetchUsersList() {
+      try {
+        const res = await fetch('/api/admin/users');
+        if (!res.ok) throw new Error('Failed to fetch SaaS user accounts.');
+        const users = await res.json();
+        renderUsersList(users);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    // Render global logs
+    function renderOutreachLogs(logs) {
+      const tbody = document.getElementById('logs-tbody');
+      if (logs.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5" class="py-12 text-center text-slate-400 font-semibold bg-slate-50/20">
+              No recent application logs found.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = logs.map(log => `
+        <tr class="hover:bg-slate-50/30 transition-colors border-b border-slate-100 last:border-0">
+          <td class="py-3.5 px-4 font-semibold text-slate-900">${log.userEmail}</td>
+          <td class="py-3.5 px-4">
+            <div class="font-medium text-slate-800">${log.recruiterName || 'Recruiter'}</div>
+            <div class="text-[11px] text-slate-400 font-mono">${log.recipientEmail}</div>
+          </td>
+          <td class="py-3.5 px-4 text-slate-600 max-w-xs truncate italic">"${log.subject || 'No Subject'}"</td>
+          <td class="py-3.5 px-4 text-slate-500 font-mono text-[12px]">${new Date(log.sentAt).toLocaleString()}</td>
+          <td class="py-3.5 px-4 text-center">
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wider ${log.testMode ? 'bg-amber-100 text-amber-800 border border-amber-200' : 'bg-green-100 text-green-800 border border-green-200'}">
+              ${log.testMode ? 'DRY-RUN' : 'LIVE'}
+            </span>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    // Render users listing table
+    function renderUsersList(users) {
+      const tbody = document.getElementById('users-tbody');
+      if (users.length === 0) {
+        tbody.innerHTML = `
+          <tr>
+            <td colspan="5" class="py-12 text-center text-slate-400 font-semibold bg-slate-50/20">
+              No registered candidates found in the database.
+            </td>
+          </tr>
+        `;
+        return;
+      }
+
+      tbody.innerHTML = users.map(user => {
+        const usageLimit = user.emailsLimit || 20;
+        const usagePct = Math.min(100, Math.round(((user.emailsSent || 0) / usageLimit) * 100));
+        return `
+          <tr class="hover:bg-slate-50/30 transition-colors border-b border-slate-100 last:border-0">
+            <td class="py-3 px-4">
+              <div class="flex items-center gap-2.5">
+                ${user.picture ? `<img src="${user.picture}" class="w-8 h-8 rounded-full border border-slate-200 shadow-sm" />` : `<div class="w-8 h-8 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-xs uppercase">${(user.name || user.email).charAt(0)}</div>`}
+                <div class="text-left">
+                  <div class="font-semibold text-slate-900 leading-tight">${user.name || 'Candidate'}</div>
+                  <div class="text-[11px] text-slate-400 font-mono">${user.email}</div>
+                </div>
+              </div>
+            </td>
+            <td class="py-3 px-4">
+              <span class="font-mono text-[12px] font-bold uppercase tracking-wider text-indigo-700 bg-indigo-50 border border-indigo-100 px-2 py-0.5 rounded-md">
+                ${user.plan || 'free'}
+              </span>
+            </td>
+            <td class="py-3 px-4">
+              <div class="flex items-center gap-2">
+                <span class="text-[11px] font-bold text-slate-600 font-mono">${user.emailsSent || 0} / ${usageLimit}</span>
+                <div class="h-2 w-20 bg-slate-100 rounded-full overflow-hidden border border-slate-200/50">
+                  <div class="h-full bg-primary transition-all duration-300" style="width: ${usagePct}%"></div>
+                </div>
+              </div>
+            </td>
+            <td class="py-3 px-4 font-semibold text-slate-700 font-mono">${(user.emailsSentTotal || 0).toLocaleString()} sent</td>
+            <td class="py-3 px-4 text-center space-x-1.5 whitespace-nowrap">
+              <select onchange="updatePlan('${user.email}', this.value)" class="text-[12px] py-1 pl-2 pr-8 border border-outline-variant/60 rounded-lg bg-white inline-block focus:ring-primary focus:border-primary">
+                <option value="free" ${user.plan === 'free' ? 'selected' : ''}>Free</option>
+                <option value="standard" ${user.plan === 'standard' ? 'selected' : ''}>Standard</option>
+                <option value="pro" ${user.plan === 'pro' ? 'selected' : ''}>Pro</option>
+                <option value="agency" ${user.plan === 'agency' ? 'selected' : ''}>Agency</option>
+              </select>
+              <button onclick="resetUsage('${user.email}')" class="px-2.5 py-1 border border-outline-variant/80 rounded-lg text-[11px] font-bold text-slate-700 hover:bg-slate-50 transition-colors shadow-sm">
+                Reset Usage
+              </button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // Render Upgrade Requests Cards
+    function renderUpgradesList(requests) {
+      const container = document.getElementById('upgrades-list');
+      if (requests.length === 0) {
+        container.innerHTML = `
+          <div class="py-12 text-center text-slate-400 font-semibold bg-slate-50/50 rounded-xl border border-outline-variant/20">
+            No pending upgrade requests.
+          </div>
+        `;
+        return;
+      }
+
+      container.innerHTML = requests.map(req => `
+        <div class="bg-white p-5 rounded-xl border border-outline-variant/40 flex flex-col sm:flex-row justify-between sm:items-center gap-4 text-left shadow-sm hover:shadow-md transition-shadow">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="font-bold text-slate-900">${req.email}</span>
+              <span class="text-[11px] text-slate-400 font-mono">${new Date(req.requestedAt).toLocaleString()}</span>
+            </div>
+            <p class="text-[13px] text-slate-600 italic">"${req.reason || 'Requested quota limit increase.'}"</p>
+          </div>
+          <div class="flex gap-2 whitespace-nowrap">
+            <button onclick="approveUpgrade('${req.email}', 'standard')" class="px-4 py-2 bg-primary text-on-primary text-[12px] font-bold rounded-xl hover:bg-primary-container transition-all shadow-sm">
+              Upgrade Standard
+            </button>
+            <button onclick="approveUpgrade('${req.email}', 'pro')" class="px-4 py-2 bg-indigo-600 text-white text-[12px] font-bold rounded-xl hover:bg-indigo-700 transition-all shadow-sm">
+              Upgrade Pro
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Update SaaS Plan
+    window.updatePlan = async function(email, plan) {
+      try {
+        const res = await fetch('/api/admin/update-user-plan', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, plan })
+        });
+        if (!res.ok) throw new Error('Failed to update candidate plan.');
+        refreshData();
+      } catch (err) {
+        alert(err.message);
+      }
+    };
+
+    // Quick Upgrade Approval
+    window.approveUpgrade = async function(email, plan) {
+      if (confirm(`Approve upgrade for ${email} to ${plan.toUpperCase()}?`)) {
+        await updatePlan(email, plan);
+      }
+    };
+
+    // Reset User Usage Sent Counts
+    window.resetUsage = async function(email) {
+      if (confirm(`Are you sure you want to reset the daily outreach counter for ${email}?`)) {
+        try {
+          const res = await fetch('/api/admin/reset-user-usage', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email })
+          });
+          if (!res.ok) throw new Error('Failed to reset candidate usage.');
+          refreshData();
+        } catch (err) {
+          alert(err.message);
+        }
+      }
+    };
+
+    // Load configurations from API
+    async function loadConfig() {
+      try {
+        const res = await fetch('/api/config');
+        if (!res.ok) throw new Error('Failed to fetch system configurations.');
+        const config = await res.json();
+        
+        const form = document.getElementById('config-form');
+        for (const key in config) {
+          const input = form.elements[key];
+          if (input) {
+            input.value = config[key];
+          }
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    // Submit Config Form
+    document.getElementById('config-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const statusDiv = document.getElementById('config-status');
+      statusDiv.className = 'text-[13px] text-slate-500 font-semibold';
+      statusDiv.innerText = 'Saving configurations...';
+
+      const formData = new FormData(e.target);
+      const data = Object.fromEntries(formData.entries());
+
+      try {
+        const res = await fetch('/api/config', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data)
+        });
+        if (!res.ok) throw new Error('Failed to save configurations.');
+        
+        statusDiv.className = 'text-[13px] text-green-600 font-semibold';
+        statusDiv.innerText = 'Configurations updated successfully!';
+        setTimeout(() => { statusDiv.innerText = ''; }, 3000);
+        refreshData();
+      } catch (err) {
+        statusDiv.className = 'text-[13px] text-error font-semibold';
+        statusDiv.innerText = err.message;
+      }
+    });
+
+    // Logout Action
+    document.getElementById('btn-logout').addEventListener('click', async () => {
+      if (confirm('Logout from Admin portal?')) {
+        await fetch('/api/logout', { method: 'POST' });
+        window.location.href = '/app';
+      }
+    });
+
+    // Boot
+    document.addEventListener('DOMContentLoaded', () => {
+      selectTab('logs');
+      refreshData();
+      loadConfig();
+    });
+  </script> </body> </html>

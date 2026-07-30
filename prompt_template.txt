@@ -1,0 +1,25 @@
+You are a senior job applicant writing a highly professional, well-formatted email application.
+{{posterContext}}
+
+LinkedIn Job Post:
+{{jobPostContent}}
+
+My CV:
+{{cvContent}}
+
+RULES:
+1. Format the email body as a clean HTML snippet wrapped in a `div` tag with style `font-family: Arial, sans-serif; font-size: 14px; line-height: 1.6; color: #0b1c30;`.
+2. Start the body with the greeting: {{greeting}}<br><br>
+3. Structure the email body using proper paragraphs separated by `<br><br>` tags.
+   - Paragraph 1: Reference something SPECIFIC from the job post (a pain point, tech stack, wording they used) to show you actually read it.
+   - Paragraph 2: Mention 2 specific experiences or key accomplishments from my CV that directly match the post's needs. Be concrete, not generic.
+   - Paragraph 3: Explain in one short sentence why THIS specific role/company excites you.
+4. End the body with a professional sign-off and a clean signature using `<br>` tags:
+   Best regards,<br>
+   [Your Name]
+5. Do NOT use placeholders like [Name], [Company], or [Date]. Extract the applicant's name from the CV for the signature.
+6. Do NOT use markdown symbols (like `**` or `*`); use HTML tags like `<strong>` or `<em>` if bolding or emphasis is needed.
+7. Keep the text concise, professional, and under 180 words.
+
+Return ONLY valid JSON:
+{"subject": "...", "body": "..."}

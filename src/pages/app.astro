@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>ReachOut AI — LinkedIn Outreach Automation Dashboard</title>
+  
+  <script is:inline src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+
+  <script is:inline id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#3525cd",
+            "primary-container": "#4f46e5",
+            "background": "#f8f9ff",
+            "on-background": "#0b1c30",
+            "on-surface": "#0b1c30",
+            "surface": "#f8f9ff",
+            "surface-bright": "#f8f9ff",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#eff4ff",
+            "surface-container": "#e5eeff",
+            "surface-container-high": "#dce9ff",
+            "surface-container-highest": "#d3e4fe",
+            "outline": "#777587",
+            "outline-variant": "#c7c4d8",
+            "on-surface-variant": "#464555",
+            "secondary": "#006591",
+            "secondary-container": "#39b8fd",
+            "inverse-surface": "#213145",
+            "inverse-on-surface": "#eaf1ff",
+            "success": "#22c55e",
+            "error": "#ba1a1a",
+            "warning": "#f59e0b"
+          },
+          fontFamily: {
+            "sans": ["Inter", "sans-serif"],
+            "display": ["Plus Jakarta Sans", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html, body {
+      font-family: 'Inter', sans-serif;
+    }
+    .font-display {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #c7c4d8;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #777587;
+    }
+    #logs::-webkit-scrollbar-thumb {
+      background: #2b2b40;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen font-sans p-6">
+
+  <!-- Header -->
+  <header class="max-w-7xl mx-auto flex items-center justify-between mb-8">
+    <div class="flex items-center gap-3">
+      <div class="w-10 h-10 bg-primary rounded-xl flex items-center justify-center text-white shadow-md">
+        <span class="material-symbols-outlined text-2xl font-bold">target</span>
+      </div>
+      <div>
+        <h1 class="font-display font-extrabold text-2xl text-on-background tracking-tight">ReachOut AI</h1>
+        <p class="text-xs text-on-surface-variant/80 font-medium">LinkedIn Recruiter Automation Autopilot</p>
+      </div>
+    </div>
+    <div class="flex items-center gap-2 bg-white px-3 py-1.5 rounded-xl border border-outline-variant/30 shadow-sm text-xs font-semibold text-on-surface-variant">
+      <span class="w-2.5 h-2.5 rounded-full bg-success animate-pulse"></span>
+      Local Environment Mode
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8">
+    
+    <!-- Left Column: Inputs (4 cols) -->
+    <div class="lg:col-span-4 space-y-6">
+      
+      <!-- Upload CV Card -->
+      <div class="bg-white p-6 rounded-2xl border border-outline-variant/20 shadow-sm space-y-4">
+        <div class="flex items-center gap-2 pb-3 border-b border-outline-variant/10">
+          <span class="material-symbols-outlined text-primary text-xl">description</span>
+          <h2 class="font-display font-bold text-sm text-on-background">Your Resume / CV</h2>
+        </div>
+        
+        <!-- CV Dropzone -->
+        <div id="cv-dropzone" class="border-2 border-dashed border-outline-variant/50 hover:border-primary/50 rounded-xl p-6 text-center cursor-pointer transition-colors bg-background/50 hover:bg-primary/5">
+          <input type="file" id="cv-file-input" class="hidden" accept=".pdf" />
+          <span class="material-symbols-outlined text-primary/70 text-3xl mb-2">cloud_upload</span>
+          <p class="text-xs font-semibold text-on-background mb-1">Drag & Drop Resume PDF</p>
+          <p class="text-[10px] text-on-surface-variant/70">Or click to browse files</p>
+        </div>
+        <div id="cv-status" class="hidden text-xs bg-primary/10 text-primary py-2 px-3 rounded-lg font-semibold flex items-center justify-between">
+          <span id="cv-name-display" class="truncate">cv.pdf</span>
+          <span class="material-symbols-outlined text-sm cursor-pointer hover:text-red-500" id="clear-cv-btn">close</span>
+        </div>
+
+        <!-- Plain Text View -->
+        <div class="space-y-1.5">
+          <label class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant/80">Extracted Plain Text</label>
+          <textarea id="cv-text" class="w-full h-32 text-xs border border-outline-variant/30 rounded-lg p-2.5 bg-background focus:outline-none focus:border-primary resize-none" placeholder="Paste your CV plain text here for email customization..."></textarea>
+        </div>
+      </div>
+
+      <!-- Scraper Settings Card -->
+      <div class="bg-white p-6 rounded-2xl border border-outline-variant/20 shadow-sm space-y-4">
+        <div class="flex items-center gap-2 pb-3 border-b border-outline-variant/10">
+          <span class="material-symbols-outlined text-primary text-xl">settings</span>
+          <h2 class="font-display font-bold text-sm text-on-background">Crawl Settings</h2>
+        </div>
+
+        <!-- Target Search URL -->
+        <div class="space-y-1.5">
+          <label class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant/80">LinkedIn Search URLs</label>
+          <textarea id="search-urls" class="w-full h-24 text-xs border border-outline-variant/30 rounded-lg p-2.5 focus:outline-none focus:border-primary resize-none" placeholder="Paste target LinkedIn Search URLs (one per line)"></textarea>
+        </div>
+
+        <!-- Max Pages -->
+        <div class="space-y-1.5">
+          <label class="text-[10px] font-bold uppercase tracking-wider text-on-surface-variant/80">Max Pages per URL</label>
+          <input type="number" id="max-pages" min="1" value="5" class="w-full text-xs border border-outline-variant/30 rounded-lg p-2.5 focus:outline-none focus:border-primary" />
+        </div>
+
+        <!-- Actions -->
+        <div class="grid grid-cols-2 gap-3 pt-2">
+          <button id="start-btn" class="w-full flex items-center justify-center gap-2 py-2.5 bg-primary hover:bg-primary-container text-white text-xs font-bold rounded-lg shadow-sm transition-all">
+            <span class="material-symbols-outlined text-sm">play_arrow</span> Start
+          </button>
+          <button id="stop-btn" class="w-full flex items-center justify-center gap-2 py-2.5 bg-error/10 hover:bg-error/20 text-error text-xs font-bold rounded-lg transition-all" disabled>
+            <span class="material-symbols-outlined text-sm">stop</span> Stop
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Right Column: Progress & Console (8 cols) -->
+    <div class="lg:col-span-8 space-y-6">
+      
+      <!-- Progress Table Card -->
+      <div class="bg-white p-6 rounded-2xl border border-outline-variant/20 shadow-sm space-y-4">
+        <div class="flex items-center justify-between pb-3 border-b border-outline-variant/10">
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-xl">table_chart</span>
+            <h2 class="font-display font-bold text-sm text-on-background">Live Outreach Queue</h2>
+          </div>
+          <span id="queue-counter" class="text-[10px] font-bold bg-primary/10 text-primary py-0.5 px-2 rounded-full">0 processed</span>
+        </div>
+
+        <!-- Progress Table -->
+        <div class="overflow-x-auto border border-outline-variant/20 rounded-xl max-h-[300px]">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="bg-background border-b border-outline-variant/30 text-on-surface-variant font-bold">
+                <th class="py-2.5 px-4 w-[45%]">Post (Recruiter)</th>
+                <th class="py-2.5 px-4 w-[35%]">Found Emails</th>
+                <th class="py-2.5 px-4 w-[20%] text-center">Sent CV</th>
+              </tr>
+            </thead>
+            <tbody id="progress-tbody" class="divide-y divide-outline-variant/20">
+              <tr id="empty-row">
+                <td colspan="3" class="p-8 text-center text-on-surface-variant/50">No posts processed yet. Click Start to begin.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Console Logs Card -->
+      <div class="bg-white p-6 rounded-2xl border border-outline-variant/20 shadow-sm space-y-3">
+        <div class="flex items-center gap-2 pb-2 border-b border-outline-variant/10">
+          <span class="material-symbols-outlined text-primary text-xl">terminal</span>
+          <h2 class="font-display font-bold text-sm text-on-background">Console Log Output</h2>
+        </div>
+
+        <!-- Terminal log panel -->
+        <div id="logs" class="w-full h-40 bg-zinc-950 text-zinc-100 text-[10px] font-mono rounded-xl p-4 overflow-y-auto space-y-1 shadow-inner select-text">
+          <div class="text-zinc-500">// Terminal ready...</div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <script is:inline>
+    let eventSource = null;
+    let processedCount = 0;
+
+    async function initPage() {
+      try {
+        const res = await fetch('/api/cv-text');
+        if (res.ok) {
+          const data = await res.json();
+          document.getElementById('cv-text').value = data.text || '';
+        }
+      } catch (e) {
+        console.error('Failed to load CV text', e);
+      }
+    }
+
+    const cvTextarea = document.getElementById('cv-text');
+    let saveTimeout = null;
+    cvTextarea.oninput = () => {
+      clearTimeout(saveTimeout);
+      saveTimeout = setTimeout(async () => {
+        try {
+          await fetch('/api/cv-text', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ text: cvTextarea.value })
+          });
+        } catch (e) {
+          console.error(e);
+        }
+      }, 1000);
+    };
+
+    const dropzone = document.getElementById('cv-dropzone');
+    const fileInput = document.getElementById('cv-file-input');
+    const statusDiv = document.getElementById('cv-status');
+    const nameDisplay = document.getElementById('cv-name-display');
+
+    dropzone.onclick = () => fileInput.click();
+    dropzone.ondragover = (e) => {
+      e.preventDefault();
+      dropzone.classList.add('border-primary', 'bg-primary/5');
+    };
+    dropzone.ondragleave = () => {
+      dropzone.classList.remove('border-primary', 'bg-primary/5');
+    };
+    dropzone.ondrop = (e) => {
+      e.preventDefault();
+      dropzone.classList.remove('border-primary', 'bg-primary/5');
+      if (e.dataTransfer.files.length) {
+        handleCVUpload(e.dataTransfer.files[0]);
+      }
+    };
+    fileInput.onchange = () => {
+      if (fileInput.files.length) {
+        handleCVUpload(fileInput.files[0]);
+      }
+    };
+
+    async function handleCVUpload(file) {
+      if (file.type !== 'application/pdf') {
+        alert('Please upload a PDF file.');
+        return;
+      }
+      
+      const reader = new FileReader();
+      reader.onload = async () => {
+        const base64Data = reader.result.split(',')[1];
+        try {
+          const res = await fetch('/api/upload-cv', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              fileName: file.name,
+              fileData: base64Data
+            })
+          });
+          if (res.ok) {
+            dropzone.classList.add('hidden');
+            statusDiv.classList.remove('hidden');
+            nameDisplay.textContent = file.name;
+          } else {
+            alert('Upload failed.');
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+
+    document.getElementById('clear-cv-btn').onclick = () => {
+      dropzone.classList.remove('hidden');
+      statusDiv.classList.add('hidden');
+      fileInput.value = '';
+    };
+
+    const logContainer = document.getElementById('logs');
+    function log(msg, type = 'info') {
+      const div = document.createElement('div');
+      if (type === 'error') {
+        div.className = 'text-red-400';
+      } else if (type === 'success') {
+        div.className = 'text-green-400';
+      } else {
+        div.className = 'text-zinc-300';
+      }
+      div.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+      logContainer.appendChild(div);
+      logContainer.scrollTop = logContainer.scrollHeight;
+    }
+
+    const startBtn = document.getElementById('start-btn');
+    const stopBtn = document.getElementById('stop-btn');
+    const progressTbody = document.getElementById('progress-tbody');
+    const queueCounter = document.getElementById('queue-counter');
+
+    startBtn.onclick = () => {
+      const urls = document.getElementById('search-urls').value.trim();
+      const maxPages = document.getElementById('max-pages').value;
+      if (!urls) {
+        alert('Please enter at least one LinkedIn Search URL.');
+        return;
+      }
+
+      startBtn.disabled = true;
+      stopBtn.disabled = false;
+      log('Starting automation stream...', 'info');
+
+      progressTbody.innerHTML = '';
+      processedCount = 0;
+      queueCounter.textContent = '0 processed';
+
+      const sseUrl = `/api/start?urls=${encodeURIComponent(urls)}&max_pages=${maxPages}`;
+      eventSource = new EventSource(sseUrl);
+
+      eventSource.onmessage = (event) => {
+        if (event.data === '[DONE]') {
+          log('Automation finished.', 'success');
+          stopAutomation();
+          return;
+        }
+
+        try {
+          const data = JSON.parse(event.data);
+          if (data.type === 'log') {
+            log(data.content);
+          } else if (data.type === 'post_progress') {
+            updateProgressTable(data.content);
+          }
+        } catch (e) {
+          log(event.data);
+        }
+      };
+
+      eventSource.onerror = (e) => {
+        console.error(e);
+        log('Error: Server connection lost or process aborted.', 'error');
+        stopAutomation();
+      };
+    };
+
+    stopBtn.onclick = async () => {
+      log('Terminating automation...', 'error');
+      try {
+        await fetch('/api/stop', { method: 'POST' });
+      } catch (e) {
+        console.error(e);
+      }
+      stopAutomation();
+    };
+
+    function stopAutomation() {
+      if (eventSource) {
+        eventSource.close();
+        eventSource = null;
+      }
+      startBtn.disabled = false;
+      stopBtn.disabled = true;
+    }
+
+    function updateProgressTable(post) {
+      let row = document.getElementById(`row-${post.urn}`);
+      if (!row) {
+        processedCount++;
+        queueCounter.textContent = `${processedCount} processed`;
+        
+        row = document.createElement('tr');
+        row.id = `row-${post.urn}`;
+        row.className = 'border-b border-outline-variant/10 text-on-surface hover:bg-slate-50 transition-colors';
+        
+        row.innerHTML = `
+          <td class="py-3 px-4 font-semibold">
+            <div class="font-bold text-on-background">${post.author}</div>
+            <div class="text-[10px] text-on-surface-variant/70 mt-0.5 truncate max-w-[300px]">${post.snippet}</div>
+          </td>
+          <td class="py-3 px-4 font-mono text-[11px] text-primary select-all">
+            ${post.emails && post.emails.length ? post.emails.join(', ') : '<span class="text-zinc-400">None found</span>'}
+          </td>
+          <td class="py-3 px-4 text-center" id="status-${post.urn}">
+            <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-slate-100 text-zinc-600">Pending</span>
+          </td>
+        `;
+        progressTbody.appendChild(row);
+      }
+
+      const statusTd = document.getElementById(`status-${post.urn}`);
+      if (statusTd) {
+        let badgeClass = 'bg-slate-100 text-zinc-600';
+        let statusText = post.status;
+        
+        if (post.status === 'Sending') {
+          badgeClass = 'bg-blue-100 text-blue-700 animate-pulse';
+        } else if (post.status === 'Sent') {
+          badgeClass = 'bg-green-100 text-green-700';
+          statusText = '✓ Sent';
+        } else if (post.status === 'Sent (Test)') {
+          badgeClass = 'bg-green-100 text-green-700';
+          statusText = '✓ Test (Dry)';
+        } else if (post.status === 'Skipped') {
+          badgeClass = 'bg-amber-100 text-amber-700';
+          statusText = 'No Email';
+        } else if (post.status === 'Failed') {
+          badgeClass = 'bg-red-100 text-red-700';
+          statusText = '✗ Failed';
+        }
+
+        statusTd.innerHTML = `<span class="px-2 py-0.5 rounded text-[10px] font-bold ${badgeClass}">${statusText}</span>`;
+      }
+    }
+
+    initPage();
+  </script>
+</body>
+</html>

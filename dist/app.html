@@ -1,0 +1,909 @@
+<!DOCTYPE html><html class="light" lang="en" data-astro-cid-fqt3mzrt> <head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><title>ReachOut AI — LinkedIn Outreach Automation Dashboard</title><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"><script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#3525cd",
+            "primary-container": "#4f46e5",
+            "background": "#f8f9ff",
+            "on-background": "#0b1c30",
+            "on-surface": "#0b1c30",
+            "surface": "#f8f9ff",
+            "surface-bright": "#f8f9ff",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#eff4ff",
+            "surface-container": "#e5eeff",
+            "surface-container-high": "#dce9ff",
+            "surface-container-highest": "#d3e4fe",
+            "outline": "#777587",
+            "outline-variant": "#c7c4d8",
+            "on-surface-variant": "#464555",
+            "secondary": "#006591",
+            "secondary-container": "#39b8fd",
+            "inverse-surface": "#213145",
+            "inverse-on-surface": "#eaf1ff",
+            "success": "#22c55e",
+            "error": "#ba1a1a",
+            "warning": "#f59e0b"
+          },
+          fontFamily: {
+            "sans": ["Inter", "sans-serif"],
+            "display": ["Plus Jakarta Sans", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script><style>html,body{font-family:Inter,sans-serif}.font-display[data-astro-cid-fqt3mzrt]{font-family:Plus Jakarta Sans,sans-serif}.material-symbols-outlined[data-astro-cid-fqt3mzrt]{font-variation-settings:"FILL" 0,"wght" 400,"GRAD" 0,"opsz" 24}[data-astro-cid-fqt3mzrt]::-webkit-scrollbar{width:6px;height:6px}[data-astro-cid-fqt3mzrt]::-webkit-scrollbar-track{background:transparent}[data-astro-cid-fqt3mzrt]::-webkit-scrollbar-thumb{background:#c7c4d8;border-radius:3px}[data-astro-cid-fqt3mzrt]::-webkit-scrollbar-thumb:hover{background:#777587}#logs[data-astro-cid-fqt3mzrt]::-webkit-scrollbar-thumb{background:#2b2b40}.glass-card[data-astro-cid-fqt3mzrt]{background:#ffffffb3;backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,.5);box-shadow:0 4px 20px -2px #3525cd0d}.glass-sidebar[data-astro-cid-fqt3mzrt]{background:#0b1c30}
+</style></head> <body class="bg-background text-on-background antialiased h-screen overflow-hidden font-sans" data-astro-cid-fqt3mzrt> <!-- ── LOGIN SCREEN ── --> <div id="login-screen" class="fixed inset-0 bg-[#0b1c30] flex items-center justify-center z-[9999] transition-all duration-500" data-astro-cid-fqt3mzrt> <!-- Glow Background Effects --> <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none" data-astro-cid-fqt3mzrt> <div class="absolute top-[-10%] left-[-10%] w-[50%] h-[70%] bg-primary/20 rounded-full blur-[120px]" data-astro-cid-fqt3mzrt></div> <div class="absolute bottom-[-10%] right-[-10%] w-[45%] h-[60%] bg-[#39b8fd]/10 rounded-full blur-[100px]" data-astro-cid-fqt3mzrt></div> </div> <div class="relative z-10 glass-card bg-white/95 rounded-2xl p-10 w-full max-w-md shadow-2xl text-center border border-white/40 transform transition-all duration-500 scale-100" data-astro-cid-fqt3mzrt> <div class="w-16 h-16 bg-gradient-to-tr from-primary to-[#4f46e5] rounded-2xl flex items-center justify-center mx-auto mb-6 shadow-md text-white" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[32px]" data-astro-cid-fqt3mzrt>target</span> </div> <h2 class="font-display font-bold text-3xl text-on-background mb-2" data-astro-cid-fqt3mzrt>ReachOut AI</h2> <p class="text-on-surface-variant text-sm mb-8 leading-relaxed" data-astro-cid-fqt3mzrt>
+Stop applying manually. Connect with recruiters and land your next role on autopilot.
+</p> <!-- Google Sign In --> <a href="/auth/google" class="relative w-full flex items-center justify-center gap-3 px-5 py-3 border border-outline-variant hover:bg-slate-50 bg-white rounded-lg font-semibold text-on-surface text-sm shadow-sm transition-all" data-astro-cid-fqt3mzrt> <svg class="w-5 h-5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" data-astro-cid-fqt3mzrt> <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" data-astro-cid-fqt3mzrt></path> <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" data-astro-cid-fqt3mzrt></path> <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" data-astro-cid-fqt3mzrt></path> <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" data-astro-cid-fqt3mzrt></path> </svg>
+Sign in with Google
+</a> <div class="flex items-center my-6 text-outline font-semibold text-xs uppercase tracking-widest before:content-[''] before:flex-1 before:h-[1px] before:bg-outline-variant/40 before:mr-4 after:content-[''] after:flex-1 after:h-[1px] after:bg-outline-variant/40 after:ml-4" data-astro-cid-fqt3mzrt>
+or
+</div> <!-- Guest Login Bypass --> <button class="w-full flex items-center justify-center gap-2 px-5 py-3 bg-primary hover:bg-primary-container text-white rounded-lg font-semibold text-sm shadow-md hover:shadow-lg transition-all" id="guestBtn" data-astro-cid-fqt3mzrt>
+Continue to Workspace <span class="material-symbols-outlined text-[18px]" data-astro-cid-fqt3mzrt>arrow_forward</span> </button> <p class="text-xs text-on-surface-variant/70 mt-8 leading-relaxed" data-astro-cid-fqt3mzrt>
+Credentials & settings are stored securely in your local environment. Guest mode grants full access.
+</p> </div> </div> <!-- ── TOAST CONTAINER ── --> <div id="toast-container" class="fixed top-5 right-5 z-[9998] flex flex-col gap-2 pointer-events-none" data-astro-cid-fqt3mzrt></div> <!-- ── UPGRADE REQUEST MODAL ── --> <div id="upgrade-modal" class="fixed inset-0 bg-[#0b1c30]/50 flex items-center justify-center z-[9999] opacity-0 pointer-events-none transition-all duration-300" data-astro-cid-fqt3mzrt> <div class="bg-white rounded-2xl p-8 w-full max-w-sm shadow-2xl text-center transform scale-95 transition-transform duration-300" id="upgrade-modal-content" data-astro-cid-fqt3mzrt> <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center text-primary mx-auto mb-4" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[24px]" data-astro-cid-fqt3mzrt>rocket_launch</span> </div> <h3 class="font-display font-bold text-xl text-on-background mb-2" data-astro-cid-fqt3mzrt>Request More Limit</h3> <p class="text-xs text-on-surface-variant mb-6" data-astro-cid-fqt3mzrt>Need to send more than your current daily limit? Send a request to the admin for an upgrade.</p> <textarea id="upgradeReason" class="w-full text-sm border-outline-variant/50 rounded-xl focus:border-primary focus:ring-primary shadow-inner bg-slate-50/50 p-3 mb-6" rows="3" placeholder="Tell us about your requirements..." data-astro-cid-fqt3mzrt></textarea> <div class="flex gap-3 justify-center" data-astro-cid-fqt3mzrt> <button id="closeUpgradeModalBtn" class="px-5 py-2 rounded-lg text-sm font-semibold text-on-surface hover:bg-slate-100 transition-colors" data-astro-cid-fqt3mzrt>Cancel</button> <button id="submitUpgradeBtn" class="px-5 py-2 bg-primary hover:bg-primary-container text-white rounded-lg text-sm font-semibold shadow-md transition-colors" data-astro-cid-fqt3mzrt>Submit Request</button> </div> </div> </div> <!-- ── APP LAYOUT ── --> <div id="app" class="flex h-screen w-screen overflow-hidden" data-astro-cid-fqt3mzrt> <!-- SIDEBAR --> <aside class="w-64 glass-sidebar flex flex-col border-r border-outline-variant/10 text-white select-none z-10 shrink-0" data-astro-cid-fqt3mzrt> <!-- Sidebar Header --> <div class="p-6 border-b border-outline-variant/10 flex items-center gap-3" data-astro-cid-fqt3mzrt> <div class="w-9 h-9 bg-primary rounded-lg flex items-center justify-center text-white shadow-md" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;" data-astro-cid-fqt3mzrt>target</span> </div> <div data-astro-cid-fqt3mzrt> <h1 class="font-display font-bold text-base tracking-wide" data-astro-cid-fqt3mzrt>ReachOut AI</h1> <span class="text-[10px] text-white/40 font-medium tracking-wider uppercase" data-astro-cid-fqt3mzrt>SaaS Dashboard</span> </div> </div> <!-- Navigation Tabs --> <nav class="flex-1 px-4 py-6 space-y-1.5 overflow-y-auto" data-astro-cid-fqt3mzrt> <div class="text-[10px] text-white/30 font-semibold uppercase tracking-wider px-3 mb-2" data-astro-cid-fqt3mzrt>Main</div> <div class="nav-item active flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium cursor-pointer text-white/70 hover:text-white hover:bg-white/5 transition-all" data-tab="dashboard" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[20px] text-white/60" data-astro-cid-fqt3mzrt>dashboard</span>
+Dashboard
+</div> <div class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium cursor-pointer text-white/70 hover:text-white hover:bg-white/5 transition-all" data-tab="cv-resume" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[20px] text-white/60" data-astro-cid-fqt3mzrt>description</span>
+CV & Resume Editor
+</div> <div class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium cursor-pointer text-white/70 hover:text-white hover:bg-white/5 transition-all" data-tab="prompt-editor" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[20px] text-white/60" data-astro-cid-fqt3mzrt>psychology</span>
+AI Prompt Template
+</div> <a id="nav-item-admin" href="/admin" class="hidden flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium text-white/70 hover:text-white hover:bg-white/5 transition-all" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[20px] text-white/60" data-astro-cid-fqt3mzrt>shield_person</span>
+Admin Portal
+</a> <div class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium cursor-pointer text-white/70 hover:text-white hover:bg-white/5 transition-all" data-tab="imports" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[20px] text-white/60" data-astro-cid-fqt3mzrt>download</span>
+Import Targets
+</div> <div class="nav-item flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium cursor-pointer text-white/70 hover:text-white hover:bg-white/5 transition-all" data-tab="history" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[20px] text-white/60" data-astro-cid-fqt3mzrt>history</span>
+Outreach History
+</div> </nav> <!-- Sidebar Footer --> <div class="p-4 border-t border-outline-variant/10 space-y-4 shrink-0" data-astro-cid-fqt3mzrt> <!-- User Profile Info --> <div class="flex items-center gap-2.5 p-2 bg-white/5 rounded-xl border border-white/5" data-astro-cid-fqt3mzrt> <div id="user-avatar" class="w-8 h-8 rounded-lg bg-gradient-to-tr from-primary to-primary-container flex items-center justify-center font-bold text-white text-sm shadow-sm select-none overflow-hidden shrink-0" data-astro-cid-fqt3mzrt>
+G
+</div> <div class="min-w-0 flex-1" data-astro-cid-fqt3mzrt> <h4 id="user-name" class="text-xs font-semibold truncate" data-astro-cid-fqt3mzrt>Guest User</h4> <span id="user-plan-badge" class="inline-block text-[9px] bg-primary/20 text-primary-container px-1.5 py-0.5 rounded font-bold uppercase tracking-wider mt-0.5" data-astro-cid-fqt3mzrt>Free Plan</span> </div> <!-- Logout Button --> <button id="logoutBtn" class="text-white/40 hover:text-error transition-colors p-1" title="Log Out" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[18px]" data-astro-cid-fqt3mzrt>logout</span> </button> </div> <!-- Credit usage info and progress bar --> <div class="space-y-1.5 px-1 pb-1" data-astro-cid-fqt3mzrt> <div class="flex items-center justify-between text-[10px] text-white/50 font-semibold uppercase tracking-wider" data-astro-cid-fqt3mzrt> <span data-astro-cid-fqt3mzrt>Usage Limit</span> <span id="usage-text" data-astro-cid-fqt3mzrt>0 / 10 Sent</span> </div> <div class="w-full bg-white/10 h-1.5 rounded-full overflow-hidden" data-astro-cid-fqt3mzrt> <div id="usage-bar" class="bg-primary-container h-full rounded-full transition-all duration-500" style="width: 0%" data-astro-cid-fqt3mzrt></div> </div> </div> </div> </aside> <!-- MAIN PANEL --> <main class="flex-1 flex flex-col overflow-hidden min-w-0" data-astro-cid-fqt3mzrt> <!-- TOPBAR --> <header class="h-16 bg-white border-b border-outline-variant/30 px-8 flex items-center justify-between shrink-0" data-astro-cid-fqt3mzrt> <div class="flex items-center gap-3" data-astro-cid-fqt3mzrt> <span id="mobile-toggle" class="material-symbols-outlined text-[24px] cursor-pointer md:hidden text-on-background" data-astro-cid-fqt3mzrt>menu</span> <h2 id="page-title" class="font-display font-bold text-lg text-on-background tracking-wide" data-astro-cid-fqt3mzrt>Dashboard</h2> </div> <!-- Controls & Status Badge --> <div class="flex items-center gap-4" data-astro-cid-fqt3mzrt> <!-- Status Pill --> <div id="status-pill" class="flex items-center gap-2 px-3 py-1 bg-surface-container-low border border-outline-variant/20 rounded-full text-xs font-semibold text-on-surface-variant transition-all" data-astro-cid-fqt3mzrt> <span class="relative flex h-2 w-2" data-astro-cid-fqt3mzrt> <span id="status-pulse" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-slate-400 opacity-75 hidden" data-astro-cid-fqt3mzrt></span> <span id="status-dot" class="relative inline-flex rounded-full h-2 w-2 bg-slate-400" data-astro-cid-fqt3mzrt></span> </span> <span id="status-text" data-astro-cid-fqt3mzrt>Idle</span> </div> <!-- Action buttons --> <button id="startBtn" class="flex items-center gap-2 px-4 py-2 bg-primary hover:bg-primary-container text-white rounded-lg font-semibold text-xs shadow-md transition-all" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[16px]" data-astro-cid-fqt3mzrt>play_arrow</span> Run Automation
+</button> <button id="stopBtn" class="flex items-center gap-2 px-4 py-2 bg-error hover:bg-red-700 text-white rounded-lg font-semibold text-xs shadow-md transition-all hidden" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[16px]" data-astro-cid-fqt3mzrt>stop</span> Terminate
+</button> </div> </header> <!-- PAGE MAIN CONTENT --> <div class="flex-1 overflow-y-auto bg-background p-8" data-astro-cid-fqt3mzrt> <!-- ── DASHBOARD TAB ── --> <div id="tab-dashboard" class="tab-content block space-y-6" data-astro-cid-fqt3mzrt> <!-- Statistics Cards Grid --> <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" data-astro-cid-fqt3mzrt> <!-- Stat card: Found --> <div class="bg-white p-6 rounded-2xl border border-outline-variant/30 shadow-sm flex items-center justify-between hover:shadow-md transition-all" data-astro-cid-fqt3mzrt> <div class="space-y-1" data-astro-cid-fqt3mzrt> <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider" data-astro-cid-fqt3mzrt>Recruiter Emails Found</span> <h3 id="stat-found" class="font-display font-extrabold text-3xl text-on-background" data-astro-cid-fqt3mzrt>0</h3> <span class="text-xs text-on-surface-variant/70 block" data-astro-cid-fqt3mzrt>Identified in public posts</span> </div> <div class="w-12 h-12 bg-primary/10 rounded-2xl flex items-center justify-center text-primary shrink-0" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[24px]" data-astro-cid-fqt3mzrt>alternate_email</span> </div> </div> <!-- Stat card: Sent --> <div class="bg-white p-6 rounded-2xl border border-outline-variant/30 shadow-sm flex items-center justify-between hover:shadow-md transition-all" data-astro-cid-fqt3mzrt> <div class="space-y-1" data-astro-cid-fqt3mzrt> <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider" data-astro-cid-fqt3mzrt>Applications Sent</span> <h3 id="stat-sent" class="font-display font-extrabold text-3xl text-success" data-astro-cid-fqt3mzrt>0</h3> <span class="text-xs text-on-surface-variant/70 block" data-astro-cid-fqt3mzrt>This automation session</span> </div> <div class="w-12 h-12 bg-success/10 rounded-2xl flex items-center justify-center text-success shrink-0" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[24px]" data-astro-cid-fqt3mzrt>forward_to_inbox</span> </div> </div> <!-- Stat card: Plan Usage --> <div class="bg-white p-6 rounded-2xl border border-outline-variant/30 shadow-sm flex items-center justify-between hover:shadow-md transition-all" data-astro-cid-fqt3mzrt> <div class="space-y-1.5 w-full" data-astro-cid-fqt3mzrt> <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider" data-astro-cid-fqt3mzrt>Total Plan Usage</span> <div class="flex items-baseline justify-between gap-2" data-astro-cid-fqt3mzrt> <h3 id="stat-usage" class="font-display font-extrabold text-2xl text-on-background" data-astro-cid-fqt3mzrt>0 / 10</h3> <span id="stat-plan" class="text-[9px] bg-primary/10 text-primary font-bold px-2 py-0.5 rounded-full uppercase tracking-wide" data-astro-cid-fqt3mzrt>Free</span> </div> <div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden" data-astro-cid-fqt3mzrt> <div id="stat-usage-bar" class="bg-primary h-full rounded-full transition-all duration-500" style="width: 0%" data-astro-cid-fqt3mzrt></div> </div> </div> </div> <!-- Stat card: Mode --> <div class="bg-white p-6 rounded-2xl border border-outline-variant/30 shadow-sm flex items-center justify-between hover:shadow-md transition-all" data-astro-cid-fqt3mzrt> <div class="space-y-1" data-astro-cid-fqt3mzrt> <span class="text-[10px] font-bold text-on-surface-variant uppercase tracking-wider" data-astro-cid-fqt3mzrt>Automation Mode</span> <h3 id="stat-mode" class="font-display font-extrabold text-2xl text-primary-container" data-astro-cid-fqt3mzrt>—</h3> <span class="text-xs text-on-surface-variant/70 block" data-astro-cid-fqt3mzrt>Change toggles in config</span> </div> <div class="w-12 h-12 bg-primary-container/10 rounded-2xl flex items-center justify-center text-primary-container shrink-0" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[24px]" data-astro-cid-fqt3mzrt>tune</span> </div> </div> </div> <!-- Configuration & Terminal Logs Split Grid --> <div class="grid grid-cols-1 lg:grid-cols-12 gap-6" data-astro-cid-fqt3mzrt> <!-- Left panel: Form parameters (Admin Only) --> <div id="admin-controls-panel" class="lg:col-span-7 space-y-6" data-astro-cid-fqt3mzrt> <!-- LinkedIn URLs Card --> <div class="bg-white p-6 rounded-2xl border border-outline-variant/30 shadow-sm space-y-4" data-astro-cid-fqt3mzrt> <div class="flex items-center justify-between" data-astro-cid-fqt3mzrt> <div data-astro-cid-fqt3mzrt> <h4 class="font-display font-bold text-sm text-on-background flex items-center gap-2" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-primary text-[18px]" data-astro-cid-fqt3mzrt>link</span> LinkedIn Target Search URLs
+</h4> <p class="text-xs text-on-surface-variant/70 mt-0.5" data-astro-cid-fqt3mzrt>Paste search page, hashtag search, or post search URLs (one per line)</p> </div> <button class="text-xs text-error font-semibold hover:underline" onclick="clearUrls()" data-astro-cid-fqt3mzrt>Clear</button> </div> <textarea id="urls" rows="6" class="w-full text-sm border-outline-variant/50 rounded-xl focus:border-primary focus:ring-primary shadow-inner bg-slate-50/50 p-4 font-mono leading-relaxed" placeholder="https://www.linkedin.com/search/results/content/?keywords=%23hiring%20react..." data-astro-cid-fqt3mzrt></textarea> </div> <!-- Tuning & Options --> <div class="bg-white p-6 rounded-2xl border border-outline-variant/30 shadow-sm space-y-4" data-astro-cid-fqt3mzrt> <h4 class="font-display font-bold text-sm text-on-background flex items-center gap-2" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-primary text-[18px]" data-astro-cid-fqt3mzrt>adjust</span> Session Tuning Options
+</h4> <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2" data-astro-cid-fqt3mzrt> <!-- Test Mode Toggle --> <div class="flex items-center justify-between p-4 bg-surface-container-low/60 rounded-xl border border-outline-variant/20" data-astro-cid-fqt3mzrt> <div class="space-y-0.5" data-astro-cid-fqt3mzrt> <span class="text-xs font-semibold text-on-background block" data-astro-cid-fqt3mzrt>Dry-Run (Test Mode)</span> <span class="text-[10px] text-on-surface-variant/70 block" data-astro-cid-fqt3mzrt>Scrape list without sending mails</span> </div> <label class="relative inline-flex items-center cursor-pointer select-none" data-astro-cid-fqt3mzrt> <input type="checkbox" id="testModeToggle" class="sr-only peer" data-astro-cid-fqt3mzrt> <div class="w-10 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-slate-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary" data-astro-cid-fqt3mzrt></div> </label> </div> <!-- Max pages input --> <div class="flex items-center justify-between p-4 bg-surface-container-low/60 rounded-xl border border-outline-variant/20" data-astro-cid-fqt3mzrt> <div class="space-y-0.5" data-astro-cid-fqt3mzrt> <span class="text-xs font-semibold text-on-background block" data-astro-cid-fqt3mzrt>Scrape Depth (Max Pages)</span> <span class="text-[10px] text-on-surface-variant/70 block" data-astro-cid-fqt3mzrt>Pages to traverse per query URL</span> </div> <input type="number" id="maxPagesInput" value="5" min="1" max="100" class="w-16 text-center border-outline-variant/50 rounded-lg py-1.5 px-2 text-xs font-bold text-on-background focus:ring-primary focus:border-primary" data-astro-cid-fqt3mzrt> </div> </div> </div> </div> <!-- Standard User Campaign Info Card (Standard Users Only) --> <div id="standard-info-panel" class="lg:col-span-7 hidden" data-astro-cid-fqt3mzrt> <div class="bg-white p-8 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-col items-center justify-center text-center space-y-6 h-full min-h-[350px]" data-astro-cid-fqt3mzrt> <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary shadow-sm" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[32px]" data-astro-cid-fqt3mzrt>campaign</span> </div> <div data-astro-cid-fqt3mzrt> <h4 class="font-display font-bold text-base text-on-background" data-astro-cid-fqt3mzrt>Outreach Campaign Pre-Configured</h4> <p class="text-xs text-on-surface-variant/70 mt-2 max-w-md mx-auto leading-relaxed" data-astro-cid-fqt3mzrt>
+Your target search URLs and crawler depth configurations have been set up by the system administrator to maintain daily limit standards.
+</p> </div> <div class="p-4 bg-primary/5 rounded-xl border border-primary/10 inline-flex items-center gap-3 text-left max-w-md" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-primary text-[20px] shrink-0" data-astro-cid-fqt3mzrt>info</span> <p class="text-[11px] text-primary-container font-medium" data-astro-cid-fqt3mzrt>
+All personalized outreach emails will be generated using your resume data and active AI prompt template, then dispatched directly via your connected Google Mail account.
+</p> </div> </div> </div> <!-- Right panel: Live Logs console --> <div class="lg:col-span-5 flex flex-col h-full min-h-[400px]" data-astro-cid-fqt3mzrt> <div class="bg-white p-6 rounded-2xl border border-outline-variant/30 shadow-sm flex flex-col h-full flex-1" data-astro-cid-fqt3mzrt> <div class="flex items-center justify-between mb-4" data-astro-cid-fqt3mzrt> <div data-astro-cid-fqt3mzrt> <h4 class="font-display font-bold text-sm text-on-background flex items-center gap-2" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-primary text-[18px]" data-astro-cid-fqt3mzrt>terminal</span> Live Console Logs
+</h4> <p class="text-[11px] text-on-surface-variant/70 mt-0.5" data-astro-cid-fqt3mzrt>Real-time status updates</p> </div> <button class="text-xs text-on-surface-variant/80 hover:text-on-surface hover:underline flex items-center gap-1" onclick="clearLogs()" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[14px]" data-astro-cid-fqt3mzrt>backspace</span> Clear Console
+</button> </div> <!-- Terminal container --> <div id="logs" class="flex-1 bg-[#090b10] border border-[#1b202e] rounded-xl p-4 overflow-y-auto text-xs font-mono leading-relaxed space-y-1.5 shadow-inner min-h-[300px]" data-astro-cid-fqt3mzrt> <span class="text-slate-500 italic" data-astro-cid-fqt3mzrt>Console initialized. Ready to begin run...</span> </div> </div> </div> </div> </div> <!-- ── CV & RESUME TAB ── --> <div id="tab-cv-resume" class="tab-content hidden space-y-6" data-astro-cid-fqt3mzrt> <div class="grid grid-cols-1 lg:grid-cols-12 gap-6" data-astro-cid-fqt3mzrt> <!-- Left Panel: PDF Drag & Drop Upload --> <div class="lg:col-span-5 space-y-6" data-astro-cid-fqt3mzrt> <div class="bg-white p-6 rounded-2xl border border-outline-variant/30 shadow-sm space-y-5" data-astro-cid-fqt3mzrt> <div data-astro-cid-fqt3mzrt> <h4 class="font-display font-bold text-sm text-on-background flex items-center gap-2" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-primary text-[18px]" data-astro-cid-fqt3mzrt>cloud_upload</span> PDF Document Attachment
+</h4> <p class="text-xs text-on-surface-variant/70 mt-0.5" data-astro-cid-fqt3mzrt>This PDF CV is physically attached to all applications sent via email.</p> </div> <!-- Drag and Drop Zone --> <div id="cvDropZone" class="border-2 border-dashed border-outline-variant/60 hover:border-primary/60 rounded-2xl p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-all bg-slate-50/50 hover:bg-primary/5" data-astro-cid-fqt3mzrt> <input type="file" id="cvFileInput" accept="application/pdf" class="hidden" data-astro-cid-fqt3mzrt> <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4 shadow-sm" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[30px] font-bold" data-astro-cid-fqt3mzrt>picture_as_pdf</span> </div> <h5 class="text-xs font-bold text-on-background mb-1" data-astro-cid-fqt3mzrt>Drag & drop your PDF CV here</h5> <p class="text-[10px] text-on-surface-variant/60 mb-4" data-astro-cid-fqt3mzrt>Accepts files up to 10MB</p> <button type="button" class="px-3.5 py-1.5 bg-primary hover:bg-primary-container text-white text-xs font-semibold rounded-lg shadow-sm transition-all" onclick="document.getElementById('cvFileInput').click()" data-astro-cid-fqt3mzrt>
+Browse Local Files
+</button> </div> <!-- CV Status Details --> <div class="p-4 bg-surface-container-low/50 rounded-xl border border-outline-variant/20 flex items-center justify-between text-xs" data-astro-cid-fqt3mzrt> <div class="flex items-center gap-2.5 truncate" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-success" data-astro-cid-fqt3mzrt>verified_user</span> <div class="truncate" data-astro-cid-fqt3mzrt> <span class="font-bold text-on-background block truncate" id="cv-file-status" data-astro-cid-fqt3mzrt>Checking loaded CV...</span> <span class="text-[10px] text-on-surface-variant/60 block" id="cv-file-info" data-astro-cid-fqt3mzrt>Path configured inside environment configuration.</span> </div> </div> <a id="btn-view-cv" href="#" target="_blank" class="hidden shrink-0 flex items-center gap-1 px-3 py-1.5 bg-primary text-white text-[11px] font-bold rounded-lg hover:bg-primary-container transition-all shadow-sm" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[14px]" data-astro-cid-fqt3mzrt>visibility</span> View PDF
+</a> </div> </div> </div> <!-- Right Panel: Text Resume Editor --> <div class="lg:col-span-7" data-astro-cid-fqt3mzrt> <div class="bg-white p-6 rounded-2xl border border-outline-variant/30 shadow-sm space-y-4 flex flex-col h-full" data-astro-cid-fqt3mzrt> <div class="flex items-center justify-between" data-astro-cid-fqt3mzrt> <div data-astro-cid-fqt3mzrt> <h4 class="font-display font-bold text-sm text-on-background flex items-center gap-2" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-primary text-[18px]" data-astro-cid-fqt3mzrt>edit_note</span> Text-Only Resume Context
+</h4> <p class="text-xs text-on-surface-variant/70 mt-0.5" data-astro-cid-fqt3mzrt>This text representation is read by the AI model to perform skill matching and write emails.</p> </div> <button id="saveCvText" class="flex items-center gap-1.5 px-3 py-1.5 bg-success hover:bg-green-600 text-white rounded-lg font-semibold text-xs shadow-sm transition-all" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[14px]" data-astro-cid-fqt3mzrt>save</span> Save Resume Content
+</button> </div> <textarea id="cvText" class="w-full flex-1 min-h-[380px] text-sm border-outline-variant/50 rounded-xl focus:border-primary focus:ring-primary shadow-inner bg-slate-50/50 p-4 font-mono leading-relaxed" placeholder="Type or paste the plain text format of your CV / Professional bio here..." data-astro-cid-fqt3mzrt></textarea> </div> </div> </div> </div> <!-- ── AI PROMPT TEMPLATE TAB ── --> <div id="tab-prompt-editor" class="tab-content hidden space-y-6" data-astro-cid-fqt3mzrt> <div class="grid grid-cols-1 lg:grid-cols-12 gap-6" data-astro-cid-fqt3mzrt> <!-- Left panel: Available template place holders --> <div class="lg:col-span-4 space-y-6" data-astro-cid-fqt3mzrt> <div class="bg-white p-6 rounded-2xl border border-outline-variant/30 shadow-sm space-y-4" data-astro-cid-fqt3mzrt> <div data-astro-cid-fqt3mzrt> <h4 class="font-display font-bold text-sm text-on-background flex items-center gap-2" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-primary text-[18px]" data-astro-cid-fqt3mzrt>token</span> Interactive Variables
+</h4> <p class="text-xs text-on-surface-variant/70 mt-0.5" data-astro-cid-fqt3mzrt>Click any variable below to insert it at the cursor position in the template editor.</p> </div> <div class="flex flex-col gap-2 pt-2" data-astro-cid-fqt3mzrt> <button class="variable-pill flex items-start gap-2.5 p-3 border border-outline-variant/20 hover:border-primary/50 bg-slate-50/30 hover:bg-primary/5 rounded-xl text-left transition-all" data-tag="{{greeting}}" data-astro-cid-fqt3mzrt> <code class="text-xs text-primary font-bold px-1.5 py-0.5 bg-primary/10 rounded" data-astro-cid-fqt3mzrt>#&#123;&#123;greeting&#125;&#125;</code> <div class="min-w-0 flex-1" data-astro-cid-fqt3mzrt> <span class="text-[11px] font-bold text-on-background block" data-astro-cid-fqt3mzrt>Greeting Line</span> <span class="text-[10px] text-on-surface-variant/70 block truncate" data-astro-cid-fqt3mzrt>Addresses recruiter (e.g. "Dear Priya,")</span> </div> </button> <button class="variable-pill flex items-start gap-2.5 p-3 border border-outline-variant/20 hover:border-primary/50 bg-slate-50/30 hover:bg-primary/5 rounded-xl text-left transition-all" data-tag="{{posterContext}}" data-astro-cid-fqt3mzrt> <code class="text-xs text-primary font-bold px-1.5 py-0.5 bg-primary/10 rounded" data-astro-cid-fqt3mzrt>#&#123;&#123;posterContext&#125;&#125;</code> <div class="min-w-0 flex-1" data-astro-cid-fqt3mzrt> <span class="text-[11px] font-bold text-on-background block" data-astro-cid-fqt3mzrt>Author Context</span> <span class="text-[10px] text-on-surface-variant/70 block truncate" data-astro-cid-fqt3mzrt>Metadata about poster/title if known</span> </div> </button> <button class="variable-pill flex items-start gap-2.5 p-3 border border-outline-variant/20 hover:border-primary/50 bg-slate-50/30 hover:bg-primary/5 rounded-xl text-left transition-all" data-tag="{{jobPostContent}}" data-astro-cid-fqt3mzrt> <code class="text-xs text-primary font-bold px-1.5 py-0.5 bg-primary/10 rounded" data-astro-cid-fqt3mzrt>#&#123;&#123;jobPostContent&#125;&#125;</code> <div class="min-w-0 flex-1" data-astro-cid-fqt3mzrt> <span class="text-[11px] font-bold text-on-background block" data-astro-cid-fqt3mzrt>LinkedIn Job Details</span> <span class="text-[10px] text-on-surface-variant/70 block truncate" data-astro-cid-fqt3mzrt>Scraped LinkedIn post description</span> </div> </button> <button class="variable-pill flex items-start gap-2.5 p-3 border border-outline-variant/20 hover:border-primary/50 bg-slate-50/30 hover:bg-primary/5 rounded-xl text-left transition-all" data-tag="{{cvContent}}" data-astro-cid-fqt3mzrt> <code class="text-xs text-primary font-bold px-1.5 py-0.5 bg-primary/10 rounded" data-astro-cid-fqt3mzrt>#&#123;&#123;cvContent&#125;&#125;</code> <div class="min-w-0 flex-1" data-astro-cid-fqt3mzrt> <span class="text-[11px] font-bold text-on-background block" data-astro-cid-fqt3mzrt>Text CV Content</span> <span class="text-[10px] text-on-surface-variant/70 block truncate" data-astro-cid-fqt3mzrt>Plain text resume for model matching</span> </div> </button> </div> </div> </div> <!-- Right Panel: Template Text Editor --> <div class="lg:col-span-8 flex flex-col h-full" data-astro-cid-fqt3mzrt> <div class="bg-white p-6 rounded-2xl border border-outline-variant/30 shadow-sm space-y-4 flex flex-col h-full flex-1" data-astro-cid-fqt3mzrt> <div class="flex items-center justify-between" data-astro-cid-fqt3mzrt> <div data-astro-cid-fqt3mzrt> <h4 class="font-display font-bold text-sm text-on-background flex items-center gap-2" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-primary text-[18px]" data-astro-cid-fqt3mzrt>assignment_ind</span> Customize System Prompt Template
+</h4> <p class="text-xs text-on-surface-variant/70 mt-0.5" data-astro-cid-fqt3mzrt>Control the exact guidelines and formatting structure given to DeepSeek.</p> </div> <div class="flex items-center gap-2" data-astro-cid-fqt3mzrt> <button id="resetPromptTemplate" class="px-3 py-1.5 border border-outline-variant/60 hover:bg-slate-50 text-on-surface text-xs font-semibold rounded-lg shadow-sm transition-all" data-astro-cid-fqt3mzrt>
+Reset default
+</button> <button id="savePromptTemplate" class="flex items-center gap-1.5 px-3 py-1.5 bg-success hover:bg-green-600 text-white rounded-lg font-semibold text-xs shadow-sm transition-all" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[14px]" data-astro-cid-fqt3mzrt>save</span> Save Template
+</button> </div> </div> <textarea id="promptTemplate" class="w-full flex-1 min-h-[380px] text-xs border-outline-variant/50 rounded-xl focus:border-primary focus:ring-primary shadow-inner bg-[#0d0f14] text-slate-100 p-4 font-mono leading-relaxed" placeholder="Write custom prompt template instructions..." data-astro-cid-fqt3mzrt></textarea> </div> </div> </div> </div> <!-- ── HISTORY TAB ── --> <div id="tab-history" class="tab-content hidden space-y-6" data-astro-cid-fqt3mzrt> <div class="bg-white rounded-2xl border border-outline-variant/30 shadow-sm overflow-hidden" data-astro-cid-fqt3mzrt> <!-- Card Header --> <div class="p-6 border-b border-outline-variant/30 flex items-center justify-between" data-astro-cid-fqt3mzrt> <div data-astro-cid-fqt3mzrt> <h3 class="font-display font-bold text-base text-on-background" data-astro-cid-fqt3mzrt>Outreach History Logs</h3> <p id="history-count" class="text-xs text-on-surface-variant/70 mt-0.5" data-astro-cid-fqt3mzrt>No application logs recorded</p> </div> <button class="text-xs text-error font-semibold hover:underline flex items-center gap-1" onclick="clearHistory()" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[14px]" data-astro-cid-fqt3mzrt>delete_sweep</span> Clear All History
+</button> </div> <!-- Card Body Table --> <div id="history-body" data-astro-cid-fqt3mzrt> <div class="p-16 flex flex-col items-center justify-center text-center text-on-surface-variant/60" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[48px] mb-3 text-outline-variant" data-astro-cid-fqt3mzrt>mail_outline</span> <h5 class="text-xs font-bold text-on-background mb-0.5" data-astro-cid-fqt3mzrt>No outreach sent yet</h5> <p class="text-[11px]" data-astro-cid-fqt3mzrt>Run automation or scrape targets to record communications here.</p> </div> </div> </div> </div> <!-- ── IMPORTS TAB ── --> <div id="tab-imports" class="tab-content hidden space-y-6" data-astro-cid-fqt3mzrt> <div class="grid grid-cols-1 lg:grid-cols-12 gap-6" data-astro-cid-fqt3mzrt> <!-- Left Panel: Drag & Drop Upload File --> <div class="lg:col-span-5 space-y-6" data-astro-cid-fqt3mzrt> <div class="bg-white p-6 rounded-2xl border border-outline-variant/30 shadow-sm space-y-5" data-astro-cid-fqt3mzrt> <div data-astro-cid-fqt3mzrt> <h4 class="font-display font-bold text-sm text-on-background flex items-center gap-2" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-primary text-[18px]" data-astro-cid-fqt3mzrt>publish</span> Import Targets list (CSV/TXT)
+</h4> <p class="text-[11px] text-on-surface-variant/70 mt-1" data-astro-cid-fqt3mzrt>Upload lists of LinkedIn search URLs or job link parameters to run. One URL per line.</p> </div> <!-- Drag and Drop Zone --> <div id="importDropZone" class="border-2 border-dashed border-outline-variant/60 hover:border-primary/60 rounded-2xl p-8 flex flex-col items-center justify-center text-center cursor-pointer transition-all bg-slate-50/50 hover:bg-primary/5" data-astro-cid-fqt3mzrt> <input type="file" id="importFileInput" accept=".csv,.txt" class="hidden" data-astro-cid-fqt3mzrt> <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4 shadow-sm" data-astro-cid-fqt3mzrt> <span class="material-symbols-outlined text-[30px] font-bold" data-astro-cid-fqt3mzrt>description</span> </div> <h5 class="text-xs font-bold text-on-background mb-1" data-astro-cid-fqt3mzrt>Drag & drop CSV / TXT here</h5> <p class="text-[10px] text-on-surface-variant/60 mb-4" data-astro-cid-fqt3mzrt>Accepts files up to 5MB</p> <button type="button" class="px-3.5 py-1.5 bg-primary hover:bg-primary-container text-white text-xs font-semibold rounded-lg shadow-sm transition-all" onclick="document.getElementById('importFileInput').click()" data-astro-cid-fqt3mzrt>
+Browse Local Files
+</button> </div> </div> </div> <!-- Right Panel: Managed Imports Table --> <div class="lg:col-span-7" data-astro-cid-fqt3mzrt> <div class="bg-white p-6 rounded-2xl border border-outline-variant/30 shadow-sm space-y-4 flex flex-col h-full" data-astro-cid-fqt3mzrt> <div class="pb-3 border-b border-outline-variant/20" data-astro-cid-fqt3mzrt> <h3 class="font-display font-bold text-sm text-on-background" data-astro-cid-fqt3mzrt>Uploaded Target Files</h3> <p class="text-[11px] text-on-surface-variant/70 mt-0.5" data-astro-cid-fqt3mzrt>Manage and load target files into your crawler configuration.</p> </div> <div class="overflow-x-auto border border-outline-variant/20 rounded-xl" data-astro-cid-fqt3mzrt> <table class="w-full text-left border-collapse text-xs" data-astro-cid-fqt3mzrt> <thead data-astro-cid-fqt3mzrt> <tr class="bg-surface-container-low/60 border-b border-outline-variant/30 text-on-surface-variant font-bold" data-astro-cid-fqt3mzrt> <th class="py-3 px-4" data-astro-cid-fqt3mzrt>File Name</th> <th class="py-3 px-4" data-astro-cid-fqt3mzrt>Size</th> <th class="py-3 px-4" data-astro-cid-fqt3mzrt>Targets</th> <th class="py-3 px-4 text-center" data-astro-cid-fqt3mzrt>Actions</th> </tr> </thead> <tbody id="imports-tbody" class="divide-y divide-outline-variant/20" data-astro-cid-fqt3mzrt> <tr data-astro-cid-fqt3mzrt> <td colspan="4" class="p-8 text-center text-on-surface-variant/60" data-astro-cid-fqt3mzrt>No files uploaded yet.</td> </tr> </tbody> </table> </div> </div> </div> </div> </div> </div><!-- /p-8 --> </main> </div> <script>
+    // ── FALLBACK DEFAULT PROMPT ──
+    const DEFAULT_PROMPT = `You are a senior job applicant writing a highly personal, human application email.
+{{posterContext}}
+
+LinkedIn Job Post:
+{{jobPostContent}}
+
+My CV:
+{{cvContent}}
+
+RULES:
+1. Start with: {{greeting}}
+2. First sentence: reference something SPECIFIC from the post (a pain point, tech stack, wording they used) — show you actually read it.
+3. Second paragraph: 2 specific skills/experiences from CV that directly match the post. Be concrete, not generic.
+4. Third paragraph: one short sentence why THIS company/role excites you — make it feel human, not templated.
+5. Close naturally. Find applicant name from CV for sign-off.
+6. NO placeholders like [Name], [Company], [Date]. NO bullet points. Plain text only.
+7. Under 180 words total.
+8. NO leading spaces or indentation on any line.
+
+Return ONLY valid JSON:
+{"subject": "...", "body": "..."}`;
+
+    // ── STATE ──
+    let isRunning = false;
+    let eventSource = null;
+    let historyData = [];
+    let totalFound = 0;
+    let totalSent = 0;
+    let currentUser = null;
+
+    // ── SESSION MANAGEMENT & INITIALIZATION ──
+    async function initSession() {
+      try {
+        const profileRes = await fetch('/api/user-profile');
+        if (!profileRes.ok) {
+          throw new Error('Unauthorized');
+        }
+        const user = await profileRes.json();
+        currentUser = user;
+        
+        // Hide Login Screen
+        const loginScreen = document.getElementById('login-screen');
+        if (loginScreen) {
+          loginScreen.classList.add('opacity-0', 'pointer-events-none');
+          setTimeout(() => {
+            if (document.getElementById('login-screen')) {
+              document.getElementById('login-screen').remove();
+            }
+          }, 500);
+        }
+        
+        // Populate profile details in Sidebar Footer
+        document.getElementById('user-name').textContent = user.name || user.email;
+        const avatar = document.getElementById('user-avatar');
+        if (user.picture) {
+          avatar.innerHTML = `<img src="${user.picture}" class="w-full h-full object-cover" alt="avatar">`;
+        } else {
+          avatar.textContent = (user.name || user.email).charAt(0).toUpperCase();
+        }
+        
+        // Plan & usage limits details
+        const planCapitalized = user.plan.charAt(0).toUpperCase() + user.plan.slice(1);
+        document.getElementById('user-plan-badge').textContent = `${planCapitalized} Plan`;
+        
+        const isUnlimited = user.emailsLimit === 999999;
+        const limitStr = isUnlimited ? 'Unlimited' : user.emailsLimit;
+        
+        document.getElementById('usage-text').textContent = `${user.emailsSent} / ${limitStr} Sent`;
+        
+        const usagePercent = isUnlimited ? 0 : Math.min(100, (user.emailsSent / user.emailsLimit) * 100);
+        document.getElementById('usage-bar').style.width = `${usagePercent}%`;
+        
+        // Main Dashboard statistics update
+        document.getElementById('stat-usage').textContent = `${user.emailsSent} / ${limitStr}`;
+        document.getElementById('stat-plan').textContent = planCapitalized;
+        document.getElementById('stat-usage-bar').style.width = `${usagePercent}%`;
+        
+        // Set test/live mode display based on system configurations
+        updateModeDisplay(user.systemTestMode);
+
+        // Role-based layout updates
+        const adminControls = document.getElementById('admin-controls-panel');
+        const standardInfo = document.getElementById('standard-info-panel');
+        const navAdmin = document.getElementById('nav-item-admin');
+        
+        if (user.isAdmin) {
+          if (adminControls) adminControls.classList.remove('hidden');
+          if (standardInfo) standardInfo.classList.add('hidden');
+          if (navAdmin) navAdmin.classList.remove('hidden');
+        } else {
+          if (adminControls) adminControls.classList.add('hidden');
+          if (standardInfo) standardInfo.classList.remove('hidden');
+          if (navAdmin) navAdmin.classList.add('hidden');
+        }
+        
+        // Load common user config features (CV plain text, prompt templates)
+        await loadUserConfig();
+        
+      } catch (err) {
+        console.log('Session Check: Unauthenticated or invalid token.');
+        // Show login screen (default display state)
+      }
+    }
+
+    // Login Bypass via guest button
+    document.getElementById('guestBtn').onclick = async () => {
+      try {
+        const res = await fetch('/api/guest-login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' }
+        });
+        if (res.ok) {
+          toast('Sandbox session initialized.', 'success');
+          await initSession();
+        } else {
+          throw new Error('Guest login failed.');
+        }
+      } catch (err) {
+        toast(err.message, 'error');
+      }
+    };
+
+    // Logout action handler
+    document.getElementById('logoutBtn').onclick = async () => {
+      try {
+        const res = await fetch('/api/logout', { method: 'POST' });
+        if (res.ok) {
+          toast('Session cleared. Redirecting...', 'default');
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
+        }
+      } catch (err) {
+        toast('Logout failed: ' + err.message, 'error');
+      }
+    };
+
+    // Page Load check session
+    window.addEventListener('DOMContentLoaded', () => {
+      initSession();
+    });
+
+    // ── NAVIGATION & TABS ──
+    const titles = { 
+      'dashboard': 'Dashboard', 
+      'cv-resume': 'CV & Resume Editor', 
+      'prompt-editor': 'AI Prompt Template', 
+      'imports': 'Import Target Lists',
+      'config': 'System Settings',
+      'history': 'Outreach History'
+    };
+
+    document.querySelectorAll('.nav-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const tab = item.dataset.tab;
+        
+        // Update nav items UI active class
+        document.querySelectorAll('.nav-item').forEach(n => {
+          n.classList.remove('active', 'bg-white/10', 'text-white');
+          n.classList.add('text-white/70');
+        });
+        item.classList.add('active', 'bg-white/10', 'text-white');
+        item.classList.remove('text-white/70');
+        
+        // Toggle viewable tabs
+        document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
+        document.getElementById('tab-' + tab).classList.remove('hidden');
+
+        // Update topbar title text
+        document.getElementById('page-title').textContent = titles[tab];
+
+        // Load history/imports from DB on tab open
+        if (tab === 'history') loadHistory();
+        if (tab === 'imports') loadImports();
+      });
+    });
+
+    // ── TOAST NOTIFICATIONS ──
+    function toast(msg, type = 'default') {
+      const el = document.createElement('div');
+      el.className = `flex items-center gap-2 px-4 py-3 rounded-xl text-white text-xs font-semibold shadow-lg transition-all transform duration-300 translate-y-2 pointer-events-auto`;
+      
+      let icon = 'info';
+      if (type === 'success') {
+        el.classList.add('bg-success');
+        icon = 'check_circle';
+      } else if (type === 'error') {
+        el.classList.add('bg-error');
+        icon = 'cancel';
+      } else {
+        el.classList.add('bg-on-background');
+        icon = 'notifications';
+      }
+      
+      el.innerHTML = `
+        <span class="material-symbols-outlined text-[16px]">${icon}</span>
+        <span>${msg}</span>
+      `;
+      
+      const container = document.getElementById('toast-container');
+      container.appendChild(el);
+      
+      // Animate entry
+      setTimeout(() => {
+        el.classList.remove('translate-y-2');
+      }, 10);
+
+      // Remove after duration
+      setTimeout(() => {
+        el.classList.add('opacity-0', 'translate-y-[-10px]');
+        setTimeout(() => el.remove(), 300);
+      }, 4000);
+    }
+
+    // ── LOG TERMINAL DISPLAY ──
+    const logsDiv = document.getElementById('logs');
+    function appendLog(msg) {
+      if (logsDiv.querySelector('.italic')) logsDiv.innerHTML = '';
+      
+      const line = document.createElement('div');
+      line.className = 'flex gap-2.5 border-b border-white/5 pb-1';
+      
+      const time = document.createElement('span');
+      time.className = 'text-slate-600 font-bold select-none shrink-0';
+      time.textContent = new Date().toLocaleTimeString();
+      
+      const txt = document.createElement('span');
+      txt.className = 'break-all ' + getLogStyle(msg);
+      txt.textContent = msg;
+      
+      line.appendChild(time);
+      line.appendChild(txt);
+      logsDiv.appendChild(line);
+      logsDiv.scrollTop = logsDiv.scrollHeight;
+    }
+
+    function getLogStyle(msg) {
+      const m = msg.toLowerCase();
+      if (m.includes('error') || m.includes('critical')) return 'text-error';
+      if (m.includes('[test]') || m.includes('test mode')) return 'text-[#8b5cf6] font-semibold';
+      if (m.includes('found') || m.includes('sent') || m.includes('complete') || m.includes('email')) return 'text-success font-semibold';
+      if (m.includes('--- page') || m.includes('navigat') || m.includes('loading')) return 'text-sky-400';
+      if (m.includes('wait') || m.includes('skip')) return 'text-warning';
+      return 'text-slate-300';
+    }
+
+    function clearLogs() {
+      logsDiv.innerHTML = '<span class="text-slate-500 italic">Logs cleared. Ready to start new session...</span>';
+    }
+
+    // ── HISTORY LISTING ──
+    function renderHistory() {
+      const body = document.getElementById('history-body');
+      const count = document.getElementById('history-count');
+
+      if (historyData.length === 0) {
+        body.innerHTML = `
+          <div class="p-16 flex flex-col items-center justify-center text-center text-on-surface-variant/60">
+            <span class="material-symbols-outlined text-[48px] mb-3 text-outline-variant">mail_outline</span>
+            <h5 class="text-xs font-bold text-on-background mb-0.5">No outreach sent yet</h5>
+            <p class="text-[11px]">Run automation or scrape targets to record communications here.</p>
+          </div>
+        `;
+        count.textContent = 'No application logs recorded';
+        return;
+      }
+
+      count.textContent = `${historyData.length} email${historyData.length !== 1 ? 's' : ''} recorded`;
+
+      body.innerHTML = `
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-xs">
+            <thead>
+              <tr class="bg-surface-container-low/60 border-b border-outline-variant/30 text-on-surface-variant font-bold">
+                <th class="py-3.5 px-4 w-12 text-center">#</th>
+                <th class="py-3.5 px-4">Recipient Email</th>
+                <th class="py-3.5 px-4">Recruiter / Author</th>
+                <th class="py-3.5 px-4">Time Sent</th>
+                <th class="py-3.5 px-4 w-28 text-center">Mode</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-outline-variant/20">
+              ${historyData.map((r, i) => `
+                <tr class="hover:bg-slate-50/50 transition-colors">
+                  <td class="py-3 px-4 text-center font-semibold text-on-surface-variant">${i + 1}</td>
+                  <td class="py-3 px-4 font-bold text-on-background">${r.email}</td>
+                  <td class="py-3 px-4 text-on-surface-variant font-medium">${r.author || '—'}</td>
+                  <td class="py-3 px-4 text-on-surface-variant">${r.time}</td>
+                  <td class="py-3 px-4 text-center">
+                    <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-[10px] font-bold ${r.test ? 'bg-purple-100 text-purple-700' : 'bg-green-100 text-green-700'}">
+                      ${r.test ? '🧪 Test Dry-Run' : '🚀 Live Sent'}
+                    </span>
+                  </td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    async function loadHistory() {
+      try {
+        const res = await fetch('/api/history');
+        if (!res.ok) throw new Error('Failed to load history');
+        const data = await res.json();
+        historyData = data.map(r => ({
+          email: r.recipientEmail,
+          author: r.recruiterName,
+          time: new Date(r.sentAt).toLocaleString(),
+          test: r.testMode
+        }));
+        renderHistory();
+      } catch (err) {
+        console.error('History load error:', err);
+      }
+    }
+
+    async function clearHistory() {
+      if (!confirm('Clear all outreach history from the database?')) return;
+      try {
+        await fetch('/api/history', { method: 'DELETE' });
+        historyData = [];
+        totalFound = 0;
+        totalSent = 0;
+        document.getElementById('stat-found').textContent = '0';
+        document.getElementById('stat-sent').textContent = '0';
+        renderHistory();
+        toast('Outreach history cleared.', 'default');
+      } catch (err) {
+        toast('Failed to clear history: ' + err.message, 'error');
+      }
+    }
+
+    // ── DATA CONFIG LOAD / SAVE ──
+
+    async function loadUserConfig() {
+      try {
+        const cvRes = await fetch('/api/cv-text');
+        if (cvRes.ok) {
+          const cvData = await cvRes.json();
+          document.getElementById('cvText').value = cvData.text || '';
+        }
+        
+        const promptRes = await fetch('/api/prompt-template');
+        if (promptRes.ok) {
+          const promptData = await promptRes.json();
+          document.getElementById('promptTemplate').value = promptData.template || DEFAULT_PROMPT;
+        }
+
+        const cvPathVal = (currentUser && currentUser.cvPath) ? currentUser.cvPath : '';
+        if (cvPathVal) {
+          const pathName = cvPathVal.split('/').pop().split('\\').pop();
+          document.getElementById('cv-file-status').textContent = `CV active: ${pathName}`;
+          document.getElementById('cv-file-info').textContent = `Mapped target path: ${cvPathVal}`;
+          const viewBtn = document.getElementById('btn-view-cv');
+          if (viewBtn) {
+            viewBtn.href = cvPathVal.replace(/^\.\/uploads\//, '/uploads/');
+            viewBtn.classList.remove('hidden');
+          }
+        } else {
+          document.getElementById('cv-file-status').textContent = 'No PDF CV Loaded';
+          document.getElementById('cv-file-info').textContent = 'Drag & drop a file to upload or configure target path manually.';
+          const viewBtn = document.getElementById('btn-view-cv');
+          if (viewBtn) viewBtn.classList.add('hidden');
+        }
+      } catch (err) {
+        console.error('Error loading user config:', err);
+      }
+    }
+
+
+
+    function updateModeDisplay(isTest) {
+      const el = document.getElementById('stat-mode');
+      el.textContent = isTest ? '🧪 Test Dry' : '🚀 Live Run';
+      el.className = `font-display font-extrabold text-2xl ${isTest ? 'text-purple-600' : 'text-success'}`;
+    }
+
+
+
+    // Save CV Text
+    document.getElementById('saveCvText').onclick = async () => {
+      const textVal = document.getElementById('cvText').value;
+      try {
+        const res = await fetch('/api/cv-text', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ text: textVal })
+        });
+        if (res.ok) {
+          toast('Plain text resume context saved.', 'success');
+        } else {
+          throw new Error('Save operation failed.');
+        }
+      } catch (err) {
+        toast(err.message, 'error');
+      }
+    };
+
+    // Save Prompt Template
+    document.getElementById('savePromptTemplate').onclick = async () => {
+      const promptVal = document.getElementById('promptTemplate').value;
+      try {
+        const res = await fetch('/api/prompt-template', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ template: promptVal })
+        });
+        if (res.ok) {
+          toast('System prompt template updated.', 'success');
+        } else {
+          throw new Error('Save operation failed.');
+        }
+      } catch (err) {
+        toast(err.message, 'error');
+      }
+    };
+
+    // Reset prompt template
+    document.getElementById('resetPromptTemplate').onclick = () => {
+      if (confirm('Are you sure you want to reset the prompt template to default?')) {
+        document.getElementById('promptTemplate').value = DEFAULT_PROMPT;
+        toast('Prompt reset to default guidelines locally. Remember to save changes.', 'default');
+      }
+    };
+
+    // Click placeholders to insert tags
+    document.querySelectorAll('.variable-pill').forEach(btn => {
+      btn.onclick = () => {
+        const tag = btn.dataset.tag;
+        const textarea = document.getElementById('promptTemplate');
+        const start = textarea.selectionStart;
+        const end = textarea.selectionEnd;
+        const text = textarea.value;
+        
+        textarea.value = text.substring(0, start) + tag + text.substring(end);
+        textarea.focus();
+        textarea.selectionStart = textarea.selectionEnd = start + tag.length;
+      };
+    });
+
+    // Clear URLs textbox
+    function clearUrls() {
+      document.getElementById('urls').value = '';
+    }
+
+    // ── DRAG & DROP FILE UPLOAD ──
+    const dropZone = document.getElementById('cvDropZone');
+    const fileInput = document.getElementById('cvFileInput');
+
+    // Prevent default drag behaviors
+    ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+      dropZone.addEventListener(eventName, (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+      }, false);
+    });
+
+    // Add highlight styles
+    ['dragenter', 'dragover'].forEach(eventName => {
+      dropZone.addEventListener(eventName, () => {
+        dropZone.classList.add('border-primary', 'bg-primary/5');
+      }, false);
+    });
+
+    ['dragleave', 'drop'].forEach(eventName => {
+      dropZone.addEventListener(eventName, () => {
+        dropZone.classList.remove('border-primary', 'bg-primary/5');
+      }, false);
+    });
+
+    // Handle dropped files
+    dropZone.addEventListener('drop', (e) => {
+      const dt = e.dataTransfer;
+      const files = dt.files;
+      if (files.length) handleCvFile(files[0]);
+    });
+
+    fileInput.addEventListener('change', (e) => {
+      if (e.target.files.length) handleCvFile(e.target.files[0]);
+    });
+
+    // Upload CV file handler
+    function handleCvFile(file) {
+      if (file.type !== 'application/pdf') {
+        toast('Only PDF resume files are accepted.', 'error');
+        return;
+      }
+      
+      toast(`Reading: ${file.name}...`, 'default');
+      
+      const reader = new FileReader();
+      reader.onload = async function() {
+        const base64 = reader.result.split(',')[1];
+        try {
+          const res = await fetch('/api/upload-cv', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ fileName: file.name, fileData: base64 })
+          });
+          const data = await res.json();
+          if (res.ok) {
+            const cvPathInput = document.getElementById('cvPath');
+            if (cvPathInput) cvPathInput.value = data.path;
+            document.getElementById('cv-file-status').textContent = `CV active: ${file.name}`;
+            document.getElementById('cv-file-info').textContent = `Mapped target path: ${data.path}`;
+            
+            if (currentUser) currentUser.cvPath = data.path;
+            const viewBtn = document.getElementById('btn-view-cv');
+            if (viewBtn) {
+              viewBtn.href = data.path.replace(/^\.\/uploads\//, '/uploads/');
+              viewBtn.classList.remove('hidden');
+            }
+            
+            toast('CV PDF uploaded and saved successfully!', 'success');
+          } else {
+            throw new Error(await res.text());
+          }
+        } catch (err) {
+          toast(`Upload failure: ${err.message}`, 'error');
+        }
+      };
+      
+      reader.onerror = () => {
+        toast('Error reading file data.', 'error');
+      };
+      
+      reader.readAsDataURL(file);
+    }
+
+
+    // ── RUNTIME AUTOMATION PROCESS ──
+    const startBtn = document.getElementById('startBtn');
+    const stopBtn = document.getElementById('stopBtn');
+    const statusPill = document.getElementById('status-pill');
+    const statusText = document.getElementById('status-text');
+    const statusDot = document.getElementById('status-dot');
+    const statusPulse = document.getElementById('status-pulse');
+
+    function setRunningState(running) {
+      isRunning = running;
+      
+      if (running) {
+        startBtn.classList.add('hidden');
+        stopBtn.classList.remove('hidden');
+        
+        statusPill.className = 'flex items-center gap-2 px-3 py-1 bg-primary/10 border border-primary/20 rounded-full text-xs font-semibold text-primary transition-all';
+        statusText.textContent = 'Running';
+        statusDot.className = 'relative inline-flex rounded-full h-2 w-2 bg-primary';
+        statusPulse.classList.remove('hidden');
+        statusPulse.classList.add('bg-primary');
+      } else {
+        startBtn.classList.remove('hidden');
+        stopBtn.classList.add('hidden');
+        
+        statusPill.className = 'flex items-center gap-2 px-3 py-1 bg-success/10 border border-success/20 rounded-full text-xs font-semibold text-success transition-all';
+        statusText.textContent = 'Finished';
+        statusDot.className = 'relative inline-flex rounded-full h-2 w-2 bg-success';
+        statusPulse.classList.add('hidden');
+        
+        setTimeout(() => {
+          if (!isRunning) {
+            statusPill.className = 'flex items-center gap-2 px-3 py-1 bg-surface-container-low border border-outline-variant/20 rounded-full text-xs font-semibold text-on-surface-variant transition-all';
+            statusText.textContent = 'Idle';
+            statusDot.className = 'relative inline-flex rounded-full h-2 w-2 bg-slate-400';
+          }
+        }, 4000);
+      }
+    }
+
+    startBtn.onclick = async () => {
+      // 1. Force save current configuration parameters for admins only
+      if (currentUser && currentUser.isAdmin) {
+        const saveOk = await saveSettings(true);
+        if (!saveOk) return;
+      }
+
+      // 2. Clear run counters and stats
+      logsDiv.innerHTML = '';
+      totalFound = 0;
+      totalSent = 0;
+      document.getElementById('stat-found').textContent = '0';
+      document.getElementById('stat-sent').textContent = '0';
+      
+      setRunningState(true);
+      appendLog('Contacting local server and starting automation...');
+
+      // 3. Force navigate UI to dashboard tab to display logs
+      document.querySelectorAll('.nav-item').forEach(n => {
+        n.classList.remove('active', 'bg-white/10', 'text-white');
+        n.classList.add('text-white/70');
+        if (n.dataset.tab === 'dashboard') {
+          n.classList.add('active', 'bg-white/10', 'text-white');
+          n.classList.remove('text-white/70');
+        }
+      });
+      document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
+      document.getElementById('tab-dashboard').classList.remove('hidden');
+      document.getElementById('page-title').textContent = 'Dashboard';
+
+      const isTest = document.getElementById('testModeToggle').checked;
+
+      // 4. Establish SSE connection
+      eventSource = new EventSource('/api/start');
+
+      eventSource.onmessage = (event) => {
+        if (event.data === '[DONE]') {
+          eventSource.close();
+          setRunningState(false);
+          appendLog('─── Automation Complete ───');
+          toast(`Session finished: ${totalSent} application${totalSent !== 1 ? 's' : ''} processed.`, 'success');
+        } else if (event.data.startsWith('STATS:')) {
+          const stats = JSON.parse(event.data.replace('STATS:', ''));
+          totalSent = stats.sentCount;
+          document.getElementById('stat-sent').textContent = totalSent;
+          totalFound = Math.max(totalFound, totalSent);
+          document.getElementById('stat-found').textContent = totalFound;
+          
+          const last = stats.recipients[stats.recipients.length - 1];
+          if (last) {
+            historyData.unshift({
+              email: last.email,
+              author: last.author || '',
+              time: last.time,
+              test: isTest
+            });
+            renderHistory();
+          }
+        } else {
+          appendLog(event.data);
+          
+          // Parse page count metrics from logs
+          if (event.data.includes('email(s)') || event.data.includes('Would send to') || event.data.includes('Found ')) {
+            const matches = event.data.match(/Found (\d+) posts/i) || event.data.match(/Found (\d+) posts with emails/i);
+            if (matches && matches[1]) {
+              totalFound += parseInt(matches[1]);
+              document.getElementById('stat-found').textContent = totalFound;
+            }
+          }
+        }
+      };
+
+      eventSource.onerror = (err) => {
+        appendLog('EventSource connection lost or finished.');
+        eventSource.close();
+        setRunningState(false);
+      };
+    };
+
+    stopBtn.onclick = () => {
+      if (eventSource) {
+        eventSource.close();
+        eventSource = null;
+      }
+      setRunningState(false);
+      appendLog('Session terminated by supervisor.');
+      toast('Automation execution stopped.', 'default');
+    };
+
+    // ── IMPORTS HELPER FUNCTIONS ──
+    async function loadImports() {
+      try {
+        const res = await fetch('/api/imports');
+        if (!res.ok) throw new Error('Failed to load imports');
+        const data = await res.json();
+        
+        const tbody = document.getElementById('imports-tbody');
+        if (!tbody) return;
+        
+        if (data.length === 0) {
+          tbody.innerHTML = `
+            <tr>
+              <td colspan="4" class="p-8 text-center text-on-surface-variant/60 font-semibold bg-slate-50/20">
+                No imported target lists found.
+              </td>
+            </tr>
+          `;
+          return;
+        }
+
+        tbody.innerHTML = data.map(file => {
+          const formattedSize = file.size > 1024 * 1024 
+            ? `${(file.size / (1024 * 1024)).toFixed(2)} MB`
+            : `${(file.size / 1024).toFixed(1)} KB`;
+            
+          return `
+            <tr class="hover:bg-slate-50/30 transition-colors border-b border-slate-100 last:border-0">
+              <td class="py-3 px-4 font-semibold text-slate-800 truncate max-w-xs" title="${file.name}">${file.name}</td>
+              <td class="py-3 px-4 text-slate-500 font-mono text-[11px]">${formattedSize}</td>
+              <td class="py-3 px-4 font-bold text-indigo-600 font-mono">${file.itemsCount} links</td>
+              <td class="py-3 px-4 text-center space-x-1.5 whitespace-nowrap">
+                <button onclick="useImportedTargets('${file.key}')" class="px-2.5 py-1.5 bg-primary hover:bg-primary-container text-white text-[11px] font-bold rounded-lg transition-all shadow-sm">
+                  Use as Targets
+                </button>
+                <button onclick="deleteImportedFile('${file.key}')" class="px-2.5 py-1.5 border border-outline-variant rounded-lg text-[11px] font-bold text-error hover:bg-red-50 transition-colors shadow-sm">
+                  Delete
+                </button>
+              </td>
+            </tr>
+          `;
+        }).join('');
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    async function useImportedTargets(filename) {
+      try {
+        toast('Loading import content...', 'default');
+        const res = await fetch(`/api/imports/${filename}`);
+        if (!res.ok) throw new Error('Failed to read target file');
+        const data = await res.json();
+        
+        const urls = data.lines.filter(l => l.startsWith('http'));
+        if (urls.length === 0) {
+          toast('No valid HTTP target links found in this file.', 'error');
+          return;
+        }
+        
+        document.getElementById('urls').value = urls.join('\n');
+        toast(`Successfully loaded ${urls.length} target URLs!`, 'success');
+        
+        // Switch back to dashboard tab
+        const dashboardBtn = document.querySelector('[data-tab="dashboard"]');
+        if (dashboardBtn) {
+          dashboardBtn.click();
+        }
+      } catch (err) {
+        toast(err.message, 'error');
+      }
+    }
+
+    async function deleteImportedFile(filename) {
+      if (confirm('Delete this imported targets list?')) {
+        try {
+          const res = await fetch(`/api/imports/${filename}`, { method: 'DELETE' });
+          if (!res.ok) throw new Error('Delete operation failed.');
+          toast('Import file deleted.', 'success');
+          loadImports();
+        } catch (err) {
+          toast(err.message, 'error');
+        }
+      }
+    }
+
+    // Bind to window for global inline onclick support
+    window.useImportedTargets = useImportedTargets;
+    window.deleteImportedFile = deleteImportedFile;
+
+    // ── DRAG & DROP IMPORT TARGETS UPLOAD ──
+    const importDropZone = document.getElementById('importDropZone');
+    const importFileInput = document.getElementById('importFileInput');
+
+    if (importDropZone && importFileInput) {
+      ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+        importDropZone.addEventListener(eventName, (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+        }, false);
+      });
+
+      ['dragenter', 'dragover'].forEach(eventName => {
+        importDropZone.addEventListener(eventName, () => {
+          importDropZone.classList.add('border-primary', 'bg-primary/5');
+        }, false);
+      });
+
+      ['dragleave', 'drop'].forEach(eventName => {
+        importDropZone.addEventListener(eventName, () => {
+          importDropZone.classList.remove('border-primary', 'bg-primary/5');
+        }, false);
+      });
+
+      importDropZone.addEventListener('drop', (e) => {
+        const dt = e.dataTransfer;
+        const files = dt.files;
+        if (files.length) handleImportFile(files[0]);
+      });
+
+      importFileInput.addEventListener('change', (e) => {
+        if (e.target.files.length) handleImportFile(e.target.files[0]);
+      });
+    }
+
+    function handleImportFile(file) {
+      const ext = file.name.split('.').pop().toLowerCase();
+      if (ext !== 'csv' && ext !== 'txt') {
+        toast('Only CSV and TXT files are accepted.', 'error');
+        return;
+      }
+      
+      toast(`Importing: ${file.name}...`, 'default');
+      
+      const reader = new FileReader();
+      reader.onload = async function() {
+        const base64 = reader.result.split(',')[1];
+        try {
+          const res = await fetch('/api/imports/upload', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ fileName: file.name, fileData: base64 })
+          });
+          const data = await res.json();
+          if (res.ok) {
+            toast(`Successfully imported ${data.itemsCount} target items!`, 'success');
+            loadImports();
+          } else {
+            throw new Error(await res.text());
+          }
+        } catch (err) {
+          toast(`Import failure: ${err.message}`, 'error');
+        }
+      };
+      
+      reader.onerror = () => {
+        toast('Error reading file data.', 'error');
+      };
+      
+      reader.readAsDataURL(file);
+    }
+  </script> </body> </html>

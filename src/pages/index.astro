@@ -1,0 +1,1338 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>ReachOutAI - Stop applying manually. Land jobs on autopilot.</title>
+  <script is:inline src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+  
+  <script is:inline id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container-lowest": "#ffffff",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed": "#001e2f",
+            "surface": "#f8f9ff",
+            "secondary-fixed-dim": "#89ceff",
+            "on-tertiary": "#ffffff",
+            "on-secondary-container": "#004666",
+            "tertiary": "#571ac0",
+            "tertiary-container": "#6f3dd9",
+            "on-secondary-fixed-variant": "#004c6e",
+            "on-primary": "#ffffff",
+            "on-surface-variant": "#464555",
+            "inverse-primary": "#c3c0ff",
+            "error": "#ba1a1a",
+            "secondary": "#006591",
+            "outline-variant": "#c7c4d8",
+            "on-tertiary-fixed": "#23005c",
+            "primary": "#3525cd",
+            "primary-container": "#4f46e5",
+            "surface-dim": "#cbdbf5",
+            "tertiary-fixed": "#e9ddff",
+            "surface-container": "#e5eeff",
+            "background": "#f8f9ff",
+            "primary-fixed-dim": "#c3c0ff",
+            "on-error": "#ffffff",
+            "error-container": "#ffdad6",
+            "on-tertiary-fixed-variant": "#5516be",
+            "surface-container-highest": "#d3e4fe",
+            "surface-bright": "#f8f9ff",
+            "primary-fixed": "#e2dfff",
+            "on-secondary": "#ffffff",
+            "outline": "#777587",
+            "surface-tint": "#4d44e3",
+            "inverse-surface": "#213145",
+            "inverse-on-surface": "#eaf1ff",
+            "on-primary-fixed-variant": "#3323cc",
+            "on-primary-container": "#dad7ff",
+            "surface-container-low": "#eff4ff",
+            "secondary-container": "#39b8fd",
+            "surface-container-high": "#dce9ff",
+            "on-background": "#0b1c30",
+            "on-primary-fixed": "#0f0069",
+            "surface-variant": "#d3e4fe",
+            "secondary-fixed": "#c9e6ff",
+            "on-surface": "#0b1c30",
+            "on-tertiary-container": "#e3d5ff",
+            "tertiary-fixed-dim": "#d0bcff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "md": "16px",
+            "unit": "4px",
+            "lg": "24px",
+            "xs": "4px",
+            "gutter": "24px",
+            "xxl": "64px",
+            "sm": "8px",
+            "xl": "32px",
+            "container-max": "1280px"
+          },
+          "fontFamily": {
+            "body-sm": ["Inter"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "body-md": ["Inter"],
+            "display-lg": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "button": ["Inter"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-md": ["Inter"],
+            "body-lg": ["Inter"]
+          },
+          "fontSize": {
+            "body-sm": [
+              "14px",
+              {
+                "lineHeight": "1.5",
+                "fontWeight": "400"
+              }
+            ],
+            "headline-lg-mobile": [
+              "28px",
+              {
+                "lineHeight": "1.2",
+                "fontWeight": "700"
+              }
+            ],
+            "body-md": [
+              "16px",
+              {
+                "lineHeight": "1.5",
+                "fontWeight": "400"
+              }
+            ],
+            "display-lg": [
+              "48px",
+              {
+                "lineHeight": "1.1",
+                "letterSpacing": "-0.02em",
+                "fontWeight": "700"
+              }
+            ],
+            "headline-lg": [
+              "32px",
+              {
+                "lineHeight": "1.2",
+                "letterSpacing": "-0.01em",
+                "fontWeight": "700"
+              }
+            ],
+            "button": [
+              "15px",
+              {
+                "lineHeight": "1",
+                "fontWeight": "600"
+              }
+            ],
+            "headline-md": [
+              "24px",
+              {
+                "lineHeight": "1.3",
+                "fontWeight": "600"
+              }
+            ],
+            "label-md": [
+              "14px",
+              {
+                "lineHeight": "1",
+                "letterSpacing": "0.05em",
+                "fontWeight": "600"
+              }
+            ],
+            "body-lg": [
+              "18px",
+              {
+                "lineHeight": "1.6",
+                "fontWeight": "400"
+              }
+            ]
+          }
+        },
+      },
+    }
+  </script>
+  
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+    }
+  </style>
+</head>
+<body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden">
+
+  <!-- TopNavBar -->
+  <header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-sm border-b border-outline-variant/30">
+    <div class="flex justify-between items-center max-w-container-max mx-auto px-gutter h-20">
+      <a href="/" class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2">
+        🎯 ReachOutAI
+      </a>
+      <nav class="hidden md:flex gap-lg">
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#how-it-works">How It Works</a>
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#features">Features</a>
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#pricing">Pricing</a>
+        <a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#faq">FAQ</a>
+      </nav>
+      <div class="flex items-center gap-md">
+        <a href="/app" class="hidden md:block font-button text-button text-primary hover:text-primary-container transition-colors">Sign in</a>
+        <a href="/app" class="font-button text-button bg-primary text-on-primary px-lg py-sm rounded-lg hover:bg-primary-container transition-colors shadow-sm text-center flex items-center justify-center">Start Free</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="pb-xxl">
+    <!-- Hero Section with Live Mockup Dashboard -->
+    <section class="w-full relative overflow-hidden bg-gradient-to-b from-background via-surface-container-low/10 to-background pt-36 pb-xl">
+      <!-- Background Blobs spanning full width -->
+      <div class="absolute inset-0 z-0 pointer-events-none">
+        <div class="absolute top-[-10%] left-[5%] w-[45%] h-[65%] bg-primary/5 rounded-full blur-[130px]"></div>
+        <div class="absolute bottom-[10%] right-[5%] w-[40%] h-[55%] bg-secondary-container/8 rounded-full blur-[110px]"></div>
+      </div>
+      
+      <!-- Inner Centered Content Container -->
+      <div class="max-w-container-max mx-auto px-gutter text-center flex flex-col items-center relative z-10">
+        
+        <div class="inline-flex items-center gap-sm px-md py-xs rounded-full bg-surface-container-low border border-primary/20 text-primary font-label-md text-label-md mb-lg shadow-sm animate-fade-in">
+          <span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+          AI-powered Job Search · Zero manual effort
+        </div>
+        
+        <h1 class="font-display-lg text-display-lg md:text-[68px] max-w-4xl mx-auto mb-lg text-on-background leading-none tracking-tight">
+          Stop applying manually.<br/>Land job interviews on <span class="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary-container">autopilot.</span>
+        </h1>
+        
+        <p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-xl leading-relaxed">
+          Upload your CV, paste a LinkedIn search URL — our AI automatically scrapes every post, extracts recruiter emails, writes hyper-personalised applications, and sends them directly from your inbox.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row items-center gap-md mb-xxl w-full sm:w-auto">
+          <a href="/app" class="font-button text-button bg-primary text-on-primary px-xl py-md rounded-xl hover:bg-primary-container transition-all hover:scale-[1.02] shadow-md hover:shadow-lg flex items-center gap-sm w-full sm:w-auto justify-center">
+            Get started free <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+          </a>
+          <a href="#how-it-works" class="font-button text-button bg-surface-container-lowest border border-outline-variant text-on-surface px-xl py-md rounded-xl hover:bg-surface-container-low transition-colors w-full sm:w-auto flex items-center justify-center gap-2 shadow-sm">
+            <span class="material-symbols-outlined text-[20px]">explore</span> See how it works
+          </a>
+        </div>
+
+      <!-- Live Terminal Console Mockup -->
+      <div class="w-full max-w-4xl mx-auto rounded-2xl border border-outline-variant/50 shadow-2xl bg-slate-900 overflow-hidden relative z-10 mb-xxl transition-all duration-300 hover:border-primary/30">
+        <!-- Window Title Bar -->
+        <div class="bg-slate-950 px-md py-sm border-b border-slate-800 flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <div class="w-3 h-3 rounded-full bg-error"></div>
+            <div class="w-3 h-3 rounded-full bg-secondary-container"></div>
+            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+            <span class="font-mono text-[11px] text-slate-400 ml-2">reachout-ai-agent --live-run</span>
+          </div>
+          <div class="flex items-center gap-1 text-[11px] text-slate-500 font-mono">
+            <span class="inline-block w-2 h-2 rounded-full bg-green-500 animate-ping mr-1"></span>
+            ACTIVE SESSION
+          </div>
+        </div>
+        <!-- Panel content -->
+        <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-slate-800 bg-slate-900 text-left h-[300px]">
+          <!-- Left side: Parameters -->
+          <div class="p-md font-mono text-[12px] text-slate-300 space-y-md flex flex-col justify-between">
+            <div class="space-y-sm">
+              <div class="text-slate-500 uppercase text-[10px] font-bold tracking-wider">Configuration</div>
+              <div><span class="text-indigo-400">Target URL:</span> <span class="text-slate-400 break-all text-[11px]">.../search/content?keywords=hiring</span></div>
+              <div><span class="text-indigo-400">CV Attachment:</span> <span class="text-green-400">cv_developer.pdf</span></div>
+              <div><span class="text-indigo-400">Test Mode:</span> <span class="text-amber-400">FALSE (LIVE-OUTREACH)</span></div>
+              <div><span class="text-indigo-400">Rate Limiter:</span> <span class="text-slate-400">Active (30-60s delay)</span></div>
+            </div>
+            <div class="p-sm bg-slate-950/60 rounded border border-slate-800">
+              <div class="text-[11px] text-slate-400">Daily Quota:</div>
+              <div class="flex justify-between items-center mt-1">
+                <div class="h-2 w-28 bg-slate-800 rounded-full overflow-hidden">
+                  <div class="h-full bg-primary w-2/3"></div>
+                </div>
+                <span class="text-[11px] font-bold text-white">14/20 Sent</span>
+              </div>
+            </div>
+          </div>
+          <!-- Middle & Right: Active Terminal Output -->
+          <div class="col-span-2 p-md bg-slate-950 flex flex-col justify-between h-full overflow-hidden relative">
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-transparent pointer-events-none"></div>
+            <div class="overflow-y-auto space-y-1 pr-sm scrollbar-thin scrollbar-thumb-slate-800 scrollbar-track-transparent h-[230px]" id="hero-console-lines">
+              <div class="py-1 font-mono text-[13px] text-slate-500">[SYSTEM] Launching virtual Playwright browser...</div>
+              <div class="py-1 font-mono text-[13px] text-slate-500">[SYSTEM] Restoring auth_state session cookies...</div>
+              <div class="py-1 font-mono text-[13px] text-slate-300">[LINKEDIN] Successfully connected to LinkedIn.</div>
+            </div>
+            <div class="flex items-center justify-between border-t border-slate-800 pt-sm mt-sm z-10 bg-slate-950">
+              <div class="font-mono text-[11px] text-green-400 flex items-center gap-1">
+                <span class="animate-pulse">●</span> Console Output Stream
+              </div>
+              <div class="font-mono text-[11px] text-slate-500">
+                v1.4.2
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      </div> <!-- End inner content container -->
+    </section>
+
+    <!-- Interactive KPIs Grid -->
+    <section class="max-w-container-max mx-auto px-gutter py-xl relative z-10 mb-xxl">
+      <div class="text-center max-w-3xl mx-auto mb-xl">
+        <h2 class="font-headline-lg text-headline-lg text-on-background mb-xs">Outreach That Yields Real Results</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant">The performance metrics of candidates leveraging ReachOut AI automation daily.</p>
+      </div>
+      
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg">
+        <!-- KPI 1 -->
+        <div class="bg-surface-container-lowest p-xl rounded-2xl border border-outline-variant/40 shadow-sm flex flex-col justify-between hover:shadow-md transition-all group duration-300 hover:border-primary/20">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-md group-hover:scale-110 transition-transform">
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">send</span>
+            </div>
+            <div class="font-headline-lg text-[40px] font-bold text-on-background tracking-tight leading-none mb-sm" id="counter-emails">
+              154,821+
+            </div>
+          </div>
+          <div>
+            <h4 class="font-label-md text-on-surface font-semibold mb-xs">Outreach Emails Sent</h4>
+            <p class="text-body-sm text-on-surface-variant">Highly personalized cold pitches sent directly to recruiters.</p>
+          </div>
+        </div>
+
+        <!-- KPI 2 -->
+        <div class="bg-surface-container-lowest p-xl rounded-2xl border border-outline-variant/40 shadow-sm flex flex-col justify-between hover:shadow-md transition-all group duration-300 hover:border-primary/20">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-green-500/10 flex items-center justify-center text-green-600 mb-md group-hover:scale-110 transition-transform">
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+            </div>
+            <div class="font-headline-lg text-[40px] font-bold text-on-background tracking-tight leading-none mb-sm" id="counter-delivery">
+              99.8%
+            </div>
+          </div>
+          <div>
+            <h4 class="font-label-md text-on-surface font-semibold mb-xs">Delivery Success Rate</h4>
+            <p class="text-body-sm text-on-surface-variant">Intelligent SMTP & OAuth integration to avoid spam folders completely.</p>
+          </div>
+        </div>
+
+        <!-- KPI 3 -->
+        <div class="bg-surface-container-lowest p-xl rounded-2xl border border-outline-variant/40 shadow-sm flex flex-col justify-between hover:shadow-md transition-all group duration-300 hover:border-primary/20">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-600 mb-md group-hover:scale-110 transition-transform">
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">quickreply</span>
+            </div>
+            <div class="font-headline-lg text-[40px] font-bold text-on-background tracking-tight leading-none mb-sm" id="counter-response">
+              32.4%
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center gap-1 mb-sm">
+              <span class="px-2 py-0.5 bg-green-100 text-green-700 rounded text-[11px] font-bold flex items-center gap-0.5">
+                <span class="material-symbols-outlined text-[10px]">trending_up</span> +12% vs last month
+              </span>
+            </div>
+            <h4 class="font-label-md text-on-surface font-semibold mb-xs">Average Response Rate</h4>
+            <p class="text-body-sm text-on-surface-variant">Candidates receiving direct replies or interview schedulers from recruiters.</p>
+          </div>
+        </div>
+
+        <!-- KPI 4 -->
+        <div class="bg-surface-container-lowest p-xl rounded-2xl border border-outline-variant/40 shadow-sm flex flex-col justify-between hover:shadow-md transition-all group duration-300 hover:border-primary/20">
+          <div>
+            <div class="w-12 h-12 rounded-xl bg-purple-500/10 flex items-center justify-center text-purple-600 mb-md group-hover:scale-110 transition-transform">
+              <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">schedule</span>
+            </div>
+            <div class="font-headline-lg text-[40px] font-bold text-on-background tracking-tight leading-none mb-sm" id="counter-days">
+              12.4 Days
+            </div>
+          </div>
+          <div>
+            <h4 class="font-label-md text-on-surface font-semibold mb-xs">Saved Time Per Candidate</h4>
+            <p class="text-body-sm text-on-surface-variant">Hours saved weekly from copying, pasting, and typing individual emails.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Proof Candidate Placement -->
+    <section class="max-w-container-max mx-auto px-gutter py-xl border-y border-outline-variant/20 bg-surface-container-low/30 mb-xxl text-center">
+      <p class="font-body-sm text-body-sm text-on-surface-variant mb-lg uppercase tracking-wider font-semibold">Candidates have landed offers at tech companies including</p>
+      <div class="flex flex-wrap justify-center items-center gap-xl md:gap-xxl opacity-65 grayscale hover:grayscale-0 transition-all duration-300">
+        <span class="font-headline-md text-headline-md font-extrabold text-slate-700 tracking-tight">Infosys</span>
+        <span class="font-headline-md text-headline-md font-extrabold text-slate-700 tracking-tight">TCS</span>
+        <span class="font-headline-md text-headline-md font-extrabold text-slate-700 tracking-tight">Wipro</span>
+        <span class="font-headline-md text-headline-md font-extrabold text-slate-700 tracking-tight">Razorpay</span>
+        <span class="font-headline-md text-headline-md font-extrabold text-slate-700 tracking-tight">Zepto</span>
+        <span class="font-headline-md text-headline-md font-extrabold text-slate-700 tracking-tight">Meesho</span>
+      </div>
+    </section>
+
+    <!-- Interactive Stepper: How It Works -->
+    <section class="max-w-container-max mx-auto px-gutter py-xxl scroll-mt-24" id="how-it-works">
+      <div class="text-center max-w-3xl mx-auto mb-xxl">
+        <h2 class="font-headline-lg text-headline-lg text-on-background mb-sm">How ReachOut AI Works</h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+          Forget tedious job applications. Get set up in three actions, and let our background agents handle the rest.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-xxl items-center">
+        <!-- Left Side: Timeline Navigation Controls -->
+        <div class="lg:col-span-5 space-y-md">
+          <!-- Step 1 Button -->
+          <button onclick="switchStep(1)" class="step-tab w-full text-left p-lg rounded-2xl border transition-all duration-300 flex gap-md items-start group shadow-sm bg-primary/10 border-primary" id="step-tab-1">
+            <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-primary text-on-primary flex items-center justify-center font-bold font-mono">1</div>
+            <div>
+              <h4 class="font-headline-md text-[18px] text-on-background font-semibold mb-1 group-hover:text-primary transition-colors">1. Upload CV & Configure AI</h4>
+              <p class="text-body-sm text-on-surface-variant leading-snug">Drag and drop your resume (PDF or text). AI analyzes your profile, pulling out your key experiences.</p>
+            </div>
+          </button>
+          
+          <!-- Step 2 Button -->
+          <button onclick="switchStep(2)" class="step-tab w-full text-left p-lg rounded-2xl border transition-all duration-300 flex gap-md items-start group shadow-sm bg-surface-container-low border-outline-variant/30" id="step-tab-2">
+            <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-primary/20 text-primary flex items-center justify-center font-bold font-mono">2</div>
+            <div>
+              <h4 class="font-headline-md text-[18px] text-on-background font-semibold mb-1 group-hover:text-primary transition-colors">2. Paste LinkedIn Feed URL</h4>
+              <p class="text-body-sm text-on-surface-variant leading-snug">Run a custom content search on LinkedIn, copy the browser URL, and paste it into the dashboard.</p>
+            </div>
+          </button>
+
+          <!-- Step 3 Button -->
+          <button onclick="switchStep(3)" class="step-tab w-full text-left p-lg rounded-2xl border transition-all duration-300 flex gap-md items-start group shadow-sm bg-surface-container-low border-outline-variant/30" id="step-tab-3">
+            <div class="flex-shrink-0 w-10 h-10 rounded-xl bg-primary/20 text-primary flex items-center justify-center font-bold font-mono">3</div>
+            <div>
+              <h4 class="font-headline-md text-[18px] text-on-background font-semibold mb-1 group-hover:text-primary transition-colors">3. Auto-Scrape & Dispatch</h4>
+              <p class="text-body-sm text-on-surface-variant leading-snug">AI extracts hiring emails, matches requirements, drafts a custom human-sounding pitch, and sends it.</p>
+            </div>
+          </button>
+        </div>
+
+        <!-- Right Side: Step UI Previews (Simulators) -->
+        <div class="lg:col-span-7 bg-surface-container-lowest border border-outline-variant/40 rounded-3xl p-md sm:p-lg shadow-xl h-[420px] flex flex-col justify-between relative overflow-hidden">
+          
+          <!-- Display Step 1 -->
+          <div class="step-display flex flex-col justify-between h-full space-y-md" id="step-display-1">
+            <div class="flex items-center justify-between border-b border-outline-variant/20 pb-sm">
+              <span class="text-label-md font-bold text-primary flex items-center gap-1">
+                <span class="material-symbols-outlined text-[18px]">cloud_upload</span> PROFILE CONFIGURATION
+              </span>
+              <span class="text-body-sm text-on-surface-variant">Step 1 Preview</span>
+            </div>
+            
+            <div class="flex-grow flex flex-col justify-center items-center border-2 border-dashed border-outline-variant/60 rounded-2xl p-xl bg-surface-container-low/30 hover:bg-surface-container-low/50 transition-colors">
+              <span class="material-symbols-outlined text-[48px] text-primary/70 mb-sm">picture_as_pdf</span>
+              <div class="font-headline-md text-[16px] text-on-background font-semibold">my_professional_cv.pdf</div>
+              <div class="text-body-sm text-on-surface-variant mt-xs">PDF successfully parsed · 14,203 characters</div>
+              <div class="mt-md flex items-center gap-sm px-3 py-1 bg-green-100 text-green-700 rounded-full text-[12px] font-medium">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span> Skills extracted: React, Node.js, SQL
+              </div>
+            </div>
+
+            <div class="bg-surface-container-low p-md rounded-xl text-left border border-outline-variant/20">
+              <div class="text-[11px] text-slate-500 font-bold uppercase tracking-wider mb-1">AI Prompt Instruction:</div>
+              <p class="text-body-sm text-on-surface-variant italic">"Compare my Node.js experience against the recruiter's post requirements. Always start by addressing the recruiter by first name..."</p>
+            </div>
+          </div>
+
+          <!-- Display Step 2 -->
+          <div class="step-display hidden flex-col justify-between h-full space-y-md" id="step-display-2">
+            <div class="flex items-center justify-between border-b border-outline-variant/20 pb-sm">
+              <span class="text-label-md font-bold text-primary flex items-center gap-1">
+                <span class="material-symbols-outlined text-[18px]">link</span> RECRUITER TARGETING
+              </span>
+              <span class="text-body-sm text-on-surface-variant">Step 2 Preview</span>
+            </div>
+
+            <div class="flex-grow flex flex-col justify-center space-y-md">
+              <div class="space-y-xs text-left">
+                <label class="text-label-md font-semibold text-on-surface">Target Search URL from LinkedIn</label>
+                <div class="flex items-center gap-sm bg-surface-container-low p-md border border-outline-variant rounded-xl shadow-inner">
+                  <span class="material-symbols-outlined text-slate-400 text-[20px]">search</span>
+                  <div class="text-body-sm text-on-surface break-all truncate font-mono text-[11px]">
+                    https://www.linkedin.com/search/results/content/?keywords="hiring"+"developer"+"email"
+                  </div>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-sm">
+                <div class="p-md rounded-xl bg-slate-900 text-left border border-slate-800 text-white font-mono text-[11px]">
+                  <div class="text-slate-500">Max Scraping Depth:</div>
+                  <div class="text-green-400 font-bold text-[13px] mt-1">10 Pages (approx. 100 posts)</div>
+                </div>
+                <div class="p-md rounded-xl bg-slate-900 text-left border border-slate-800 text-white font-mono text-[11px]">
+                  <div class="text-slate-500">Scrape Schedule:</div>
+                  <div class="text-primary-container font-bold text-[13px] mt-1">On-Demand Trigger</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-surface-container-low p-md rounded-xl text-left border border-outline-variant/20 flex gap-2 items-center">
+              <span class="material-symbols-outlined text-primary">info</span>
+              <p class="text-[12px] text-on-surface-variant">The crawler runs locally inside our browser sandbox. We never require your password.</p>
+            </div>
+          </div>
+
+          <!-- Display Step 3 -->
+          <div class="step-display hidden flex-col justify-between h-full space-y-md" id="step-display-3">
+            <div class="flex items-center justify-between border-b border-outline-variant/20 pb-sm">
+              <span class="text-label-md font-bold text-primary flex items-center gap-1">
+                <span class="material-symbols-outlined text-[18px]">rocket_launch</span> AUTOMATION & DISPATCH
+              </span>
+              <span class="text-body-sm text-on-surface-variant">Step 3 Preview</span>
+            </div>
+
+            <div class="flex-grow space-y-md text-left overflow-y-auto">
+              <!-- Mock Email Generated -->
+              <div class="border border-outline-variant/40 rounded-xl p-md shadow-sm space-y-sm bg-surface-container-low/20">
+                <div class="text-body-sm border-b border-outline-variant/20 pb-xs">
+                  <span class="font-bold">To:</span> recruiter.hr@zepto.in
+                </div>
+                <div class="text-body-sm border-b border-outline-variant/20 pb-xs">
+                  <span class="font-bold">Subject:</span> Backend Application - Rahul Kumar
+                </div>
+                <div class="text-[12px] text-on-surface-variant leading-relaxed font-mono">
+                  Hi Karan,<br/><br/>
+                  I saw your post looking for a backend developer who is experienced in Laravel and Redis queues. Over at my last role, I scaled our transaction system response time by 42% utilizing exactly this stack...
+                </div>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between bg-primary/10 border border-primary/20 p-md rounded-xl">
+              <div class="flex items-center gap-sm">
+                <span class="material-symbols-outlined text-primary text-[24px] animate-spin">sync</span>
+                <div class="text-left">
+                  <div class="text-[13px] font-bold text-on-surface">Auto-sending Outbound</div>
+                  <div class="text-[11px] text-on-surface-variant">Deduplication filters active. Waiting 45s between dispatches...</div>
+                </div>
+              </div>
+              <span class="px-sm py-1 bg-green-100 text-green-700 rounded font-bold text-[11px]">LIVE RUN</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Platform Growth & Daily Use Dashboard (Charts) -->
+    <section class="max-w-container-max mx-auto px-gutter py-xxl relative overflow-hidden bg-surface-container-low/10 border-y border-outline-variant/20">
+      <div class="text-center max-w-3xl mx-auto mb-xxl">
+        <h2 class="font-headline-lg text-headline-lg text-on-background mb-xs">Platform Scale & Growth</h2>
+        <p class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+          Daily active runs and outreach volume growing as candidates bypass slow, manual job boards.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-xxl items-stretch">
+        <!-- SVG Line Chart: Growth Rate -->
+        <div class="lg:col-span-7 bg-surface-container-lowest border border-outline-variant/40 rounded-3xl p-lg shadow-sm flex flex-col justify-between">
+          <div class="flex justify-between items-center mb-md border-b border-outline-variant/20 pb-md">
+            <div class="text-left">
+              <h4 class="font-headline-md text-[18px] text-on-background font-semibold">Total Sent Applications (Growth)</h4>
+              <p class="text-body-sm text-on-surface-variant">Cumulative monthly outreach delivered via ReachOut AI</p>
+            </div>
+            <div class="text-right">
+              <span class="text-[20px] font-bold text-primary">+150K</span>
+              <div class="text-[11px] text-green-600 font-bold">▲ Exponential</div>
+            </div>
+          </div>
+          
+          <div class="w-full relative flex items-center justify-center py-sm">
+            <!-- Smooth line graph SVG -->
+            <svg class="w-full h-[220px]" viewBox="0 0 500 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="chart-line-grad" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0%" stop-color="#3525cd" />
+                  <stop offset="100%" stop-color="#39b8fd" />
+                </linearGradient>
+                <linearGradient id="chart-area-grad" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stop-color="#3525cd" stop-opacity="0.18" />
+                  <stop offset="100%" stop-color="#3525cd" stop-opacity="0.0" />
+                </linearGradient>
+              </defs>
+              <!-- Dash lines -->
+              <line x1="40" y1="20" x2="480" y2="20" stroke="#c7c4d8" stroke-dasharray="3 3" opacity="0.3" />
+              <line x1="40" y1="60" x2="480" y2="60" stroke="#c7c4d8" stroke-dasharray="3 3" opacity="0.3" />
+              <line x1="40" y1="100" x2="480" y2="100" stroke="#c7c4d8" stroke-dasharray="3 3" opacity="0.3" />
+              <line x1="40" y1="140" x2="480" y2="140" stroke="#c7c4d8" stroke-dasharray="3 3" opacity="0.3" />
+              <line x1="40" y1="170" x2="480" y2="170" stroke="#c7c4d8" opacity="0.8" />
+              
+              <!-- Shading under the line -->
+              <path d="M40 170 C 100 160, 160 135, 220 95 C 280 65, 340 45, 400 30 C 430 22, 460 20, 480 18 L 480 170 Z" fill="url(#chart-area-grad)" />
+
+              <!-- Main graph path -->
+              <path d="M40 170 C 100 160, 160 135, 220 95 C 280 65, 340 45, 400 30 C 430 22, 460 20, 480 18" stroke="url(#chart-line-grad)" stroke-width="4.5" stroke-linecap="round" />
+              
+              <!-- Interaction dots -->
+              <circle cx="220" cy="95" r="5.5" fill="#3525cd" stroke="#ffffff" stroke-width="2.5" />
+              <circle cx="400" cy="30" r="5.5" fill="#39b8fd" stroke="#ffffff" stroke-width="2.5" />
+              <circle cx="480" cy="18" r="6.5" fill="#39b8fd" stroke="#ffffff" stroke-width="2.5" class="animate-pulse" />
+              
+              <!-- Labels -->
+              <text x="40" y="192" fill="#777587" font-size="10" font-family="Inter" text-anchor="middle">Jan</text>
+              <text x="130" y="192" fill="#777587" font-size="10" font-family="Inter" text-anchor="middle">Feb</text>
+              <text x="220" y="192" fill="#777587" font-size="10" font-family="Inter" text-anchor="middle">Mar</text>
+              <text x="310" y="192" fill="#777587" font-size="10" font-family="Inter" text-anchor="middle">Apr</text>
+              <text x="400" y="192" fill="#777587" font-size="10" font-family="Inter" text-anchor="middle">May</text>
+              <text x="480" y="192" fill="#777587" font-size="10" font-family="Inter" text-anchor="middle">Jun</text>
+              
+              <text x="25" y="173" fill="#777587" font-size="10" font-family="Inter" text-anchor="end">0</text>
+              <text x="25" y="103" fill="#777587" font-size="10" font-family="Inter" text-anchor="end">50K</text>
+              <text x="25" y="23" fill="#777587" font-size="10" font-family="Inter" text-anchor="end">150K</text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Heatmap Grid: Daily Use -->
+        <div class="lg:col-span-5 bg-surface-container-lowest border border-outline-variant/40 rounded-3xl p-lg shadow-sm flex flex-col justify-between">
+          <div class="text-left border-b border-outline-variant/20 pb-md mb-md">
+            <h4 class="font-headline-md text-[18px] text-on-background font-semibold">System-Wide Outreach Activity</h4>
+            <p class="text-body-sm text-on-surface-variant">Heatmap showing consistent candidate daily run schedules.</p>
+          </div>
+
+          <!-- Github style calendar grid mockup -->
+          <div class="space-y-sm flex-grow flex flex-col justify-center">
+            <div class="flex items-center justify-between text-[11px] font-bold text-slate-500 font-mono">
+              <span>Mon</span>
+              <span>Wed</span>
+              <span>Fri</span>
+              <span>Sun</span>
+            </div>
+            
+            <div class="grid grid-flow-col grid-rows-7 gap-[3px] py-xs" id="activity-heatmap">
+              <!-- Row 1 -->
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-outline-variant/15"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              
+              <!-- Column 2 -->
+              <div class="w-3.5 h-3.5 rounded bg-primary"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-outline-variant/15"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+
+              <!-- Column 3 -->
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-outline-variant/15"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+
+              <!-- Column 4 -->
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-outline-variant/15"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary"></div>
+
+              <!-- Column 5 -->
+              <div class="w-3.5 h-3.5 rounded bg-primary"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-outline-variant/15"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+
+              <!-- Column 6 -->
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-outline-variant/15"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+
+              <!-- Column 7 -->
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-outline-variant/15"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+
+              <!-- Column 8 -->
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-outline-variant/15"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary"></div>
+
+              <!-- Column 9 -->
+              <div class="w-3.5 h-3.5 rounded bg-primary"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-outline-variant/15"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+
+              <!-- Column 10 -->
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-outline-variant/15"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+
+              <!-- Column 11 -->
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-outline-variant/15"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+
+              <!-- Column 12 -->
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-outline-variant/15"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary"></div>
+
+              <!-- Column 13 -->
+              <div class="w-3.5 h-3.5 rounded bg-primary"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-outline-variant/15"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+
+              <!-- Column 14 -->
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-outline-variant/15"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+
+              <!-- Column 15 -->
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-outline-variant/15"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+
+              <!-- Column 16 -->
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-outline-variant/15"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary"></div>
+
+              <!-- Column 17 -->
+              <div class="w-3.5 h-3.5 rounded bg-primary"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-outline-variant/15"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+
+              <!-- Column 18 -->
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-outline-variant/15"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+
+              <!-- Column 19 -->
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-outline-variant/15"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+
+              <!-- Column 20 -->
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/20"></div>
+              <div class="w-3.5 h-3.5 rounded bg-outline-variant/15"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/50"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary/80"></div>
+              <div class="w-3.5 h-3.5 rounded bg-primary"></div>
+            </div>
+
+            <div class="flex items-center gap-sm justify-end text-[10px] text-slate-500 font-mono mt-1">
+              <span>Less</span>
+              <span class="inline-block w-2.5 h-2.5 rounded bg-outline-variant/15"></span>
+              <span class="inline-block w-2.5 h-2.5 rounded bg-primary/20"></span>
+              <span class="inline-block w-2.5 h-2.5 rounded bg-primary/50"></span>
+              <span class="inline-block w-2.5 h-2.5 rounded bg-primary/80"></span>
+              <span class="inline-block w-2.5 h-2.5 rounded bg-primary"></span>
+              <span>More</span>
+            </div>
+          </div>
+
+          <!-- Bottom block showing recent operations live log -->
+          <div class="bg-surface-container-low p-md rounded-2xl text-left border border-outline-variant/20 mt-md">
+            <div class="flex justify-between items-center text-[10px] font-bold text-slate-400 mb-xs">
+              <span>RECENT RUN TICKER</span>
+              <span class="text-green-600 flex items-center gap-0.5"><span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-ping"></span> Live</span>
+            </div>
+            <div class="h-6 overflow-hidden relative" id="recent-ticker-container">
+              <div class="transition-all duration-500 transform font-mono text-[11px] text-on-surface-variant flex items-center gap-sm" id="ticker-item">
+                🚀 React Developer applied to Zepto HR · 3 mins ago (Delivered)
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Key Features List -->
+    <section class="max-w-container-max mx-auto px-gutter py-xxl" id="features">
+      <div class="text-center max-w-3xl mx-auto mb-xl">
+        <h2 class="font-headline-lg text-headline-lg text-on-background mb-sm">Every Tool Required to Land Offers</h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+          Outreach features optimized to save hours of manual typing.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-lg">
+        <!-- Feature 1 -->
+        <div class="bg-surface-container-lowest p-xl rounded-2xl border border-outline-variant/30 flex flex-col items-center text-center shadow-sm hover:-translate-y-1 transition-transform">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-md text-primary">
+            <span class="material-symbols-outlined text-[30px]" style="font-variation-settings: 'FILL' 1;">psychology</span>
+          </div>
+          <h4 class="font-headline-md text-[18px] text-on-background font-semibold mb-sm">AI Personalization</h4>
+          <p class="text-body-sm text-on-surface-variant">
+            Llama-3.3 AI analyzes recruiter job criteria, cross-referencing your CV to draft highly natural, non-robotic pitches.
+          </p>
+        </div>
+
+        <!-- Feature 2 -->
+        <div class="bg-surface-container-lowest p-xl rounded-2xl border border-outline-variant/30 flex flex-col items-center text-center shadow-sm hover:-translate-y-1 transition-transform">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-md text-primary">
+            <span class="material-symbols-outlined text-[30px]" style="font-variation-settings: 'FILL' 1;">privacy_tip</span>
+          </div>
+          <h4 class="font-headline-md text-[18px] text-on-background font-semibold mb-sm">No Login Required</h4>
+          <p class="text-body-sm text-on-surface-variant">
+            We crawl using local sandboxed sessions. You do not need to connect or expose your personal LinkedIn login.
+          </p>
+        </div>
+
+        <!-- Feature 3 -->
+        <div class="bg-surface-container-lowest p-xl rounded-2xl border border-outline-variant/30 flex flex-col items-center text-center shadow-sm hover:-translate-y-1 transition-transform">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-md text-primary">
+            <span class="material-symbols-outlined text-[30px]" style="font-variation-settings: 'FILL' 1;">page_control</span>
+          </div>
+          <h4 class="font-headline-md text-[18px] text-on-background font-semibold mb-sm">Multi-Page Crawler</h4>
+          <p class="text-body-sm text-on-surface-variant">
+            Automated scrolling, paginating, and text expansion parameters to scan deeply across hundreds of feed posts.
+          </p>
+        </div>
+
+        <!-- Feature 4 -->
+        <div class="bg-surface-container-lowest p-xl rounded-2xl border border-outline-variant/30 flex flex-col items-center text-center shadow-sm hover:-translate-y-1 transition-transform">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-md text-primary">
+            <span class="material-symbols-outlined text-[30px]" style="font-variation-settings: 'FILL' 1;">experiment</span>
+          </div>
+          <h4 class="font-headline-md text-[18px] text-on-background font-semibold mb-sm">Verification Test Mode</h4>
+          <p class="text-body-sm text-on-surface-variant">
+            Run a simulated dry-run first. Review the extracted recruiters and emails before dispatching outreach.
+          </p>
+        </div>
+
+        <!-- Feature 5 -->
+        <div class="bg-surface-container-lowest p-xl rounded-2xl border border-outline-variant/30 flex flex-col items-center text-center shadow-sm hover:-translate-y-1 transition-transform">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-md text-primary">
+            <span class="material-symbols-outlined text-[30px]" style="font-variation-settings: 'FILL' 1;">timer</span>
+          </div>
+          <h4 class="font-headline-md text-[18px] text-on-background font-semibold mb-sm">Anti-Spam Delays</h4>
+          <p class="text-body-sm text-on-surface-variant">
+            Integrated random delays between 30 to 60 seconds to mimic natural user behaviour and secure delivery.
+          </p>
+        </div>
+
+        <!-- Feature 6 -->
+        <div class="bg-surface-container-lowest p-xl rounded-2xl border border-outline-variant/30 flex flex-col items-center text-center shadow-sm hover:-translate-y-1 transition-transform">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-md text-primary">
+            <span class="material-symbols-outlined text-[30px]" style="font-variation-settings: 'FILL' 1;">difference</span>
+          </div>
+          <h4 class="font-headline-md text-[18px] text-on-background font-semibold mb-sm">Smart Deduplication</h4>
+          <p class="text-body-sm text-on-surface-variant">
+            Database filters check history instantly to ensure you never double-contact the same email address.
+          </p>
+        </div>
+
+        <!-- Feature 7 -->
+        <div class="bg-surface-container-lowest p-xl rounded-2xl border border-outline-variant/30 flex flex-col items-center text-center shadow-sm hover:-translate-y-1 transition-transform">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-md text-primary">
+            <span class="material-symbols-outlined text-[30px]" style="font-variation-settings: 'FILL' 1;">terminal</span>
+          </div>
+          <h4 class="font-headline-md text-[18px] text-on-background font-semibold mb-sm">Live Logs Dashboard</h4>
+          <p class="text-body-sm text-on-surface-variant">
+            Track and log every single crawl step, scraped email address, and email dispatch status in real-time.
+          </p>
+        </div>
+
+        <!-- Feature 8 -->
+        <div class="bg-surface-container-lowest p-xl rounded-2xl border border-outline-variant/30 flex flex-col items-center text-center shadow-sm hover:-translate-y-1 transition-transform">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-md text-primary">
+            <span class="material-symbols-outlined text-[30px]" style="font-variation-settings: 'FILL' 1;">mail</span>
+          </div>
+          <h4 class="font-headline-md text-[18px] text-on-background font-semibold mb-sm">Gmail OAuth Integration</h4>
+          <p class="text-body-sm text-on-surface-variant">
+            Securely link your Google Workspace accounts. Outgoing applications show directly inside your Sent folder.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Enhanced Placements and Testimonials -->
+    <section class="max-w-container-max mx-auto px-gutter py-xxl" id="testimonials">
+      <div class="text-center max-w-3xl mx-auto mb-xl">
+        <h2 class="font-headline-lg text-headline-lg text-on-background mb-sm">Candidate Success Stories</h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+          From fresh graduates to experienced engineers, see how candidates leverage ReachOut AI.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+        <!-- Testimonial 1 -->
+        <div class="bg-surface-container-lowest p-xl rounded-2xl border border-outline-variant/30 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow relative">
+          <div class="space-y-md">
+            <div class="flex text-amber-500">
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+            </div>
+            <p class="text-body-md text-on-surface leading-relaxed">
+              "Applying one by one on LinkedIn took hours. I set up ReachOut AI over a weekend, targeted 180 recruiters, and got 14 direct email replies. Secured 3 interviews and landed my designer job."
+            </p>
+          </div>
+          <div class="flex items-center justify-between mt-xl pt-md border-t border-outline-variant/20">
+            <div class="flex items-center gap-sm">
+              <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center font-bold text-primary text-sm">PM</div>
+              <div>
+                <div class="font-label-md text-on-surface font-semibold">Priya Menon</div>
+                <div class="text-[12px] text-on-surface-variant">UI/UX Designer, Bangalore</div>
+              </div>
+            </div>
+            <span class="px-2 py-0.5 bg-green-100 text-green-700 rounded text-[11px] font-bold uppercase tracking-wider flex items-center gap-0.5">
+              Placed @ Zepto
+            </span>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="bg-surface-container-lowest p-xl rounded-2xl border border-outline-variant/30 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow relative">
+          <div class="space-y-md">
+            <div class="flex text-amber-500">
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+            </div>
+            <p class="text-body-md text-on-surface leading-relaxed">
+              "The AI personalization is incredible. One recruiter replied saying my email stood out because it directly addressed the specific Laravel queue problem they had posted about on LinkedIn. Highly recommended."
+            </p>
+          </div>
+          <div class="flex items-center justify-between mt-xl pt-md border-t border-outline-variant/20">
+            <div class="flex items-center gap-sm">
+              <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center font-bold text-primary text-sm">AS</div>
+              <div>
+                <div class="font-label-md text-on-surface font-semibold">Arjun Sharma</div>
+                <div class="text-[12px] text-on-surface-variant">Laravel Engineer, Pune</div>
+              </div>
+            </div>
+            <span class="px-2 py-0.5 bg-green-100 text-green-700 rounded text-[11px] font-bold uppercase tracking-wider flex items-center gap-0.5">
+              2 Offers
+            </span>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="bg-surface-container-lowest p-xl rounded-2xl border border-outline-variant/30 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow relative">
+          <div class="space-y-md">
+            <div class="flex text-amber-500">
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+              <span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+            </div>
+            <p class="text-body-md text-on-surface leading-relaxed">
+              "As a freelance consultant, I use the scheduler to find contract gigs. I target search hashtags like #hiring and #freelancedev, let it crawl, and wake up to client inquiries directly in my inbox."
+            </p>
+          </div>
+          <div class="flex items-center justify-between mt-xl pt-md border-t border-outline-variant/20">
+            <div class="flex items-center gap-sm">
+              <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center font-bold text-primary text-sm">RV</div>
+              <div>
+                <div class="font-label-md text-on-surface font-semibold">Rohan Verma</div>
+                <div class="text-[12px] text-on-surface-variant">Full Stack Freelancer</div>
+              </div>
+            </div>
+            <span class="px-2 py-0.5 bg-green-100 text-green-700 rounded text-[11px] font-bold uppercase tracking-wider flex items-center gap-0.5">
+              5 Clients
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section class="max-w-container-max mx-auto px-gutter py-xxl scroll-mt-24" id="pricing">
+      <div class="text-center max-w-3xl mx-auto mb-xl">
+        <h2 class="font-headline-lg text-headline-lg text-on-background mb-sm">Simple, Honest Pricing</h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+          No credit card needed to test. Cancel or switch plans anytime.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-lg max-w-5xl mx-auto">
+        <!-- Free Plan -->
+        <div class="bg-surface-container-lowest p-xl rounded-2xl border border-outline-variant/40 flex flex-col justify-between h-full shadow-sm hover:border-outline transition-colors">
+          <div>
+            <div class="mb-lg">
+              <h4 class="font-headline-md text-[20px] text-on-background font-semibold mb-1">Free Sandbox</h4>
+              <div class="flex items-baseline gap-1 mt-2">
+                <span class="text-[36px] font-extrabold text-on-background">₹0</span>
+                <span class="text-on-surface-variant">/month</span>
+              </div>
+              <p class="text-body-sm text-on-surface-variant mt-2">Perfect for trying out our scraper sandbox.</p>
+            </div>
+            <ul class="space-y-md mb-xl">
+              <li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> 10 emails / day limit</li>
+              <li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> 1 Scoped Target URL</li>
+              <li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> 3 Pages depth search</li>
+              <li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> Verification Test Mode</li>
+              <li class="flex items-center gap-2 text-body-sm text-on-surface-variant/40 line-through"><span class="material-symbols-outlined text-[18px]">close</span> AI email personalization</li>
+            </ul>
+          </div>
+          <a href="/app" class="w-full font-button text-button border border-outline text-on-surface py-sm rounded-xl hover:bg-surface-container-high transition-colors text-center block">Get started free</a>
+        </div>
+
+        <!-- Standard Plan (Recommended) -->
+        <div class="bg-surface-container-lowest p-xl rounded-2xl border-2 border-primary flex flex-col justify-between h-full shadow-md relative">
+          <div class="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-primary text-on-primary px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">Most Popular</div>
+          <div>
+            <div class="mb-lg">
+              <h4 class="font-headline-md text-[20px] text-on-background font-semibold mb-1">Standard Outreach</h4>
+              <div class="flex items-baseline gap-1 mt-2">
+                <span class="text-[36px] font-extrabold text-on-background">₹200</span>
+                <span class="text-on-surface-variant">/month</span>
+              </div>
+              <p class="text-body-sm text-on-surface-variant mt-2">Best value for active candidates seeking replies.</p>
+            </div>
+            <ul class="space-y-md mb-xl">
+              <li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> 200 emails / month</li>
+              <li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> 10 Target URLs</li>
+              <li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> 15 Pages depth per search</li>
+              <li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> Full AI personalization</li>
+              <li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> Dedup filters & logs history</li>
+            </ul>
+          </div>
+          <a href="/app" class="w-full font-button text-button bg-primary text-on-primary py-sm rounded-xl hover:bg-primary-container transition-all hover:scale-[1.02] shadow-sm text-center block">Select Standard</a>
+        </div>
+
+        <!-- Pro Plan -->
+        <div class="bg-surface-container-lowest p-xl rounded-2xl border border-outline-variant/40 flex flex-col justify-between h-full shadow-sm hover:border-outline transition-colors">
+          <div>
+            <div class="mb-lg">
+              <h4 class="font-headline-md text-[20px] text-on-background font-semibold mb-1">Pro Power-User</h4>
+              <div class="flex items-baseline gap-1 mt-2">
+                <span class="text-[36px] font-extrabold text-on-background">₹1,000</span>
+                <span class="text-on-surface-variant">/month</span>
+              </div>
+              <p class="text-body-sm text-on-surface-variant mt-2">Built for consultants, agency leads, and freelancers.</p>
+            </div>
+            <ul class="space-y-md mb-xl">
+              <li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> 500 emails / month</li>
+              <li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> Unlimited Target URLs</li>
+              <li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> 50 Pages depth search</li>
+              <li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> Priority AI processing</li>
+              <li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> Custom templates editing</li>
+            </ul>
+          </div>
+          <a href="/app" class="w-full font-button text-button border border-outline text-on-surface py-sm rounded-xl hover:bg-surface-container-high transition-colors text-center block">Select Pro</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Accordions (using native details/summary) -->
+    <section class="max-w-container-max mx-auto px-gutter py-xxl scroll-mt-24" id="faq">
+      <div class="text-center max-w-3xl mx-auto mb-xl">
+        <h2 class="font-headline-lg text-headline-lg text-on-background mb-sm">Frequently Asked Questions</h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant leading-relaxed">
+          Everything you need to know about automation and deliverability.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-lg max-w-5xl mx-auto">
+        <!-- Q1 -->
+        <details class="bg-surface-container-lowest p-lg rounded-2xl border border-outline-variant/30 group shadow-sm transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex justify-between items-center font-headline-md text-[18px] text-on-background font-semibold cursor-pointer select-none list-none">
+            Does it require my LinkedIn login credentials?
+            <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-primary">expand_more</span>
+          </summary>
+          <p class="text-body-md text-on-surface-variant mt-md leading-relaxed">
+            No, ReachOut AI operates by crawling publicly visible search pages inside local browser windows. Your personal credentials are never required nor stored on our servers.
+          </p>
+        </details>
+
+        <!-- Q2 -->
+        <details class="bg-surface-container-lowest p-lg rounded-2xl border border-outline-variant/30 group shadow-sm transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex justify-between items-center font-headline-md text-[18px] text-on-background font-semibold cursor-pointer select-none list-none">
+            How does the AI personalize my outbound emails?
+            <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-primary">expand_more</span>
+          </summary>
+          <p class="text-body-md text-on-surface-variant mt-md leading-relaxed">
+            It scans the content of the recruiter's post, identifies their hiring pain points and technology stack, matches it with skills from your CV, and outputs a natural, custom pitch.
+          </p>
+        </details>
+
+        <!-- Q3 -->
+        <details class="bg-surface-container-lowest p-lg rounded-2xl border border-outline-variant/30 group shadow-sm transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex justify-between items-center font-headline-md text-[18px] text-on-background font-semibold cursor-pointer select-none list-none">
+            Is there a risk of being flagged as spam?
+            <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-primary">expand_more</span>
+          </summary>
+          <p class="text-body-md text-on-surface-variant mt-md leading-relaxed">
+            We send only one email at a time, spacing each dispatch with a randomized delay of 30 to 60 seconds. This mimics organic typing and sending, securing excellent domain reputation.
+          </p>
+        </details>
+
+        <!-- Q4 -->
+        <details class="bg-surface-container-lowest p-lg rounded-2xl border border-outline-variant/30 group shadow-sm transition-all duration-300 [&_summary::-webkit-details-marker]:hidden">
+          <summary class="flex justify-between items-center font-headline-md text-[18px] text-on-background font-semibold cursor-pointer select-none list-none">
+            What is the purpose of "Test Mode"?
+            <span class="material-symbols-outlined transition-transform duration-300 group-open:rotate-180 text-primary">expand_more</span>
+          </summary>
+          <p class="text-body-md text-on-surface-variant mt-md leading-relaxed">
+            Test Mode runs the scraper and compiles recruiter profiles without sending any emails. This allows you to audit the scraped addresses and job postings before going live.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <!-- Glassmorphic CTA Banner -->
+    <section class="max-w-container-max mx-auto px-gutter py-xxl text-center relative overflow-hidden">
+      <div class="absolute inset-0 z-0 pointer-events-none">
+        <div class="absolute top-[-25%] left-[20%] w-[60%] h-[150%] bg-primary/5 rounded-full blur-[140px]"></div>
+      </div>
+      <div class="relative z-10 max-w-4xl mx-auto bg-surface-container-low/40 backdrop-blur-md border border-outline-variant/40 rounded-3xl p-xl md:p-xxl shadow-2xl">
+        <h2 class="font-headline-lg text-headline-lg md:text-[44px] text-on-background mb-md font-bold tracking-tight">
+          Your job search on <span class="text-primary">autopilot.</span>
+        </h2>
+        <p class="font-body-lg text-body-lg text-on-surface-variant mb-xl max-w-lg mx-auto leading-relaxed">
+          Be running in under 2 minutes. Start reaching recruiter inboxes today.
+        </p>
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-md">
+          <a href="/app" class="font-button text-button bg-primary text-on-primary px-xl py-md rounded-xl hover:bg-primary-container hover:scale-[1.02] transition-all shadow-md hover:shadow-lg flex items-center gap-sm w-full sm:w-auto justify-center">
+            🚀 &nbsp;Get started free
+          </a>
+          <a href="mailto:rahulkumar828515@gmail.com" class="font-button text-button bg-surface-container-lowest border border-outline-variant text-on-surface px-xl py-md rounded-xl hover:bg-surface-container-low transition-colors w-full sm:w-auto flex items-center justify-center shadow-sm">
+            Contact support
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer Section -->
+  <footer class="border-t border-outline-variant/30 bg-surface-container-lowest py-xl relative z-10">
+    <div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-md">
+      <div class="flex flex-col items-center md:items-start text-center md:text-left">
+        <div class="font-headline-md text-headline-md font-bold text-primary flex items-center gap-2">
+          🎯 ReachOutAI
+        </div>
+        <div class="font-body-sm text-body-sm text-on-surface-variant mt-2">
+          © 2026 ReachOut AI · Made in India 🇮🇳
+        </div>
+      </div>
+      <div class="flex flex-wrap justify-center gap-lg">
+        <a href="#how-it-works" class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors">How It Works</a>
+        <a href="#features" class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors">Features</a>
+        <a href="#pricing" class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors">Pricing</a>
+        <a href="#faq" class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors">FAQ</a>
+        <a href="/app" class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors">Dashboard</a>
+        <a href="mailto:rahulkumar828515@gmail.com" class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary transition-colors">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Script blocks for interactive tab controllers and simulations -->
+  <script is:inline>
+    // Tab controller for "How It Works"
+    window.switchStep = function(stepIndex) {
+      const tabs = document.querySelectorAll('.step-tab');
+      const displays = document.querySelectorAll('.step-display');
+      
+      tabs.forEach((tab, index) => {
+        if (index === stepIndex - 1) {
+          tab.classList.add('bg-primary/10', 'border-primary');
+          tab.classList.remove('bg-surface-container-low', 'border-outline-variant/30');
+          tab.querySelector('.font-mono').classList.remove('bg-primary/20', 'text-primary');
+          tab.querySelector('.font-mono').classList.add('bg-primary', 'text-on-primary');
+        } else {
+          tab.classList.remove('bg-primary/10', 'border-primary');
+          tab.classList.add('bg-surface-container-low', 'border-outline-variant/30');
+          tab.querySelector('.font-mono').classList.add('bg-primary/20', 'text-primary');
+          tab.querySelector('.font-mono').classList.remove('bg-primary', 'text-on-primary');
+        }
+      });
+
+      displays.forEach((display, index) => {
+        if (index === stepIndex - 1) {
+          display.classList.remove('hidden');
+          display.classList.add('flex');
+        } else {
+          display.classList.add('hidden');
+          display.classList.remove('flex');
+        }
+      });
+    };
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Counter animation helper
+      const startCounters = () => {
+        const counters = [
+          { id: 'counter-emails', end: 154821, prefix: '', suffix: '+' },
+          { id: 'counter-delivery', end: 99.8, prefix: '', suffix: '%' },
+          { id: 'counter-response', end: 32.4, prefix: '', suffix: '%' },
+          { id: 'counter-days', end: 12.4, prefix: '', suffix: ' Days' }
+        ];
+
+        counters.forEach(c => {
+          const el = document.getElementById(c.id);
+          if (!el) return;
+          let currentVal = 0;
+          const duration = 1200; // ms
+          const stepTime = 20; // ms
+          const totalSteps = duration / stepTime;
+          const increment = c.end / totalSteps;
+          let step = 0;
+
+          const interval = setInterval(() => {
+            step++;
+            currentVal += increment;
+            if (step >= totalSteps) {
+              clearInterval(interval);
+              el.innerText = c.prefix + c.end.toLocaleString() + c.suffix;
+            } else {
+              el.innerText = c.prefix + (c.end % 1 === 0 ? Math.floor(currentVal).toLocaleString() : currentVal.toFixed(1)) + c.suffix;
+            }
+          }, stepTime);
+        });
+      };
+      
+      startCounters();
+
+      // Terminal Live Console Feed Mock Simulation in Hero
+      const logs = [
+        "⚡ Initializing ReachOut AI automated agent...",
+        "📂 Loaded CV: my_professional_cv.pdf",
+        "🔗 Connecting to LinkedIn target search feed...",
+        "🔍 Scanning page 1 for recruiter posts...",
+        "✨ Found post by Karan Malhotra (HR @ Zepto)",
+        "📧 Extracted email: recruiter.hr@zepto.in",
+        "🧠 AI analyzing post context & applicant CV profile...",
+        "✍️ Personalized pitch: 'Laravel Redis scaling experience'",
+        "📤 Sending email via Google OAuth2...",
+        "✅ Sent successfully! (Attachments: CV, portfolio)",
+        "⏳ Delaying 45s to mimic human user behavior...",
+        "🔍 Scanning for next post match...",
+        "✨ Found post by Riya Patel (Tech Lead @ Razorpay)",
+        "📧 Extracted email: careers.tech@razorpay.com",
+        "🧠 AI matching: Node.js API scaling experience...",
+        "✍️ Personalized pitch: 'Building high-throughput microservices'",
+        "📤 Sending email...",
+        "✅ Sent successfully! (Attachments: CV)",
+        "⏳ Delaying 50s..."
+      ];
+
+      const consoleLines = document.getElementById('hero-console-lines');
+      if (consoleLines) {
+        let index = 3; // start from index 3 since 0,1,2 are printed statically
+        const addLine = () => {
+          if (index >= logs.length) {
+            consoleLines.innerHTML = '<div class="py-1 font-mono text-[13px] text-slate-500">[SYSTEM] Session restart...</div>';
+            index = 0;
+          }
+          const div = document.createElement('div');
+          div.className = 'py-1 font-mono text-[13px] text-green-400 opacity-90 pl-2 border-l-2 border-green-500 mb-1';
+          div.innerText = logs[index];
+          consoleLines.appendChild(div);
+          consoleLines.scrollTop = consoleLines.scrollHeight;
+          index++;
+          
+          const delay = Math.random() * 2200 + 1300;
+          setTimeout(addLine, delay);
+        };
+        setTimeout(addLine, 2000);
+      }
+
+      // Recent Ticker feed carousel
+      const tickerLines = [
+        "🚀 React Developer applied to Zepto HR · 3 mins ago (Delivered)",
+        "🚀 Python Dev applied to Infosys Recruiter · 8 mins ago (Delivered)",
+        "🚀 UI/UX Designer applied to Razorpay PM · 15 mins ago (Replied)",
+        "🚀 Node.js Lead applied to Wipro HR · 22 mins ago (Delivered)",
+        "🚀 DevOps Specialist applied to TCS Tech Lead · 30 mins ago (Delivered)"
+      ];
+      
+      const tickerItem = document.getElementById('ticker-item');
+      if (tickerItem) {
+        let tickerIndex = 0;
+        setInterval(() => {
+          tickerIndex = (tickerIndex + 1) % tickerLines.length;
+          tickerItem.style.opacity = 0;
+          setTimeout(() => {
+            tickerItem.innerText = tickerLines[tickerIndex];
+            tickerItem.style.opacity = 1;
+          }, 300);
+        }, 4500);
+      }
+    });
+  </script>
+</body>
+</html>

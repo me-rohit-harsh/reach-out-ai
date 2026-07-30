@@ -1,0 +1,34 @@
+{
+  "users": {
+    "guest@reachoutai.local": {
+      "email": "guest@reachoutai.local",
+      "name": "Guest User",
+      "picture": "",
+      "googleId": "guest-id",
+      "plan": "pro",
+      "emailsSent": 0,
+      "emailsLimit": 500,
+      "refreshToken": "",
+      "accessToken": "",
+      "tokenExpiry": 0,
+      "cvText": "",
+      "cvPath": "",
+      "promptTemplate": ""
+    },
+    "rahulkumar828515@gmail.com": {
+      "email": "rahulkumar828515@gmail.com",
+      "name": "Admin User",
+      "picture": "",
+      "googleId": "",
+      "plan": "agency",
+      "emailsSent": 0,
+      "emailsLimit": 999999,
+      "refreshToken": "",
+      "accessToken": "",
+      "tokenExpiry": 0,
+      "cvText": "",
+      "cvPath": "",
+      "promptTemplate": ""
+    }
+  }
+}

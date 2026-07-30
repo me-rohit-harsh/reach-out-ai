@@ -1,0 +1,731 @@
+<html class="light" lang="en"><head></head><body class="bg-background text-on-background font-body-md antialiased overflow-x-hidden">```html
+
+
+
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ReachOutAI - Stop applying manually. Land jobs on autopilot.</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        "colors": {
+                "surface-container-lowest": "#ffffff",
+                "on-error-container": "#93000a",
+                "on-secondary-fixed": "#001e2f",
+                "surface": "#f8f9ff",
+                "secondary-fixed-dim": "#89ceff",
+                "on-tertiary": "#ffffff",
+                "on-secondary-container": "#004666",
+                "tertiary": "#571ac0",
+                "tertiary-container": "#6f3dd9",
+                "on-secondary-fixed-variant": "#004c6e",
+                "on-primary": "#ffffff",
+                "on-surface-variant": "#464555",
+                "inverse-primary": "#c3c0ff",
+                "error": "#ba1a1a",
+                "secondary": "#006591",
+                "outline-variant": "#c7c4d8",
+                "on-tertiary-fixed": "#23005c",
+                "primary": "#3525cd",
+                "primary-container": "#4f46e5",
+                "surface-dim": "#cbdbf5",
+                "tertiary-fixed": "#e9ddff",
+                "surface-container": "#e5eeff",
+                "background": "#f8f9ff",
+                "primary-fixed-dim": "#c3c0ff",
+                "on-error": "#ffffff",
+                "error-container": "#ffdad6",
+                "on-tertiary-fixed-variant": "#5516be",
+                "surface-container-highest": "#d3e4fe",
+                "surface-bright": "#f8f9ff",
+                "primary-fixed": "#e2dfff",
+                "on-secondary": "#ffffff",
+                "outline": "#777587",
+                "surface-tint": "#4d44e3",
+                "inverse-surface": "#213145",
+                "inverse-on-surface": "#eaf1ff",
+                "on-primary-fixed-variant": "#3323cc",
+                "on-primary-container": "#dad7ff",
+                "surface-container-low": "#eff4ff",
+                "secondary-container": "#39b8fd",
+                "surface-container-high": "#dce9ff",
+                "on-background": "#0b1c30",
+                "on-primary-fixed": "#0f0069",
+                "surface-variant": "#d3e4fe",
+                "secondary-fixed": "#c9e6ff",
+                "on-surface": "#0b1c30",
+                "on-tertiary-container": "#e3d5ff",
+                "tertiary-fixed-dim": "#d0bcff"
+        },
+        "borderRadius": {
+                "DEFAULT": "0.25rem",
+                "lg": "0.5rem",
+                "xl": "0.75rem",
+                "full": "9999px"
+        },
+        "spacing": {
+                "md": "16px",
+                "unit": "4px",
+                "lg": "24px",
+                "xs": "4px",
+                "gutter": "24px",
+                "xxl": "64px",
+                "sm": "8px",
+                "xl": "32px",
+                "container-max": "1280px"
+        },
+        "fontFamily": {
+                "body-sm": [
+                        "Inter"
+                ],
+                "headline-lg-mobile": [
+                        "Plus Jakarta Sans"
+                ],
+                "body-md": [
+                        "Inter"
+                ],
+                "display-lg": [
+                        "Plus Jakarta Sans"
+                ],
+                "headline-lg": [
+                        "Plus Jakarta Sans"
+                ],
+                "button": [
+                        "Inter"
+                ],
+                "headline-md": [
+                        "Plus Jakarta Sans"
+                ],
+                "label-md": [
+                        "Inter"
+                ],
+                "body-lg": [
+                        "Inter"
+                ]
+        },
+        "fontSize": {
+                "body-sm": [
+                        "14px",
+                        {
+                                "lineHeight": "1.5",
+                                "fontWeight": "400"
+                        }
+                ],
+                "headline-lg-mobile": [
+                        "28px",
+                        {
+                                "lineHeight": "1.2",
+                                "fontWeight": "700"
+                        }
+                ],
+                "body-md": [
+                        "16px",
+                        {
+                                "lineHeight": "1.5",
+                                "fontWeight": "400"
+                        }
+                ],
+                "display-lg": [
+                        "48px",
+                        {
+                                "lineHeight": "1.1",
+                                "letterSpacing": "-0.02em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "headline-lg": [
+                        "32px",
+                        {
+                                "lineHeight": "1.2",
+                                "letterSpacing": "-0.01em",
+                                "fontWeight": "700"
+                        }
+                ],
+                "button": [
+                        "15px",
+                        {
+                                "lineHeight": "1",
+                                "fontWeight": "600"
+                        }
+                ],
+                "headline-md": [
+                        "24px",
+                        {
+                                "lineHeight": "1.3",
+                                "fontWeight": "600"
+                        }
+                ],
+                "label-md": [
+                        "14px",
+                        {
+                                "lineHeight": "1",
+                                "letterSpacing": "0.05em",
+                                "fontWeight": "600"
+                        }
+                ],
+                "body-lg": [
+                        "18px",
+                        {
+                                "lineHeight": "1.6",
+                                "fontWeight": "400"
+                        }
+                ]
+        }
+},
+    },
+  }
+</script>
+<style>
+  .material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  }
+  .glass-card {
+    background: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  }
+</style>
+<!-- TopNavBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-md shadow-sm border-b border-outline-variant/30">
+<div class="flex justify-between items-center max-w-container-max mx-auto px-gutter h-20">
+<div class="font-headline-md text-headline-md font-bold text-primary">
+        ReachOutAI
+      </div>
+<nav class="hidden md:flex gap-lg">
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#how-it-works">How It Works</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#features">Features</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#pricing">Pricing</a>
+<a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors duration-200" href="#faq">FAQ</a>
+</nav>
+<div class="flex items-center gap-md">
+<button class="hidden md:block font-button text-button text-primary hover:text-primary-container transition-colors">Sign in</button>
+<button class="font-button text-button bg-primary text-on-primary px-lg py-sm rounded-lg hover:bg-primary-container transition-colors shadow-sm">Start Free</button>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-xxl">
+<!-- Hero Section -->
+<section class="max-w-container-max mx-auto px-gutter pt-xxl pb-xl text-center flex flex-col items-center relative overflow-hidden"><!-- Background Blobs -->
+<div class="absolute inset-0 z-0 pointer-events-none">
+<div class="absolute top-[-10%] left-[-10%] w-[40%] h-[60%] bg-primary/5 rounded-full blur-[100px]"></div>
+<div class="absolute bottom-[10%] right-[-5%] w-[35%] h-[50%] bg-secondary-container/10 rounded-full blur-[80px]"></div>
+</div>
+<div class="inline-flex items-center gap-sm px-md py-xs rounded-full bg-surface-container-low border border-primary/20 text-primary font-label-md text-label-md mb-lg relative z-10">
+<span class="material-symbols-outlined text-[16px] text-primary" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+        AI-powered · Zero manual effort
+      </div>
+<h1 class="font-display-lg text-display-lg md:text-[64px] max-w-4xl mx-auto mb-lg text-on-background relative z-10">
+        Stop applying manually.<br/>Land jobs on <span class="text-primary">autopilot.</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto mb-xl relative z-10">
+        Upload your CV, paste a LinkedIn search URL — our AI scrapes every post, extracts recruiter emails, and sends a hyper-personalised application instantly.
+      </p>
+<div class="flex flex-col sm:flex-row items-center gap-md mb-xxl relative z-10">
+<button class="font-button text-button bg-primary text-on-primary px-xl py-md rounded-lg hover:bg-primary-container transition-all shadow-md hover:shadow-lg flex items-center gap-sm w-full sm:w-auto justify-center">
+          Get started free <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+</button>
+<button class="font-button text-button bg-surface border border-outline-variant text-on-surface px-xl py-md rounded-lg hover:bg-surface-container-low transition-colors w-full sm:w-auto justify-center">
+          See how it works
+        </button>
+</div>
+<!-- Stats -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg w-full max-w-3xl mx-auto mb-xxl relative z-10">
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant/30 text-center shadow-sm">
+<div class="font-headline-lg text-headline-lg text-primary mb-xs">12k+</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Emails Sent</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant/30 text-center shadow-sm">
+<div class="font-headline-lg text-headline-lg text-primary mb-xs">3.4×</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">More Replies</div>
+</div>
+<div class="bg-surface-container-lowest p-lg rounded-xl border border-outline-variant/30 text-center shadow-sm">
+<div class="font-headline-lg text-headline-lg text-primary mb-xs">2 min</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">To Set Up</div>
+</div>
+</div>
+</section>
+<!-- Social Proof -->
+<section class="max-w-container-max mx-auto px-gutter py-xl border-y border-outline-variant/20 bg-surface-container-lowest/50 mb-xxl text-center">
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-lg uppercase tracking-wider font-semibold">Trusted by candidates landing offers at</p>
+<div class="flex flex-wrap justify-center items-center gap-xl md:gap-xxl opacity-60 grayscale hover:grayscale-0 transition-all duration-300">
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Infosys</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">TCS</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Wipro</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Razorpay</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Zepto</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Meesho</span>
+</div>
+</section>
+<!-- See it in Action Section -->
+<section class="max-w-container-max mx-auto px-gutter py-xxl" id="see-it-in-action">
+<div class="text-center max-w-3xl mx-auto mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-sm">See it in Action</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+      Watch how easy it is to automate your job search.
+    </p>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-xxl items-center">
+<div class="space-y-xl">
+<!-- Step 1 -->
+<div class="flex gap-md">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center font-headline-md text-[20px]">1</div>
+<div>
+<h4 class="font-headline-md text-[20px] text-on-background mb-xs">Step 1: Upload your CV</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Upload your CV as a PDF or text file. Our AI instantly reads and analyzes your unique skills and background.</p>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="flex gap-md">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center font-headline-md text-[20px]">2</div>
+<div>
+<h4 class="font-headline-md text-[20px] text-on-background mb-xs">Step 2: Paste LinkedIn Search URL</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Run any relevant search on LinkedIn, copy the URL, and paste it into our platform.</p>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="flex gap-md">
+<div class="flex-shrink-0 w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center font-headline-md text-[20px]">3</div>
+<div>
+<h4 class="font-headline-md text-[20px] text-on-background mb-xs">Step 3: Hit Start &amp; Relax</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Let the AI do the heavy lifting. Watch in real-time as it sends hyper-personalized applications.</p>
+</div>
+</div>
+</div>
+<!-- Video Placeholder -->
+<div class="relative w-full aspect-video bg-surface-container-high rounded-xl overflow-hidden border border-outline-variant/30 shadow-lg flex items-center justify-center">
+<div class="absolute inset-0 bg-gradient-to-tr from-surface-container to-surface-container-highest"></div>
+<div class="relative z-10 w-20 h-20 bg-primary/90 text-on-primary rounded-full flex items-center justify-center shadow-lg cursor-pointer hover:scale-105 transition-transform">
+<span class="material-symbols-outlined text-[40px]" style="font-variation-settings: 'FILL' 1;">play_arrow</span>
+</div>
+<div class="absolute top-4 left-4 right-4 h-8 bg-surface-container-lowest/50 backdrop-blur rounded flex items-center px-3 gap-2">
+<div class="w-3 h-3 rounded-full bg-error/50"></div>
+<div class="w-3 h-3 rounded-full bg-primary/50"></div>
+<div class="w-3 h-3 rounded-full bg-green-500/50"></div>
+<div class="w-32 h-3 bg-surface-container-lowest rounded ml-2"></div>
+</div>
+</div>
+</div>
+</section>
+<section class="max-w-container-max mx-auto px-gutter py-xxl" id="how-it-works">
+<div class="text-center max-w-3xl mx-auto mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-sm">How It Works</h2>
+<h3 class="font-headline-md text-headline-md text-primary mb-md">Three steps to automated outreach</h3>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+      No LinkedIn account setup. No cold-emailing experience needed. Just three actions.
+    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-lg">
+<!-- Step 1 -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30 flex flex-col items-center text-center">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 1;">vpn_key</span>
+</div>
+<h4 class="font-headline-md text-[20px] text-on-background mb-sm">Sign in &amp; Upload CV</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        One click with Google. Then upload your CV or resume — PDF or text. We read it once and remember it.
+      </p>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30 flex flex-col items-center text-center">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 1;">link</span>
+</div>
+<h4 class="font-headline-md text-[20px] text-on-background mb-sm">Paste LinkedIn URL</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        Copy any LinkedIn search page URL — hashtag feeds, job posts, or people results. Paste it in. Done.
+      </p>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30 flex flex-col items-center text-center">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 1;">rocket_launch</span>
+</div>
+<h4 class="font-headline-md text-[20px] text-on-background mb-sm">Hit Start &amp; Relax</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        AI scrapes every post, finds recruiter emails, writes a personalised application for each one and sends it — automatically.
+      </p>
+</div>
+</div>
+</section><section class="max-w-container-max mx-auto px-gutter py-xxl" id="features">
+<div class="text-center max-w-3xl mx-auto mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-sm">Built for people who value their time</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+      Every feature designed to save you hours of manual, repetitive work.
+    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg lg:grid-cols-4">
+<!-- Feature 1 -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30 flex flex-col items-center text-center">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 1;">psychology</span>
+</div>
+<h4 class="font-headline-md text-[20px] text-on-background mb-sm">AI-Personalised Emails</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        DeepSeek AI reads the recruiter's post word-for-word, matches skills from your CV, and writes an email that sounds genuinely human — not templated.
+      </p>
+</div>
+<!-- Feature 2 -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30 flex flex-col items-center text-center">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 1;">no_accounts</span>
+</div>
+<h4 class="font-headline-md text-[20px] text-on-background mb-sm">No LinkedIn Account Needed</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        We handle the scraping in the background. You don't need to share your LinkedIn login. Just paste a URL — public search results only.
+      </p>
+</div>
+<!-- Feature 3 -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30 flex flex-col items-center text-center">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 1;">manage_search</span>
+</div>
+<h4 class="font-headline-md text-[20px] text-on-background mb-sm">Deep Multi-Page Scraping</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        Scrolls through all pages automatically, expanding every post to get the full text.
+      </p>
+</div>
+<!-- Feature 4 -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30 flex flex-col items-center text-center">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 1;">science</span>
+</div>
+<h4 class="font-headline-md text-[20px] text-on-background mb-sm">Test Mode</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        Dry-run: collect all emails first, verify the list, then send. No accidents.
+      </p>
+</div>
+<!-- Feature 5 -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30 flex flex-col items-center text-center">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 1;">timer</span>
+</div>
+<h4 class="font-headline-md text-[20px] text-on-background mb-sm">Human-Like Delays</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        30–60s random gaps between sends. Avoids spam flags and looks natural.
+      </p>
+</div>
+<!-- Feature 6 -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30 flex flex-col items-center text-center">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 1;">mark_email_unread</span>
+</div>
+<h4 class="font-headline-md text-[20px] text-on-background mb-sm">500+ Emails per month</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        With intelligent deduplication — if you've already contacted someone this session, we skip them automatically. No double-sending ever.
+      </p>
+</div>
+<!-- Feature 7 -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30 flex flex-col items-center text-center">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 1;">monitoring</span>
+</div>
+<h4 class="font-headline-md text-[20px] text-on-background mb-sm">Live Log Dashboard</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        Watch every post scraped and every email sent in real-time.
+      </p>
+</div>
+<!-- Feature 8 -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30 flex flex-col items-center text-center">
+<div class="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-md">
+<span class="material-symbols-outlined text-primary text-[32px]" style="font-variation-settings: 'FILL' 1;">forward_to_inbox</span>
+</div>
+<h4 class="font-headline-md text-[20px] text-on-background mb-sm">Send from Your Own Email</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+    Connect your own inbox to send applications directly. No spam, no blocks—every email shows up in your sent folder and stays out of recruiter spam filters.
+  </p>
+</div></div>
+</section><section class="max-w-container-max mx-auto px-gutter py-xxl" id="testimonials">
+<div class="text-center max-w-3xl mx-auto mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-sm">What People Say</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+      Real people. Real results. From fresh graduates to senior engineers — here's what they're saying.
+    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-lg">
+<!-- Testimonial 1 -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30 flex flex-col h-full shadow-sm">
+<div class="flex text-primary mb-md">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-lg flex-grow">
+        "I applied manually for 4 months and got nothing. Used ReachOut AI for one weekend — 180 emails sent, 14 replies, 3 interviews. I start my new job next month."
+      </p>
+<div class="flex items-center justify-between mt-auto pt-md border-t border-outline-variant/20">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary text-sm">PM</div>
+<div>
+<div class="font-label-md text-on-surface">Priya Menon</div>
+<div class="text-[12px] text-on-surface-variant">UI/UX Designer, Bangalore</div>
+</div>
+</div>
+<span class="px-sm py-xs bg-green-100 text-green-700 rounded-full text-[11px] font-bold uppercase tracking-wider flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check_circle</span> Got hired
+        </span>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30 flex flex-col h-full shadow-sm">
+<div class="flex text-primary mb-md">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-lg flex-grow">
+        "The AI emails don't sound robotic at all. A recruiter literally told me my application stood out because it mentioned a specific pain point from their post. That was the AI, not me."
+      </p>
+<div class="flex items-center justify-between mt-auto pt-md border-t border-outline-variant/20">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary text-sm">AS</div>
+<div>
+<div class="font-label-md text-on-surface">Arjun Sharma</div>
+<div class="text-[12px] text-on-surface-variant">Backend Engineer, Pune</div>
+</div>
+</div>
+<span class="px-sm py-xs bg-green-100 text-green-700 rounded-full text-[11px] font-bold uppercase tracking-wider">✅ 2 offers in hand</span>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30 flex flex-col h-full shadow-sm">
+<div class="flex text-primary mb-md">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-lg flex-grow">
+        "As a freelancer I use it to find clients, not jobs. Paste a #hiring hashtag URL, let it run, get client leads in my inbox. ROI is insane for ₹200/month."
+      </p>
+<div class="flex items-center justify-between mt-auto pt-md border-t border-outline-variant/20">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary text-sm">RV</div>
+<div>
+<div class="font-label-md text-on-surface">Rohan Verma</div>
+<div class="text-[12px] text-on-surface-variant">Freelance Developer, Remote</div>
+</div>
+</div>
+<span class="px-sm py-xs bg-green-100 text-green-700 rounded-full text-[11px] font-bold uppercase tracking-wider">✅ 5 new clients</span>
+</div>
+</div>
+<!-- Testimonial 4 -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30 flex flex-col h-full shadow-sm">
+<div class="flex text-primary mb-md">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-lg flex-grow">
+        "Setup took literally 2 minutes. I uploaded my CV, pasted a Laravel search URL, turned on test mode first to verify, then went live. 23 emails sent while I slept."
+      </p>
+<div class="flex items-center justify-between mt-auto pt-md border-t border-outline-variant/20">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary text-sm">SI</div>
+<div>
+<div class="font-label-md text-on-surface">Sneha Iyer</div>
+<div class="text-[12px] text-on-surface-variant">Full Stack Dev, Chennai</div>
+</div>
+</div>
+<span class="px-sm py-xs bg-green-100 text-green-700 rounded-full text-[11px] font-bold uppercase tracking-wider">✅ Interview next week</span>
+</div>
+</div>
+<!-- Testimonial 5 -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30 flex flex-col h-full shadow-sm">
+<div class="flex text-primary mb-md">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-lg flex-grow">
+        "I was skeptical about AI writing my emails but the quality genuinely surprised me. It pulled exact phrases from the recruiter's post and matched them to my experience. Felt personal."
+      </p>
+<div class="flex items-center justify-between mt-auto pt-md border-t border-outline-variant/20">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary text-sm">KM</div>
+<div>
+<div class="font-label-md text-on-surface">Karan Malhotra</div>
+<div class="text-[12px] text-on-surface-variant">Data Analyst, Delhi</div>
+</div>
+</div>
+<span class="px-sm py-xs bg-green-100 text-green-700 rounded-full text-[11px] font-bold uppercase tracking-wider">✅ 4 replies in 24h</span>
+</div>
+</div>
+<!-- Testimonial 6 -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30 flex flex-col h-full shadow-sm">
+<div class="flex text-primary mb-md">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mb-lg flex-grow">
+        "Freshers don't stand a chance applying one by one. ReachOut AI levelled the playing field. I sent 300 applications in a week that would have taken me 3 months manually."
+      </p>
+<div class="flex items-center justify-between mt-auto pt-md border-t border-outline-variant/20">
+<div class="flex items-center gap-sm">
+<div class="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center font-bold text-primary text-sm">NG</div>
+<div>
+<div class="font-label-md text-on-surface">Neha Gupta</div>
+<div class="text-[12px] text-on-surface-variant">Fresh Graduate, Mumbai</div>
+</div>
+</div>
+<span class="px-sm py-xs bg-green-100 text-green-700 rounded-full text-[11px] font-bold uppercase tracking-wider">✅ First job secured</span>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<section class="max-w-container-max mx-auto px-gutter py-xxl" id="pricing">
+<div class="text-center max-w-3xl mx-auto mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-sm">Pricing</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+      Honest pricing. No surprises. Start free. Upgrade when you're ready. Cancel any time — no contracts.
+    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-lg">
+<!-- Free Tier -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30 flex flex-col h-full shadow-sm">
+<div class="mb-lg">
+<h4 class="font-headline-md text-[20px] text-on-background mb-1">Free</h4>
+<div class="flex items-baseline gap-1">
+<span class="text-[32px] font-bold text-on-background">₹0</span>
+<span class="text-on-surface-variant">/mo</span>
+</div>
+<p class="text-body-sm text-on-surface-variant mt-2">Forever free · no card needed</p>
+</div>
+<ul class="space-y-md mb-xl flex-grow">
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> 10 emails/mo</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> 1 URL</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> 3 pages</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> Test mode</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> Live logs</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface-variant/50 line-through"><span class="material-symbols-outlined text-[18px]">close</span> AI personalisation</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface-variant/50 line-through"><span class="material-symbols-outlined text-[18px]">close</span> Email watermark removed</li>
+</ul>
+<button class="w-full font-button text-button border border-outline text-on-surface px-md py-sm rounded-lg hover:bg-surface-container-high transition-colors">Get started free</button>
+</div>
+<!-- Standard Tier -->
+<div class="bg-surface-container-lowest p-xl rounded-xl border-2 border-primary flex flex-col h-full shadow-md relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-on-primary px-sm py-1 rounded-full text-[10px] font-bold uppercase tracking-widest">Most Popular</div>
+<div class="mb-lg">
+<h4 class="font-headline-md text-[20px] text-on-background mb-1">Standard</h4>
+<div class="flex items-baseline gap-1">
+<span class="text-[32px] font-bold text-on-background">₹200</span>
+<span class="text-on-surface-variant">/mo</span>
+</div>
+<p class="text-body-sm text-on-surface-variant mt-2">Best for active job seekers</p>
+</div>
+<ul class="space-y-md mb-xl flex-grow">
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> 200 emails/mo</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> 10 URLs</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> 15 pages/URL</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> Full AI personalisation</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> No watermark</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> History &amp; analytics</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> Email support</li>
+</ul>
+<button class="w-full font-button text-button bg-primary text-on-primary px-md py-sm rounded-lg hover:bg-primary-container transition-all shadow-sm">Start Standard</button>
+</div>
+<!-- Pro Tier -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30 flex flex-col h-full shadow-sm">
+<div class="mb-lg">
+<h4 class="font-headline-md text-[20px] text-on-background mb-1">Pro</h4>
+<div class="flex items-baseline gap-1">
+<span class="text-[32px] font-bold text-on-background">₹1000</span>
+<span class="text-on-surface-variant">/mo</span>
+</div>
+<p class="text-body-sm text-on-surface-variant mt-2">For power users &amp; freelancers</p>
+</div>
+<ul class="space-y-md mb-xl flex-grow">
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> 500 emails/mo</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> Unlimited URLs</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> 50 pages/URL</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> Priority AI processing</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> Advanced analytics</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> Custom templates</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> Priority support</li>
+</ul>
+<button class="w-full font-button text-button border border-outline text-on-surface px-md py-sm rounded-lg hover:bg-surface-container-high transition-colors">Start Pro</button>
+</div>
+<!-- Agency Tier -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30 flex flex-col h-full shadow-sm">
+<div class="mb-lg">
+<h4 class="font-headline-md text-[20px] text-on-background mb-1">Agency</h4>
+<div class="flex items-baseline gap-1">
+<span class="text-[32px] font-bold text-on-background">Custom</span>
+</div>
+<p class="text-body-sm text-on-surface-variant mt-2">Volume · white-label · teams</p>
+</div>
+<ul class="space-y-md mb-xl flex-grow">
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> Unlimited emails</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> Multi-seat access</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> White-label options</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> Full API access</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> Account manager</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> Custom integrations</li>
+<li class="flex items-center gap-2 text-body-sm text-on-surface"><span class="material-symbols-outlined text-green-600 text-[18px]">check_circle</span> Enterprise SLA</li>
+</ul>
+<button class="w-full font-button text-button border border-outline text-on-surface px-md py-sm rounded-lg hover:bg-surface-container-high transition-colors flex items-center justify-center gap-1">
+        Contact us <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</section><section class="max-w-container-max mx-auto px-gutter py-xxl" id="faq">
+<div class="text-center max-w-3xl mx-auto mb-xl">
+<h2 class="font-headline-lg text-headline-lg text-on-background mb-sm">FAQ</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">
+      Everything you need to know before getting started.
+    </p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<!-- Q1 -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30">
+<h4 class="font-headline-md text-[20px] text-on-background mb-md">Does it need my LinkedIn login?</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        No. ReachOut AI only uses publicly visible LinkedIn search result pages. You paste the URL, we scrape the public content. Your LinkedIn account is never touched.
+      </p>
+</div>
+<!-- Q2 -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30">
+<h4 class="font-headline-md text-[20px] text-on-background mb-md">How does the AI personalization work?</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        It reads the full post text, identifies the author's name and title, then matches your CV skills against what the post asks for. Every email references something specific — not a generic template.
+      </p>
+</div>
+<!-- Q3 -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30">
+<h4 class="font-headline-md text-[20px] text-on-background mb-md">Is there a risk of my email being marked as spam?</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        We send one email at a time with a 30–60 second random delay between each. This mimics human sending behaviour. We recommend using Gmail with an App Password for best results.
+      </p>
+</div>
+<!-- Q4 -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30">
+<h4 class="font-headline-md text-[20px] text-on-background mb-md">What is 'Test Mode'?</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        Test Mode scrapes all posts, collects emails, and shows you the full list — without sending a single message. Use it to verify quality before going live. Always recommended for first runs.
+      </p>
+</div>
+<!-- Q5 -->
+<div class="bg-surface-container-low p-xl rounded-xl border border-outline-variant/30">
+<h4 class="font-headline-md text-[20px] text-on-background mb-md">Can I cancel my subscription anytime?</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">
+        Yes. No lock</p></div></div></section></body></html>
