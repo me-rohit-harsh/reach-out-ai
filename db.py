@@ -100,12 +100,15 @@ class Database:
     @staticmethod
     def record_outreach(user_email, outreach_data):
         data = load_data()
+        user_key = (user_email or "guest@reachoutai.local").lower()
+        recip_key = (outreach_data.get("recipientEmail") or "").lower()
         record = {
-            "userEmail": user_email.lower(),
-            "recipientEmail": outreach_data.get("recipientEmail"),
+            "userEmail": user_key,
+            "recipientEmail": recip_key,
             "recruiterName": outreach_data.get("recruiterName"),
             "subject": outreach_data.get("subject"),
-            "testMode": outreach_data.get("testMode"),
+            "testMode": outreach_data.get("testMode", False),
+            "urn": outreach_data.get("urn") or outreach_data.get("postUrn") or "",
             "sentAt": datetime.datetime.utcnow().isoformat()
         }
         data["outreach"].append(record)
@@ -113,8 +116,19 @@ class Database:
         return record
 
     @staticmethod
-    def is_email_sent_before(user_email, recipient_email):
-        # Return False to disable checking sent history to allow continuous scraping/emailing
+    def is_email_sent_before(user_email, recipient_email, urn=None):
+        data = load_data()
+        recip_key = (recipient_email or "").lower()
+        if not recip_key:
+            return False
+        for record in data.get("outreach", []):
+            if (record.get("recipientEmail") or "").lower() == recip_key:
+                record_urn = record.get("urn") or record.get("postUrn") or ""
+                if urn and record_urn:
+                    if record_urn == urn:
+                        return True
+                else:
+                    return True
         return False
 
     @staticmethod

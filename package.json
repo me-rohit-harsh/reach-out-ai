@@ -1,7 +1,7 @@
 {
   "scripts": {
-    "start": "python server.py",
-    "serve": "python server.py",
+    "start": "if [ -f ./.venv/bin/python ]; then ./.venv/bin/python server.py; else python3 server.py; fi",
+    "serve": "if [ -f ./.venv/bin/python ]; then ./.venv/bin/python server.py; else python3 server.py; fi",
     "build": "echo 'Astro build bypassed: Python webserver serves raw HTML directly'"
   },
   "dependencies": {

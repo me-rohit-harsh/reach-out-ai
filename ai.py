@@ -16,7 +16,7 @@ class AIGenerator:
         else:
             first_name = author.split(' ')[0]
             greeting = f"Dear {first_name},"
-            poster_context = f"The post was written by {author}{f', {author_title}' if author_title else ''}. Address them by first name."
+            poster_context = f"The job post / recipient is {author}{f', {author_title}' if author_title else ''}. Address them as the recipient in the greeting."
 
         prompt = ""
         if custom_prompt_template and custom_prompt_template.strip() != "":
@@ -57,8 +57,13 @@ RULES:
    - Paragraph 3: Explain in one short sentence why THIS specific role/company excites you.
 4. End the body with a professional sign-off and a clean signature using `<br>` tags:
    Best regards,<br>
-   [Your Name]
-5. Do NOT use placeholders like [Name], [Company], or [Date]. Extract the applicant's name from the CV for the signature.
+   [Applicant Name]
+5. CRITICAL INSTRUCTION FOR SIGNATURE:
+   - The recipient of the email is the post author/HR ({greeting}).
+   - The sender of the email is the APPLICANT whose resume is in 'My CV'.
+   - Extract the applicant's name (sender) from 'My CV' for the sign-off signature (e.g. Best regards,<br>Applicant Name).
+   - DO NOT use placeholders like [Name] or [Company].
+   - DO NOT use the recipient's name or the HR manager's/post author's name in the sign-off signature!
 6. Do NOT use markdown symbols (like `**` or `*`); use HTML tags like `<strong>` or `<em>` if bolding or emphasis is needed.
 7. Keep the text concise, professional, and under 180 words.
 

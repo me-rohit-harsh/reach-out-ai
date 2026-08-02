@@ -577,9 +577,16 @@ async def start_scraping_stream(
                     urls_list = [u.strip() for u in urls.split('\n') if u.strip() and not u.strip().startswith('#')]
                 if not urls_list:
                     urls_list = [u.strip() for u in os.environ.get("LINKEDIN_TARGET_URLS", "").split('\n') if u.strip() and not u.strip().startswith('#')]
+                if not urls_list and os.path.exists("urls.txt"):
+                    try:
+                        with open("urls.txt", "r", encoding="utf-8") as f:
+                            urls_list = [u.strip() for u in f.read().split('\n') if u.strip() and not u.strip().startswith('#')]
+                    except Exception:
+                        pass
                 
                 if not urls_list:
-                    put_log("Error: No target URLs configured. Set LINKEDIN_TARGET_URLS in .env or paste them in the target box.")
+                    put_log("Error: No target URLs configured. Set LINKEDIN_TARGET_URLS in .env, add to urls.txt, or paste them in the target box.")
+                    await asyncio.sleep(0.5)
                     return
 
                 mailer = Mailer({
@@ -644,17 +651,33 @@ async def start_scraping_stream(
                     })
 
                     if emails:
+                        user_email = os.environ.get("ADMIN_EMAIL", "guest@reachoutai.local")
                         for email in emails:
                             email_lower = email.lower()
                             if email_lower in processed_emails:
-                                put_log(f"[SKIP] Already processed {email} this session.")
+                                put_log(f"[SKIP] Already processed {email} in this session.")
                                 continue
+                            
+                            if Database.is_email_sent_before(user_email, email_lower, urn=urn):
+                                put_log(f"[SKIP] Already sent email to {email} for this post.")
+                                await log_queue.put({
+                                    "type": "post_progress",
+                                    "content": {
+                                        "urn": urn,
+                                        "author": author,
+                                        "snippet": snippet,
+                                        "emails": emails,
+                                        "status": "Skipped (Duplicate)"
+                                    }
+                                })
+                                continue
+
                             processed_emails.add(email_lower)
                             
                             put_log(f"Generating personalized email for {email}...")
                             email_content = ai.generate_email(
-                                cv_content,
                                 text,
+                                cv_content,
                                 author,
                                 post.get("authorTitle") or "",
                                 ""
@@ -676,6 +699,13 @@ async def start_scraping_stream(
                                 
                             if run_test_mode:
                                 put_log(f"[TEST] Would send to: {email} ({author})")
+                                Database.record_outreach(user_email, {
+                                    "recipientEmail": email_lower,
+                                    "recruiterName": author,
+                                    "subject": email_content.get("subject", ""),
+                                    "testMode": True,
+                                    "urn": urn
+                                })
                                 await log_queue.put({
                                     "type": "post_progress",
                                     "content": {
@@ -705,6 +735,13 @@ async def start_scraping_stream(
                             )
                             
                             if send_result:
+                                Database.record_outreach(user_email, {
+                                    "recipientEmail": email_lower,
+                                    "recruiterName": author,
+                                    "subject": email_content.get("subject", ""),
+                                    "testMode": False,
+                                    "urn": urn
+                                })
                                 if test_recipient:
                                     put_log(f"Sent successfully to {recipient_email} (test redirect).")
                                 else:

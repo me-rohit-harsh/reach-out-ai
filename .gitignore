@@ -1,4 +1,23 @@
-node_modules
-.env
+# Node dependencies
+node_modules/
+
+# Python Virtual Environment
+.venv/
+venv/
+ENV/
+env/
+
+# Build & Cache Directories
+.astro/
+dist/
+__pycache__/
+*.pyc
 *.log
+.DS_Store
+
+# Session & User Uploads/Data
 auth_state.json
+uploads/*.pdf
+local_db.json
+database.json
+.env

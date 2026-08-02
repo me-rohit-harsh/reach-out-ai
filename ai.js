@@ -15,7 +15,7 @@ class AIGenerator {
       : 'Dear Hiring Manager,';
 
     const posterContext = author
-      ? `The post was written by ${author}${authorTitle ? `, ${authorTitle}` : ''}. Address them by first name.`
+      ? `The job post / recipient is ${author}${authorTitle ? `, ${authorTitle}` : ''}. Address them as the recipient in the greeting.`
       : '';
 
     let prompt = '';
@@ -47,7 +47,7 @@ RULES:
 2. First sentence: reference something SPECIFIC from the post (a pain point, tech stack, wording they used) — show you actually read it.
 3. Second paragraph: 2 specific skills/experiences from CV that directly match the post. Be concrete, not generic.
 4. Third paragraph: one short sentence why THIS company/role excites you — make it feel human, not templated.
-5. Close naturally. Find applicant name from CV for sign-off.
+5. Close naturally with sign-off. CRITICAL: Extract the applicant's name (sender) from 'My CV' for the sign-off signature. DO NOT use the recipient's or HR manager's name!
 6. NO placeholders like [Name], [Company], [Date]. NO bullet points. Plain text only.
 7. Under 180 words total.
 8. NO leading spaces or indentation on any line.
